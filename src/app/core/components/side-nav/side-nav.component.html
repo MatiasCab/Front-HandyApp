@@ -1,0 +1,92 @@
+<div class="panel">
+    <button type="button" class="side-btn button-hov first">
+        <p><i class="bi bi-exclamation-triangle-fill me-2"></i>Problemas</p>
+    </button>
+    <button type="button" class="side-btn button-hov" (click)="chatsCollapsed = !chatsCollapsed"
+        [attr.aria-expanded]="!chatsCollapsed" aria-controls="collapseExample">
+        <p><i class="bi bi-wechat me-2"></i>Chats</p>
+    </button>
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="chatsCollapsed">
+        <button class="side-second-btn" role="button">
+            <p class="second-button-title">Mis problemas</p>
+        </button>
+        <button class="side-second-btn " role="button">
+            <p>Otros Problemas</p>
+        </button>
+    </div>
+    <button type="button" class="side-btn button-hov" (click)="friendsCollapsed = ! friendsCollapsed"
+        [attr.aria-expanded]="!friendsCollapsed" aria-controls="collapseExample">
+        <p>Amigos</p>
+    </button>
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="friendsCollapsed">
+        <button class="side-second-btn ms-auto" role="button">
+            <p>Buscar amigos</p>
+        </button>
+        <button class="side-second-btn ms-auto" role="button">
+            <p>Mis amigos</p>
+        </button>
+    </div>
+    <button type="button" class="side-btn button-hov {{this.problemsCollapsed ? '' : 'opened'}}"
+        (click)="problemsCollapsed = !problemsCollapsed " [attr.aria-expanded]="!problemsCollapsed"
+        aria-controls="collapseExample">
+        <p>Perfil</p>
+    </button>
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="problemsCollapsed">
+        <button class="side-second-btn ms-auto" role="button">
+            <p>Ver mi perfil</p>
+        </button>
+        <button class="side-second-btn ms-auto" role="button">
+            <p>Mis problemas</p>
+        </button>
+    </div>
+    <button type="button" class="side-btn button-hov">
+        <p>Configuracion</p>
+    </button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="panel">
+    <button class="side-btn first" data-bs-toggle="collapse" href="#collapseProblems" role="button" aria-expanded="false"
+        aria-controls="collapseProblems">
+        <p>Problemas</p>
+    </button>
+    <div class="collapse" id="collapseProblems">
+        <button class="side-second-btn ms-auto" role="button">
+            <p>Mis problemas</p>
+        </button>
+    </div>
+    <button class="side-btn" data-bs-toggle="collapse" href="#collapseChats" role="button" aria-expanded="false"
+        aria-controls="collapseChats">
+        <p>Chats</p>
+    </button>
+    <div class="collapse" id="collapseChats">
+        <button class="side-second-btn ms-auto" role="button">
+            <p>Mis problemas</p>
+        </button>
+        <button class="side-second-btn ms-auto" role="button">
+            <h4>Otros problemas</h4>
+        </button>
+    </div>
+    <button class="side-btn" data-bs-toggle="collapse" href="#collapseFriends" role="button" aria-expanded="false"
+        aria-controls="collapseFriends">
+        <p>Amigos</p>
+    </button>
+    <div class="collapse" id="collapseFriends">
+        <button class="side-second-btn ms-auto" role="button">
+            <p>Agregar amigos</p>
+        </button>
+    </div>
+    <button class="side-btn" role="button">
+        <p>Perfil</p>
+    </button>
+</div> -->
