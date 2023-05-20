@@ -12,13 +12,19 @@ p {
     font-weight: 400;
     line-height: 29px;
     text-align: left;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .side-btn.opened {
-    background-color: rgba(2, 48, 71, 0.5);
+    background-color: rgba(99, 247, 156, 0.3);
+    background-image: none;
+    -webkit-transition: background 600ms ease-in-out;
+    transition: background 200ms ease-in-out;
 }
 
+.side-btn.focused {
+    color: rgb(5, 197, 78);
+}
 
 .side-second-btn {
     background-color: white;
@@ -40,6 +46,16 @@ p {
     flex-wrap: wrap;
 }
 
+.expanded {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bi-arrow-right-short {
+    //margin-left: 30%;
+    font-size: large;
+}
+
 .button-hov {
     border-radius: 0px 13px 13px 0px;
     width: 90%;
@@ -48,23 +64,29 @@ p {
     text-align: start;
     border: none;
     background-color: rgba(99, 247, 156, 0.3);
-    background-image: linear-gradient(to bottom, white,white 100%); 
-    background-size: 600px;
+    background-image: linear-gradient(to bottom, white, white 100%);
+    background-size: 300px;
     background-repeat: no-repeat;
     background-position: 0%;
     -webkit-transition: background 600ms ease-in-out;
     transition: background 200ms ease-in-out;
-  }
-  .button-hov:hover {
+}
+
+.button-hov:hover {
     background-position: -500%;
     transition: background 600ms ease-in-out;
     border-left: solid 3px rgba(99, 247, 156, 1);
-  }
+}
 
-  .first {
+.first {
     margin-top: 50%;
 }
 
 .left-line {
-    border-left: 10px solid black;
+    border-left: solid 3px rgb(5, 197, 78);
+    color: rgb(5, 197, 78);
+
+    p {
+        font-weight: 700;
+    }
 }
