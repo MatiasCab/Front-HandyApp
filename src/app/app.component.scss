@@ -1,3 +1,8 @@
+.exterior{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 .header {
     position: fixed;
     top: 0;
