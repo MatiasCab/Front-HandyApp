@@ -1,0 +1,33 @@
+<div class="box">
+    <div class="login">
+        <div class="textLogIn"><h1>Recuperar contraseña</h1></div>
+        
+
+        <form class="">
+
+            <div class="form-group">
+                <label class="form-label" for="floatingInput">Email</label>
+                <app-user-input #email class="" [inputLabel]="'Email'"
+                    [inputTypeAutocomplete]="'nickname'" (enterpressEvent)="sendcode()">
+                </app-user-input>
+            </div>
+
+            <div class="form-group buttonCenter">
+                <button type="button" class="" (click)="sendcode()">Enviar código</button>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="floatingInput">Código</label>
+                <app-user-input #code class="" [inputLabel]="'Código'"
+                    [inputTypeAutocomplete]="'nickname'" (enterpressEvent)="checkcode()">
+                </app-user-input>
+            </div>
+
+            <div class="form-group buttonCenter">
+                <button type="button" class="" (click)="checkcode()">Validar código</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
