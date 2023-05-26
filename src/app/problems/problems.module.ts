@@ -1,22 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ProblemComponent } from './components/problem/problem.component';
-import { SkillListComponent } from './components/skill-list/skill-list.component';
-import { ProblemsGridComponent } from './components/problems-grid/problems-grid.component';
-import { TagComponent } from './components/tag/tag.component';
 import { ProblemsSearchComponent } from './components/problems-search/problems-search.component';
+import { ProblemsRoutingModule } from './problems-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
-    TagComponent,
-    ProblemComponent,
-    SkillListComponent,
-    ProblemsGridComponent,
     ProblemsSearchComponent,
+    
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ProblemsRoutingModule,
+    SharedModule
   ],
 })
 export class ProblemsModule { }

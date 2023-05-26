@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ProblemsSearchComponent } from './problems-search.component';
 
 describe('ProblemsSearchComponent', () => {

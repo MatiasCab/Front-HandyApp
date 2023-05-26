@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Problem } from '../../models/Problem';
-import { ProblemService } from '../../services/problem.service';
+import { Problem } from 'src/app/problems/models/Problem';
+import { ProblemService } from 'src/app/problems/services/problem.service';
 
 @Component({
   selector: 'app-problems-grid',
