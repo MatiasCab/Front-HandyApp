@@ -1,9 +1,8 @@
 <div class="problemsGrid">
     <div class="row gx-2 gy-2 w-100 gridContainer ">
-        <app-problem
-        *ngFor="let problem of problems"
-        [problem]="problem"
-        [option]="'problemInfo'">
-        </app-problem>
+        <app-long-card *ngFor="let problemX of problems"
+        [problem]="problemX"
+        
+        ></app-long-card>
     </div>
 </div>
