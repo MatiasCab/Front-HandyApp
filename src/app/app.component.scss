@@ -14,12 +14,14 @@
 .app-body {
     width: 80vw;
     height: 92vh;
-    background-color: rgba(197, 195, 195, 0.8);
+    background-color: rgba(189, 109, 109, 0.8);
     border-radius: 13px 13px 0px 0px;
 }
 
 .app-skeleton {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: row-reverse;
     align-items: flex-end;
 }
