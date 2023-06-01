@@ -12,6 +12,7 @@ export class UserService {
 
   user1: User = {
     id: 1,
+    profilePic: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
     ci: '12345678',
     firstName: 'Juan',
     lastname: 'Perez',
@@ -23,6 +24,7 @@ export class UserService {
   }
   user2: User = {
     id: 2,
+    profilePic: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
     ci: '56473612',
     firstName: 'Maria',
     lastname: 'Flores',
@@ -41,4 +43,9 @@ export class UserService {
   getUsers(): Observable<User[]>{
     return of(this.users);
   }
+
+  getUser(id: number): Observable<User|undefined>{
+    return of(this.users.find(user => user.id === id));
+  }
+
 }

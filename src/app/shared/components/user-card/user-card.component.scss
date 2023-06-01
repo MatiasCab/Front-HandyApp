@@ -1,0 +1,21 @@
+.userInfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+img{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.userDetails{
+    margin-left: 10px;
+}
+
+span{
+    color: black;
+    opacity: 50%;
+}

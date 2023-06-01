@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { Problem } from 'src/app/problems/models/Problem';
 import { ProblemService } from 'src/app/problems/services/problem.service';
 
@@ -11,10 +12,16 @@ export class ProblemsGridComponent {
 
   @Input() problems?: Problem[];
 
-  constructor(private problemService: ProblemService) { }
+  constructor(
+    private problemService: ProblemService,
+    ) { }
 
   ngOnInit(): void {
-    this.problemService.getProblems().subscribe(problems => this.problems = problems);
+    this.problemService.getProblems().subscribe(problems => {
+      this.problems = problems;
+    });
+    
+  
   }
 
 }

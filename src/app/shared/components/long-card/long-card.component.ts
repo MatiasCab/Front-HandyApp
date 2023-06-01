@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Problem } from '../../../problems/models/Problem';
+import { User } from 'src/app/problems/models/User';
 
 @Component({
   selector: 'app-long-card',
@@ -9,5 +10,6 @@ import { Problem } from '../../../problems/models/Problem';
 export class LongCardComponent {
 
   @Input() problem?: Problem
+  @Input() userId?: number;
 
 }
