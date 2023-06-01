@@ -9,6 +9,7 @@ import { ProblemsGridComponent } from './components/problems-grid/problems-grid.
 import { TagComponent } from './components/tag/tag.component';
 import { LongCardComponent } from './components/long-card/long-card.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   imports: [
@@ -22,10 +23,12 @@ import { UserCardComponent } from './components/user-card/user-card.component';
     ProblemsGridComponent,
     TagComponent,
     LongCardComponent,
-    UserCardComponent
+    UserCardComponent,
+    SearchBarComponent
    ],
   exports: [ 
-    ProblemsGridComponent
+    ProblemsGridComponent,
+    SearchBarComponent
    ]
 })
 export class SharedModule { }
