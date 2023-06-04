@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserInputComponent } from '../user-input/user-input.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-change',
@@ -15,7 +16,7 @@ export class ChangeComponent implements OnInit{
   isMobile?: boolean;
 
   constructor(
-    //private authService: AuthService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
@@ -28,14 +29,11 @@ export class ChangeComponent implements OnInit{
   changepass() {
 
     //Username debería venir de la sesión
-    let password1 = this.pass1Input?.InputInfo ? this.pass1Input?.InputInfo : '';
+    let password = this.pass1Input?.InputInfo ? this.pass1Input?.InputInfo : '';
     let password2 = this.pass2Input?.InputInfo ? this.pass2Input?.InputInfo : '';
 
     /*this.authService.changepass(username, password).subscribe(response => {
       if (response.error) {
-        if (response.type == 'InvalidCredentials') {
-          this.errorMessage = 'Nombre de usuario y/o contraseña incorrectos';
-        } else {
           this.errorMessage = 'Lo sentimos no hemos podido procesar su solicitud';
         }
       } else {

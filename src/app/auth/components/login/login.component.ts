@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-//import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 import { UserInputComponent } from '../user-input/user-input.component';
 
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit{
   @ViewChild('password') passwordInput?: UserInputComponent;
 
   constructor(
-    //private authService: AuthService,
+    private authService: AuthService,
     private router: Router
   ) { }
 
@@ -34,7 +34,8 @@ export class LoginComponent implements OnInit{
     let username = this.usernameInput?.InputInfo ? this.usernameInput?.InputInfo : '';
     const password = this.passwordInput?.InputInfo ? this.passwordInput?.InputInfo : '';
 
-    /*this.authService.login(username, password).subscribe(response => {
+    /*
+    this.authService.login(username, password).subscribe(response => {
       if (response.error) {
         if (response.type == 'InvalidCredentials') {
           this.errorMessage = 'Nombre de usuario y/o contraseña incorrectos';
