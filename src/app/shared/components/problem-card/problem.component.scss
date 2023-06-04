@@ -1,0 +1,32 @@
+.problemInfo{
+    display: flex;
+}
+
+.problemPic{
+    width:30%;
+    height:30%;
+    margin-right: 10px;
+}
+
+.problemData{
+    display: flex;
+    flex-direction: column;
+}
+
+.problemImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    &:hover{
+        transform: scale(1.01);
+    }
+}
+
+.skills{
+    margin-top: 0.3em;
+}

@@ -1,0 +1,27 @@
+.pillBadgeWithX{
+    display: flex;
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
+    color: #212529;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0.25rem 0;
+    align-items: baseline;
+    width: max-content;
+    .badge:hover{
+        cursor: pointer;
+        background-color: #F6F6F6 !important;
+        color: #000000 !important;
+    }
+    .badge{
+        background-color: #ECECEC !important;
+        color: #212121 !important;
+    }
+    .btn-close{
+        margin-left: 0.25em;
+        height: 0.8em;
+        width: 0.8em;
+    }
+}
+
+

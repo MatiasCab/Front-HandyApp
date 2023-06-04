@@ -1,0 +1,13 @@
+<div class="problem" *ngIf="option=='problem'">
+    <h3>Habilidades necesarias</h3>
+    <div class="skillList" *ngIf="skills">
+        <app-tag *ngFor="let skillX of skills" [name]="skillX" [option]="'simple'">
+        </app-tag>
+    </div>
+</div>
+
+<div class="problem" *ngIf="option=='problemInfo'">
+    <app-tag *ngFor="let skillX of skills" [name]="skillX" [option]="'simple'">
+    </app-tag>
+</div>
+
