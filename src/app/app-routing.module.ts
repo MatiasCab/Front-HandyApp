@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {path: '', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
-  {path: 'problems', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)}
+  //{path: 'problems', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)}
 ];
 
 @NgModule({
