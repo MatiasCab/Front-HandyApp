@@ -1,0 +1,19 @@
+.longCard{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    background-color: white !important;
+    &:hover{
+        transform: scale(1.01);
+    }
+}
+
+.problemInfo{
+    width: 50%;
+}

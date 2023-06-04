@@ -1,0 +1,9 @@
+<span class="badge rounded-pill text-bg-primary" *ngIf="option=='simple'">{{name}}</span>
+
+<div *ngIf="option=='withX'" class="pillBadgeWithX">
+    <span 
+        class="badge rounded-pill text-bg-primary">
+        {{name}}
+        <button type="button" class="btn-close" aria-label="Close"></button>
+        </span>
+</div>
