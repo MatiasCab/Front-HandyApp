@@ -28,7 +28,9 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
    ],
   exports: [ 
     ProblemsGridComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    ProblemComponent,
+    SkillListComponent
    ]
 })
 export class SharedModule { }

@@ -9,6 +9,7 @@ import { Problem } from '../../../problems/models/Problem';
 export class ProblemComponent {
 
   @Input() problem?: Problem;
+  @Input() fullInfo?: boolean;
 
   dateString?: string;
 
