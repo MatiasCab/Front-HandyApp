@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { Problem } from 'src/app/problems/models/Problem';
-import { ProblemService } from 'src/app/problems/services/problem.service';
+import { ProblemService } from 'src/app/problems/services/problem.service'; //Tiene sentido la ruta?
 
 @Component({
   selector: 'app-problems-grid',
@@ -10,7 +10,7 @@ import { ProblemService } from 'src/app/problems/services/problem.service';
 })
 export class ProblemsGridComponent {
 
-  @Input() problems?: Problem[];
+  @Input() problems?: Problem[]; //Tiene sentido que sea INPUT?
 
   constructor(
     private problemService: ProblemService,

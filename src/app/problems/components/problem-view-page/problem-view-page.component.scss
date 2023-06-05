@@ -1,0 +1,62 @@
+.problem-info {
+    width: 80vw;
+    display: flex;
+    height: 88vh;
+    margin-top: 7vh;
+    margin-bottom: 5vh;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.complete-view {
+    flex-wrap: wrap;
+}
+
+.h {
+    display: flex;
+}
+
+.all {
+    width: 100%;
+}
+img {
+    object-fit: cover;
+    border-radius: 13px;
+    width: 24vw;
+    height: 73%;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.secondary-button {
+    width: 48.5%;
+}
+.buttons-ajust {
+    display: flex;
+    height: 28%;
+    justify-content: space-between;
+}
+.padding-left {
+    padding-left: 7%;
+}
+
+.user-view {
+    height: 60vh;
+}
+
+.left-column {
+    width: 30.5vw;
+}
+
+.chat-button {
+    width: 100%;
+    height: 28%;
+}
+
+.complete-button {
+    width: 100%;
+    height: 28%;
+}
+
+.problem-info.complete-view{
+    align-content: flex-start;
+}

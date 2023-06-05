@@ -1,0 +1,13 @@
+<div class="info-box">
+    <div class="first-section ms-3 me-3 mb-3 pt-3">
+        <app-problem [problem]="problem" [fullInfo]="true"></app-problem> 
+    </div>
+    <div class="ms-3 mt-3 me-3 description">
+        <h5>Descripcion</h5>
+        <p>{{problem?.description}}</p>
+    </div>
+    <div class="ms-3 me-3">
+        <h5>Habilidades necesarias</h5>
+        <app-skill-list class="skills" [skills]="problem?.skills!" [option]="'problemInfo'"></app-skill-list>
+    </div>
+</div>  
