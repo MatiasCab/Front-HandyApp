@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserInputComponent } from '../user-input/user-input.component';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-recover',
@@ -16,47 +17,45 @@ export class RecoverComponent  implements OnInit{
   isMobile?: boolean;
 
   constructor(
-    //private authService: AuthService,
+    private authService: AuthService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
   }
 
-  register(){
-    //this.router.navigateByUrl('/register');
-  }
-
   sendcode() {
     let email = this.emailInput?.InputInfo ? this.emailInput?.InputInfo : '';
 
-    /*this.authService.login(username, password).subscribe(response => {
+    /*
+    this.authService.sendemailcode(email).subscribe(response => {
       if (response.error) {
-        if (response.type == 'InvalidCredentials') {
-          this.errorMessage = 'Nombre de usuario y/o contraseña incorrectos';
-        } else {
           this.errorMessage = 'Lo sentimos no hemos podido procesar su solicitud';
         }
       } else {
-        this.router.navigateByUrl('/home');
+
+        //CÓDIGO ENVIADO JEJE
+        //Ahora se bloquea el email, para que no lo cambie y poder verificar el mail con el código
+        // es anecdotico esto? no lo sabemos
+
+        //this.router.navigateByUrl('/home');
       }
     });
     */
   }
 
   checkcode() {
+    let email = this.emailInput?.InputInfo ? this.emailInput?.InputInfo : '';
     let code = this.codeInput?.InputInfo ? this.codeInput?.InputInfo : '';
     this.router.navigateByUrl('/changepassword');
 
-    /*this.authService.login(username, password).subscribe(response => {
+    /*
+    this.authService.verifycode(email, code).subscribe(response => {
       if (response.error) {
-        if (response.type == 'InvalidCredentials') {
-          this.errorMessage = 'Nombre de usuario y/o contraseña incorrectos';
-        } else {
           this.errorMessage = 'Lo sentimos no hemos podido procesar su solicitud';
         }
       } else {
-        this.router.navigateByUrl('/home');
+        //this.router.navigateByUrl('/home');
       }
     });
     */

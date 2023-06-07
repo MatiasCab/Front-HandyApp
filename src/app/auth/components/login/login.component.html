@@ -1,37 +1,42 @@
 <div class="box">
-    <div class="login">
-        <div class="textLogIn"><h1>Iniciar Sesión</h1></div>
+    <div>
+        <div class="logo">
+            <img class="" src="assets/handyLogo.png" alt="Logo" height="100">
+        </div>
         
+        <div class="login">
+            <div class="textLogIn"><h1>Iniciar Sesión</h1></div>
+            
+            <form class="">
 
-        <form class="">
+                <div class="form-group">
+                    <label class="form-label" for="floatingInput">Cédula</label>
+                    <app-user-input #username class="" [inputLabel]="'Cédula'"
+                        [inputTypeAutocomplete]="'nickname'" (enterpressEvent)="login()">
+                    </app-user-input>
+                </div>
 
-            <div class="form-group">
-                <label class="form-label" for="floatingInput">Cédula</label>
-                <app-user-input #username class="" [inputLabel]="'Cédula'"
-                    [inputTypeAutocomplete]="'nickname'" (enterpressEvent)="login()">
-                </app-user-input>
-            </div>
+                <div class="form-group">
+                    <label for="floatingPassword">Contraseña</label>
+                    <app-user-input #password class="" [inputLabel]="'Contraseña'"
+                        [inputTypeAutocomplete]="'password'" [inputType]="'password'" (enterpressEvent)="login()">
+                    </app-user-input>
+                </div>
 
-            <div class="form-group">
-                <label for="floatingPassword">Contraseña</label>
-                <app-user-input #password class="" [inputLabel]="'Contraseña'"
-                    [inputTypeAutocomplete]="'password'" [inputType]="'password'" (enterpressEvent)="login()">
-                </app-user-input>
-            </div>
+                <div class="form-group buttonCenter">
+                    <button type="button" class="" (click)="login()">Iniciar Sesión</button>
+                </div>
 
-            <div class="form-group buttonCenter">
-                <button type="button" class="" (click)="login()">Iniciar Sesión</button>
-            </div>
+                <div class="textCenter">
+                    <label class="labelText" (click)="register()">Registrarse</label><br>
+                </div>
 
-            <div class="textCenter">
-                <label class="labelText" (click)="register()">Registrarse</label><br>
-            </div>
+                <div class="textCenter">
+                    <label class="labelText" (click)="forgotpass()">¿Olvidaste tu contraseña?</label>
+                </div>
 
-            <div class="textCenter">
-                <label class="labelText" (click)="forgotpass()">¿Olvidaste tu contraseña?</label>
-            </div>
+            </form>
 
-        </form>
-
+        </div>
     </div>
 </div>

@@ -26,7 +26,7 @@ export class SideNavComponent {
       this.profileCollapsed = true;
       this.chatsCollapsed = true;
       this.friendsCollapsed = true;
-      this.problemsCollapsed = !this.problemsCollapsed;
+      this.problemsCollapsed = false;
     }
   }
 }
