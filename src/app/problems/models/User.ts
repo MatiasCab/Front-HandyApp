@@ -8,5 +8,6 @@ export interface User {
     birthdate?: Date;
     address?: string;
     joinedDate?: Date;
+    skills?: number[];
 }
 

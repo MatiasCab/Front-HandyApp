@@ -1,13 +1,27 @@
-<div class="problem" *ngIf="option=='problem'">
+<div class="list" *ngIf="option=='problem'">
     <h3>Habilidades necesarias</h3>
     <div class="skillList" *ngIf="skills">
-        <app-tag *ngFor="let skillX of skills" [name]="skillX" [option]="'simple'">
+        <app-tag *ngFor="let skillX of skillsList" [skill]="skillX" [option]="'simple'">
         </app-tag>
+    </div>
+    <div class="skillList">
+
     </div>
 </div>
 
-<div class="problem" *ngIf="option=='problemInfo'">
-    <app-tag *ngFor="let skillX of skills" [name]="skillX" [option]="'simple'">
+<div class="list" *ngIf="option=='problemInfo'">
+    <app-tag *ngFor="let skillX of skillsList" [skill]="skillX" [option]="'simple'">
     </app-tag>
 </div>
+
+<div class="list" *ngIf="option=='searchBar'">
+    <app-tag *ngFor="let skillX of skillsList" [skill]="skillX" [option]="'withX'" (sendIdToDelete)="deleteSkill($event)">
+    </app-tag>
+</div>
+
+<div class="list" *ngIf="option=='modal'">
+    <app-tag *ngFor="let skillX of skillsList" [skill]="skillX" [option]="'modalFilter'" (sendIdToFilter)="addSkillToFilter($event)">
+    </app-tag>
+</div>
+
 

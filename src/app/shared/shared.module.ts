@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { ProblemComponent } from './components/problem-card/problem.component';
 import { SkillListComponent } from './components/skill-list/skill-list.component';
@@ -16,6 +17,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     CommonModule,
     RouterModule,
     NgbModule,
+    FormsModule
   ],
   declarations: [ 
     ProblemComponent,

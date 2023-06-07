@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Problem } from '../models/Problem';
+
+import { Problem } from '../models/Problem'
+
+import { BehaviorSubject } from 'rxjs';;
 
 import {Observable, of} from 'rxjs';
 
@@ -16,7 +19,7 @@ export class ProblemService {
     name: 'Ayuda con el Jardín',
     description: 'Necesito ayuda con el jardín de mi casa, se me ha hecho un poco difícil mantenerlo en buen estado',
     date: new Date('4/30/2023'),
-    skills: ['Jardinería', 'Plantas'],
+    skills: [1, 2],
     location: 'Calle 1 # 2-3',
     status: 'Pendiente',
     userid: 1
@@ -28,7 +31,7 @@ export class ProblemService {
     name: 'Ayuda con el Jardín',
     description: 'Necesito ayuda con el jardín de mi casa, se me ha hecho un poco difícil mantenerlo en buen estado',
     date: new Date('6/1/2022'),
-    skills: ['Jardinería', 'Plantas'],
+    skills: [1, 2],
     location: 'Calle 1 # 2-3',
     status: 'Pendiente',
     userid: 2
@@ -40,9 +43,18 @@ export class ProblemService {
 
   ]
 
+  private problemsSubject: BehaviorSubject<Problem[]> = new BehaviorSubject<Problem[]>([]);
+  problems$ = this.problemsSubject.asObservable();
+
+  sendProblems(nuevosValores: Problem[]) {
+    this.problemsSubject.next(nuevosValores);
+  }
+
   getProblems(): Observable<Problem[]>{
     return of(this.Problems);
   }
+  
+
 
 
 }
