@@ -20,8 +20,11 @@ export class ProblemsGridComponent {
     this.problemService.getProblems().subscribe(problems => {
       this.problems = problems;
     });
-    
-  
+  }
+
+  refreshList(){
+    this.problemService.problems$.subscribe(problemsX => {
+      this.problems = problemsX})
   }
 
 }
