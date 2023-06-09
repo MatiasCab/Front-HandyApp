@@ -1,5 +1,6 @@
 .panel {
-    background-color: white;
+    //background-color: #0077B6;
+    background: linear-gradient(120.61deg, #0054B6 0%, #03B3FF 100%);
     height: 100vh;
     width: 20vw;
     justify-content: center;
@@ -13,27 +14,31 @@ p {
     line-height: 29px;
     text-align: left;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #000;
 }
 
+// Boton abierto
 .side-btn.opened {
-    background-color: rgba(99, 247, 156, 0.3);
+    background-color: #0054B6;
     background-image: none;
     -webkit-transition: background 600ms ease-in-out;
     transition: background 200ms ease-in-out;
 }
 
+//El boton seleccionado
 .side-btn.focused {
-    color: rgb(5, 197, 78);
+    background-color: #0054B6;
     border-left: solid 3px rgb(5, 197, 78);
-    color: rgb(5, 197, 78);
+    //color: rgb(5, 197, 78);
 }
 
+//Boton secundario
 .side-second-btn {
-    background-color: white;
-    width: 70%;
+    background-color: #0064D9;
+    width: 100%;
     margin-left: 20%;
     border: none;
-    border-left: solid 2px rgb(192, 192, 192);
+    //border-left: solid 2px rgb(192, 192, 192);
     padding-top: 5%;
     padding-bottom: 5%;
 }
@@ -58,15 +63,16 @@ p {
     font-size: large;
 }
 
+// Boton 
 .button-hov {
-    border-radius: 0px 13px 13px 0px;
-    width: 90%;
+    //border-radius: 0px 13px 13px 0px;
+    width: 100%;
     height: 7%;
     padding-left: 15%;
     text-align: start;
     border: none;
-    background-color: rgba(99, 247, 156, 0.3);
-    background-image: linear-gradient(to bottom, white, white 100%);
+    background-color: #0054B6;
+    //background-image: linear-gradient(to bottom, white, white 100%);
     background-size: 300px;
     background-repeat: no-repeat;
     background-position: 0%;
@@ -74,10 +80,13 @@ p {
     transition: background 200ms ease-in-out;
 }
 
+// Boton hover
+
 .button-hov:hover {
     background-position: -500%;
-    transition: background 600ms ease-in-out;
-    border-left: solid 3px rgba(99, 247, 156, 1);
+    background-color: #0054B6;
+    //transition: background 600ms ease-in-out;
+    //border-left: solid 3px rgba(99, 247, 156, 1);
 }
 
 .first {

@@ -4,6 +4,7 @@ export interface User {
     ci?: string;
     firstName?: string;
     lastname?: string;
+    description?: string;
     email?: string;
     birthdate?: Date;
     address?: string;
