@@ -11,9 +11,11 @@ export class TagComponent {
 
   @Output() sendIdToDelete = new EventEmitter<number>
   @Output() sendIdToFilter = new EventEmitter<number>
+  @Output() filterBy = new EventEmitter<string>
 
   @Input() skill?: Skill;
   @Input() option?: string;
+  @Input() text?: string;
 
   constructor(
     private cd: ChangeDetectorRef
@@ -25,11 +27,16 @@ export class TagComponent {
   }
 
   isSpanSelected = false;
+  @Input() isSpanSelectedFilter = false;
 
-  addToFilter() {
+  addSkillToFilter() {
     this.isSpanSelected = !this.isSpanSelected;
     this.sendIdToFilter.emit(this.skill!.id);
-
+  }
+  
+  filter(){
+    this.isSpanSelectedFilter = !this.isSpanSelectedFilter;
+    this.filterBy.emit(this.text);
   }
 
 }

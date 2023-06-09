@@ -11,7 +11,14 @@
 
 <span *ngIf="option=='modalFilter'"
     [class.selected]="isSpanSelected"
-    (click)="addToFilter()"
+    (click)="addSkillToFilter()"
     class="modalBadge badge rounded-pill text-bg-primary">
     {{skill!.name}}
+</span>
+
+<span *ngIf="option=='filter'"
+[class.selected]="isSpanSelectedFilter"
+(click)="filter()"
+class="filterBadge badge rounded-pill text-bg-primary">
+{{text}}
 </span>

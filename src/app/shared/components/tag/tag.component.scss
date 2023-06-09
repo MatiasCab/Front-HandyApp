@@ -43,3 +43,18 @@
 
 }
 
+span{
+    font-family: Helvetica, Verdana, Arial;
+    font-weight:500;
+}
+
+.filterBadge{
+    color: black !important;
+    background-color: #F6F6F6 !important;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.filterBadge.selected{
+    background-color: #0077B6 !important;
+}

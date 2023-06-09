@@ -1,0 +1,17 @@
+.filters{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+app-tag{
+    margin: 0px 4px 0px 4px;
+}
+
+.closestTag{
+    margin-right: 10px
+}
+
+span{
+    font-family: Helvetica, Verdana, Arial;
+}
