@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Output, Input, EventEmitter, ChangeDetectorRef } from '@angular/core';
+
+import { Skill } from '../../models/Skill';
 
 @Component({
   selector: 'app-tag',
@@ -7,9 +9,27 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TagComponent {
 
-  @Input() name?: string;
+  @Output() sendIdToDelete = new EventEmitter<number>
+  @Output() sendIdToFilter = new EventEmitter<number>
+
+  @Input() skill?: Skill;
   @Input() option?: string;
 
-  constructor() {}
+  constructor(
+    private cd: ChangeDetectorRef
+  ) {}
+
+  deleteSkill() {
+    this.isSpanSelected = false;
+    this.sendIdToDelete.emit(this.skill!.id);
+  }
+
+  isSpanSelected = false;
+
+  addToFilter() {
+    this.isSpanSelected = !this.isSpanSelected;
+    this.sendIdToFilter.emit(this.skill!.id);
+
+  }
 
 }

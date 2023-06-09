@@ -1,5 +1,5 @@
 .problemInfo{
-    display: flex;
+    display: flex;  
 }
 
 .problemPic{
@@ -11,6 +11,10 @@
 .problemData{
     display: flex;
     flex-direction: column;
+    div {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .problemImg{

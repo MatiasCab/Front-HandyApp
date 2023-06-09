@@ -1,0 +1,43 @@
+.review-box {
+    border-radius: 13px;
+    background-color: white;
+    width: 24vw;
+    height: 35.4vh;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+h5 {
+    font-weight: 700;
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+    padding-top: 3%;
+}
+
+h6 {
+    text-decoration: underline;
+    padding-left: 6%;
+}
+
+p {
+    padding-left: 6%;
+}
+
+.emojis {
+    padding-left: 15%;
+    padding-right: 15%;
+    font-size: xx-large;
+    display: flex;
+    padding-top: 5%;
+    justify-content: space-between;
+
+    .bi-emoji-angry, .bi-emoji-angry-fill {
+        color: #F81616;
+    }
+    .bi-emoji-neutral, .bi-emoji-neutral-fill {
+        color: #FBA500;
+    }
+    .bi-emoji-smile, .bi-emoji-smile-fill {
+        color: #30FF1E;
+    }
+}

@@ -6,6 +6,6 @@ export interface Problem{
     date?: Date;
     location?: string;
     status?: string;
-    skills?: string[];
+    skills?: number[];
     userid?: number
 }

@@ -1,9 +1,17 @@
-<span class="badge rounded-pill text-bg-primary" *ngIf="option=='simple'">{{name}}</span>
+<span class="badge rounded-pill text-bg-primary" *ngIf="option=='simple'">{{skill!.name}}</span>
 
 <div *ngIf="option=='withX'" class="pillBadgeWithX">
     <span 
         class="badge rounded-pill text-bg-primary">
-        {{name}}
-        <button type="button" class="btn-close" aria-label="Close"></button>
+        {{skill!.name}}
+        <button type="button" class="btn-close" aria-label="Close" (click)="deleteSkill()"></button>
         </span>
 </div>
+
+
+<span *ngIf="option=='modalFilter'"
+    [class.selected]="isSpanSelected"
+    (click)="addToFilter()"
+    class="modalBadge badge rounded-pill text-bg-primary">
+    {{skill!.name}}
+</span>
