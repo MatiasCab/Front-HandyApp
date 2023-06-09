@@ -1,0 +1,13 @@
+<div class="review-box">
+    <h3>Reviews</h3>
+    <div class="emojis">
+        <i class="bi bi-emoji-smile"><p>{{reviews?.good}}</p></i>
+        <i class="bi bi-emoji-neutral-fill"><p>{{reviews?.mid}}</p></i>
+        <i class="bi bi-emoji-angry"><p>{{reviews?.bad}}</p></i>
+    </div>
+    <div class="reviewlist">
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let problemas of reviews.problems"><img src="https://www.w3schools.com/howto/img_avatar.png" height="50"><p>{{problemas}}</p></li>
+        </ul>
+    </div>
+</div> 

@@ -1,21 +1,28 @@
 .exterior{
     display: flex;
     flex-direction: row-reverse;
+    background-color: #CAF0F8;
 }
 
 .header {
     position: fixed;
-    top: 0;
+    //top: 0;
     width: 100vw;
-    height: 8vh;
-    background-color: rgb(4, 156, 63);
+    //height: 8vh;
+}
+
+.side-nav{
+    //position: fixed;
+    //left: 0;
 }
 
 .app-body {
-    width: 80vw;
-    height: 92vh;
-    background-color: rgba(189, 109, 109, 0.8);
-    border-radius: 13px 13px 0px 0px;
+    padding-top: 100px;
+    width: auto;
+    //height: auto;
+    //padding-top: 500px;
+    //background-color: rgba(189, 109, 109, 0.8);
+    //border-radius: 13px 13px 0px 0px;
 }
 
 .app-skeleton {
@@ -24,4 +31,9 @@
     align-items: center;
     flex-direction: row-reverse;
     align-items: flex-end;
+}
+
+.top-bar{
+    position: fixed;
+    top: 0;
 }
