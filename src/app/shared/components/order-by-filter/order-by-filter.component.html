@@ -1,0 +1,7 @@
+<div class='filters'>
+    <span>Ordenar por: </span>
+    <app-tag class="closestTag" [option]="'filter'" [text]="'Más cercanos'" #orderByClosest ></app-tag>
+    <span>Mostrar por: </span>
+    <app-tag class='seeAllTag' [option]="'filter'" [isSpanSelectedFilter]="true" [text]="'Todos'" #seeAllTag (filterBy)="filterBy($event)"></app-tag>
+    <app-tag class='seeFriendsTag' [option]="'filter'" [text]="'Amigos'" #seeFriendsTag (filterBy)="filterBy($event)"></app-tag>
+</div>

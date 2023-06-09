@@ -22,8 +22,6 @@ export class ProblemService {
 
     skills: [1, 2],
 
-    //skills: ['Jardinería', 'Plantas', 'Jardinería', 'Plantas', 'Jardinería', 'Plantas','Jardinería', 'Plantas','Jardinería', 'Plantas'],
-
     location: 'Calle 1 # 2-3',
     status: 'Pendiente',
     userid: 1

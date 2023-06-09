@@ -11,6 +11,7 @@ import { TagComponent } from './components/tag/tag.component';
 import { LongCardComponent } from './components/long-card/long-card.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { OrderByFilterComponent } from './components/order-by-filter/order-by-filter.component';
 
 @NgModule({
   imports: [
@@ -26,13 +27,15 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     TagComponent,
     LongCardComponent,
     UserCardComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    OrderByFilterComponent
    ],
   exports: [ 
     ProblemsGridComponent,
     SearchBarComponent,
     ProblemComponent,
-    SkillListComponent
+    SkillListComponent,
+    OrderByFilterComponent
    ]
 })
 export class SharedModule { }
