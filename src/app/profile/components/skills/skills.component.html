@@ -4,6 +4,26 @@
         <app-skill-list class="skills" [skills]="User?.skills!" [option]="'problemInfo'"></app-skill-list>
     </div>
     <div class="btnbox" *ngIf="MyProfile as true;">
-        <button class="editbtn" >Cambiar habilidades</button>
+        <button class="editbtn" data-bs-toggle="modal" data-bs-target="#editSkills">Cambiar habilidades</button>
     </div>
 </div>
+
+
+<!-- Modal editar skills-->
+<div class="modal fade" id="editSkills" tabindex="-1" aria-labelledby="editSkillsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="editSkillsLabel">Cambiar habilidades</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Aquí se deben mostrar las skills disponibles y poner como seleccionadas las que la persona ya tiene</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Confirmar cambios</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -31,6 +31,6 @@ export class ProfileComponent {
       // revisar si soy amigo de este perfil
       
     });
-    this.MyProfile = false;
+    this.MyProfile = true;
   }
 }
