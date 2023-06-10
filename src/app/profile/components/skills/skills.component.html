@@ -1,6 +1,8 @@
 <div class="skillbox">
     <h2>{{title}}</h2>
-    <h3>aca ban las skills jeje</h3>
+    <div class="skill-list">
+        <app-skill-list class="skills" [skills]="User?.skills!" [option]="'problemInfo'"></app-skill-list>
+    </div>
     <div class="btnbox" *ngIf="MyProfile as true;">
         <button class="editbtn" >Cambiar habilidades</button>
     </div>

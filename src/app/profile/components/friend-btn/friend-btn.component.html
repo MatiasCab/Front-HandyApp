@@ -1,0 +1,31 @@
+<div class="friendbtn notfriends" *ngIf="status == 0">
+    <h2>{{title}}</h2>
+</div>
+
+<div class="friendbtn friends" *ngIf="status == 1" data-bs-toggle="modal" data-bs-target="#removeFriend">
+    <h2>{{title}}</h2>
+</div>
+
+<div class="friendbtn requested" *ngIf="status == 2">
+    <h2>{{title}}</h2>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="removeFriend" tabindex="-1" aria-labelledby="removeFriendLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="removeFriendLabel">Eliminar amigo</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Seguro que quieres eliminar a {{User?.firstName}} {{User?.lastname}} de tus amigos?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Si</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>

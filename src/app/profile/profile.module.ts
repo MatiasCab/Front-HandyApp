@@ -7,6 +7,8 @@ import { SharedModule } from "../shared/shared.module";
 import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
 import { ProfileReviewsComponent } from './components/profile-reviews/profile-reviews.component';
 import { SkillsComponent } from './components/skills/skills.component';
+import { FriendBtnComponent } from './components/friend-btn/friend-btn.component';
+import { EditBtnComponent } from './components/edit-btn/edit-btn.component';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { SkillsComponent } from './components/skills/skills.component';
         ProfileComponent,
         ProfileInfoComponent,
         ProfileReviewsComponent,
-        SkillsComponent
+        SkillsComponent,
+        FriendBtnComponent,
+        EditBtnComponent
     ],
     imports: [
         CommonModule,

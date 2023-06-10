@@ -10,7 +10,7 @@ import { User } from 'src/app/problems/models/User';
 export class ProfileComponent {
 
   User?: User;
-  MyProfile: Boolean|false = false;
+  MyProfile: Boolean|false = true;
   //id?: number;
   //viewOption?: string; //['otherView', 'myView', 'myCompleteView']
 
@@ -29,21 +29,8 @@ export class ProfileComponent {
 
       //Si no es mi perfil
       // revisar si soy amigo de este perfil
-      this.MyProfile = true;
+      
     });
-    /*
-    this.route.params.subscribe(params => {
-      this.id = params['problemId']; // 'id' es el nombre del parámetro definido en tu archivo de enrutamiento
-      if(this.id == 1) {
-        this.viewOption = 'otherView';
-      } else if (this.id == 2) {
-        this.viewOption = 'myView';
-      } else {
-        this.viewOption = 'myCompleteView';
-      }
-    
-    });
-    */
+    this.MyProfile = false;
   }
-
 }
