@@ -17,6 +17,7 @@ export class ProfileService {
     lastname: "Gutierrez",
     description: "Faso",
     email: "fasito@gmail.com",
+    skills: [1,2]
     //birthdate: Date,
     //address: string,
     //joinedDate: Date,
