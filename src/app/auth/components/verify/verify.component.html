@@ -1,0 +1,33 @@
+<div class="box">
+    <div>
+        <div class="logo">
+            <img class="" src="assets/handyLogo.png" alt="Logo" height="100">
+        </div>
+        
+        <div class="login">
+            <div class="textLogIn"><h1>Iniciar Sesión</h1></div>
+            
+            <form class="">
+
+                <div class="form-group">
+                    <label class="form-label" for="floatingInput">Email</label>
+                    <app-user-input #username class="" [inputLabel]="'Cédula'"
+                        [inputTypeAutocomplete]="'email'">
+                    </app-user-input>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="floatingInput">Código</label>
+                    <app-user-input #username class="" [inputLabel]="'Cédula'"
+                        [inputTypeAutocomplete]="'code'" (enterpressEvent)="verify()">
+                    </app-user-input>
+                </div>
+
+                <div class="form-group buttonCenter">
+                    <button type="button" class="" (click)="verify()">Iniciar Sesión</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

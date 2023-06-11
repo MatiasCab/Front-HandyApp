@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit{
   login() {
     let username = this.usernameInput?.InputInfo ? this.usernameInput?.InputInfo : '';
     const password = this.passwordInput?.InputInfo ? this.passwordInput?.InputInfo : '';
-
+    
     /*
     this.authService.login(username, password).subscribe(response => {
       if (response.error) {
