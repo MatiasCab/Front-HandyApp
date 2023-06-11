@@ -21,12 +21,6 @@ const routes: Routes = [
         component: RecoverComponent,
         data: {  }
     }
-    ,
-    {
-        path: 'changepassword',
-        component: ChangeComponent,
-        data: {  }
-    }
 ];
 
 @NgModule({
