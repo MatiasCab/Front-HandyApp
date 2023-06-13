@@ -11,5 +11,6 @@ export class LongCardComponent {
 
   @Input() problem?: Problem
   @Input() userId?: number;
+  @Input() option?: string;
 
 }

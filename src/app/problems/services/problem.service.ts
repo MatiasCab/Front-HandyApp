@@ -19,11 +19,9 @@ export class ProblemService {
     name: 'Ayuda con el Jardín',
     description: 'Necesito ayuda con el jardín de mi casa, se me ha hecho un poco difícil mantenerlo en buen estado',
     date: new Date('4/30/2023'),
-
     skills: [1, 2],
-
     location: 'Calle 1 # 2-3',
-    status: 'Pendiente',
+    status: 'Resuelto',
     userid: 1
   }
 

@@ -1,4 +1,4 @@
-<div class="longCard">
+<div class="longCard" *ngIf="option=='problems'">
     <div class="problemInfo">
         <app-problem [problem]="problem"></app-problem>
     </div>
@@ -6,3 +6,14 @@
         <app-user-card [userId]="userId"></app-user-card>
     </div>
 </div>
+
+<div class="longCard2" *ngIf="option=='my-problems'">
+    <div class="problemInfo">
+        <app-problem [problem]="problem"></app-problem>
+    </div>
+    <div class="buttons">
+        <app-action-buttons [solved]="problem?.status"></app-action-buttons>
+    </div>  
+</div>
+
+

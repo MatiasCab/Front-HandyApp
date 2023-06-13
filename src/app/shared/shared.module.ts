@@ -12,6 +12,8 @@ import { LongCardComponent } from './components/long-card/long-card.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { OrderByFilterComponent } from './components/order-by-filter/order-by-filter.component';
+import { ActionButtonsComponent } from './components/action-buttons/action-buttons.component';
+
 
 @NgModule({
   imports: [
@@ -28,7 +30,8 @@ import { OrderByFilterComponent } from './components/order-by-filter/order-by-fi
     LongCardComponent,
     UserCardComponent,
     SearchBarComponent,
-    OrderByFilterComponent
+    OrderByFilterComponent,
+    ActionButtonsComponent
    ],
   exports: [ 
     ProblemsGridComponent,

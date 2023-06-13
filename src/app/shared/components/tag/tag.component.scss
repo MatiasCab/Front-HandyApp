@@ -55,6 +55,10 @@ span{
     cursor: pointer;
 }
 
+.filterBadge:hover{
+    background-color: #619ab8 !important;
+}
+
 .filterBadge.selected{
     background-color: #0077B6 !important;
 }

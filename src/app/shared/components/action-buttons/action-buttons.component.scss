@@ -1,0 +1,73 @@
+.exterior{
+    display: flex;
+    align-items: center;
+}
+.solvedSpan{
+    display: flex;
+    align-items: center;
+}
+
+.solvedDate{
+    border-right: 1.5px solid;
+    border-radius: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 10vw;
+    padding-right: 1.5vw;
+}
+
+p{
+    text-align: center;
+}
+
+.badge{
+    width:96.73px;
+    padding: 10px 18px;
+    border-radius: 12px;
+    margin-right: 1.5vw;
+    height: 31.55px;
+
+}
+
+.trashButton{
+    display: flex;
+    align-items: center; 
+    padding: 2vw; 
+}
+
+.editButton{
+    display: flex;
+    align-items: center;
+    border-right: 1.5px solid;
+    border-radius: 1px;
+    height: 88px;
+    padding-right: 60px;
+    padding-left: 50px;
+}
+
+.bi{
+    font-size: 2.3em;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.bi.bi-trash3:hover{
+    color: red;
+}
+
+.bi.bi-calendar{
+    font-size: medium;
+}
+
+.modal{
+    position: absolute;
+    h5{
+        text-align: center;
+        margin-bottom: 8px;
+    }
+    #warningText{
+        color: red;
+    }
+}
