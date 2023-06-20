@@ -13,17 +13,30 @@
     background: linear-gradient(120.61deg, #0054B6 0%, #03B3FF 100%);
 }
 
-.textLogIn{
+.logo{
     display: flex;
     justify-content: center;
 }
 
+.textLogIn{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
 .login{
     width: 381px;
-    height: 335px;
+    height: 390px;
     padding: 20px;
     border-radius: 12px;
     background: #FFFFFF;
+    
+}
+
+p{
+    justify-content: center;
+    padding-bottom: 20px;
+    padding-top: 15px;
 }
 
 .login h1{
@@ -41,11 +54,6 @@
 }
 
 .buttonCenter{
-    display: flex;
-    justify-content: center;
-}
-
-.logo{
     display: flex;
     justify-content: center;
 }

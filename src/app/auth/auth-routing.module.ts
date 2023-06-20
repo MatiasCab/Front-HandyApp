@@ -4,6 +4,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RecoverComponent } from './components/recover/recover.component';
 import { ChangeComponent } from './components/change/change.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { VerifyComponent } from './components/verify/verify.component';
+import { LocationComponent } from './components/location/location.component';
 
 const routes: Routes = [
     {
@@ -19,6 +21,16 @@ const routes: Routes = [
     {
         path: 'recoverpassword',
         component: RecoverComponent,
+        data: {  }
+    },
+    {
+        path: 'verify',
+        component: VerifyComponent,
+        data: {  }
+    },
+    {
+        path: 'addlocation',
+        component: LocationComponent,
         data: {  }
     }
 ];

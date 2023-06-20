@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { signUpInfo } from 'src/app/shared/models/signUpInfo';
-//import { API_URL } from 'src/app/core/consts';
+//import { API_URL } from 'src/app/core/const';
 //import { SignupInfo } from 'src/app/core/models/signupInfo';
 
 //const API_AUTH_URL = `${API_URL}/auth`;

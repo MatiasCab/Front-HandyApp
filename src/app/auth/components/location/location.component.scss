@@ -13,17 +13,35 @@
     background: linear-gradient(120.61deg, #0054B6 0%, #03B3FF 100%);
 }
 
-.textLogIn{
+.inline{
+    display: flex;
+    flex-direction: row;
+}
+
+.logo{
     display: flex;
     justify-content: center;
 }
 
+.textLogIn{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
 .login{
-    width: 381px;
-    height: 335px;
+    width: 650px;
+    height: 565px;
     padding: 20px;
     border-radius: 12px;
     background: #FFFFFF;
+    
+}
+
+p{
+    justify-content: center;
+    padding-bottom: 20px;
+    padding-top: 15px;
 }
 
 .login h1{
@@ -45,11 +63,6 @@
     justify-content: center;
 }
 
-.logo{
-    display: flex;
-    justify-content: center;
-}
-
 .textCenter{
     display: flex;
     justify-content: center;
@@ -61,12 +74,13 @@
 }
 
 button{
-    width: 182px;
-    height: 41px;
+    width: 160px;
+    height: 38px;
     background: #62C6FC;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 13px;
     border: none;
+    margin-left: 15px;
 }
 
 button:hover {background-color: #62C6FC}
@@ -74,3 +88,30 @@ button:hover {background-color: #62C6FC}
 button:active {
     background-color: #4288ad;
   }
+
+.locationInput{
+    width: 80%;
+}
+
+.map{
+    background-color: #0054B6;
+    height: 350px;
+    border-radius: 13px;
+    margin-top: 20px;
+}
+
+.confirmbtn{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.cbutton{
+    width: 200px;
+    height: 38px;
+    background: #62C6FC;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 13px;
+    border: none;
+    margin-left: 15px;
+}

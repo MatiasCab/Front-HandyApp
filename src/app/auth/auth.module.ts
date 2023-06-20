@@ -7,6 +7,8 @@ import { UserInputComponent } from './components/user-input/user-input.component
 import { RecoverComponent } from './components/recover/recover.component';
 import { ChangeComponent } from './components/change/change.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { VerifyComponent } from './components/verify/verify.component';
+import { LocationComponent } from './components/location/location.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { SignupComponent } from './components/signup/signup.component';
     UserInputComponent,
     RecoverComponent,
     ChangeComponent,
-    SignupComponent
+    SignupComponent,
+    VerifyComponent,
+    LocationComponent
   ]
 })
 export class AuthModule { }

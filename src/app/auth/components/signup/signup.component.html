@@ -9,11 +9,44 @@
             
 
             <form class="">
+                <div class="row">
+                <div class="col colizq">
+                    <label class="form-label" for="floatingInput">Cédula</label>
+                    <app-user-input #ci class="" [inputLabel]="'Cédula'"
+                        [inputTypeAutocomplete]="'nickname'" [inputType]="'number'" (keyup)="checkCI($event)">
+                    </app-user-input>
+                </div>
+
+                <div class="col colder">
+                    <label class="form-label" for="floatingInput">Nombre de usuario</label>
+                    <app-user-input #username class="" [inputLabel]="'Nombre de usuario'"
+                        [inputTypeAutocomplete]="'nickname'" (keyup)="checkUsername($event)">
+                    </app-user-input>
+                </div>
+                </div>
+
+                
+
+                <div class="row">
+                <div class="col colizq">
+                    <label class="form-label" for="floatingInput">Nombre</label>
+                    <app-user-input #name class="" [inputLabel]="'Nombre'"
+                        [inputTypeAutocomplete]="'nickname'">
+                    </app-user-input>
+                </div>
+
+                <div class="col colder">
+                    <label class="form-label" for="floatingInput">Apellido</label>
+                    <app-user-input #lastname class="" [inputLabel]="'Apellido'"
+                        [inputTypeAutocomplete]="'nickname'">
+                    </app-user-input>
+                </div>
+                </div>
 
                 <div class="form-group">
-                    <label class="form-label" for="floatingInput">Cédula</label>
-                    <app-user-input #username class="" [inputLabel]="'Cédula'"
-                        [inputTypeAutocomplete]="'nickname'">
+                    <label class="form-label" for="floatingInput">Email</label>
+                    <app-user-input #email class="" [inputLabel]="'Email'"
+                        [inputTypeAutocomplete]="'nickname'" (keyup)="checkEmail($event)">
                     </app-user-input>
                 </div>
 
@@ -24,36 +57,24 @@
                     </app-user-input>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label" for="floatingInput">Nombre</label>
-                    <app-user-input #name class="" [inputLabel]="'Nombre'"
-                        [inputTypeAutocomplete]="'nickname'">
-                    </app-user-input>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="floatingInput">Apellido</label>
-                    <app-user-input #forename class="" [inputLabel]="'Apellido'"
-                        [inputTypeAutocomplete]="'nickname'">
-                    </app-user-input>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="floatingInput">Email</label>
-                    <app-user-input #email class="" [inputLabel]="'Email'"
-                        [inputTypeAutocomplete]="'nickname'">
-                    </app-user-input>
-                </div>
-
-                <div class="form-group">
+                <div class="row">
+                <div class="col colizq">
                     <label class="form-label" for="floatingInput">Fecha de nacimiento</label>
-                    <app-user-input #email class="" [inputLabel]="'Fecha de nacimiento'"
+                    <app-user-input #birthday class="" [inputLabel]="'Fecha de nacimiento'"
+                        [inputTypeAutocomplete]="'date'" [inputType]="'date'">
+                    </app-user-input>
+                </div>
+
+                <div class="col colder">
+                    <label class="form-label" for="floatingInput">Código de invitación</label>
+                    <app-user-input #birthday class="" [inputLabel]="'Codigo de invitacion'"
                         [inputTypeAutocomplete]="'nickname'">
                     </app-user-input>
+                </div>
                 </div>
 
                 <div class="form-group buttonCenter">
-                    <button type="button" class="" (click)="register()">Iniciar Sesión</button>
+                    <button type="button" class="" (click)="register()">Registrarse</button>
                 </div>
             </form>
 
