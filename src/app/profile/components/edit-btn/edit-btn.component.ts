@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { User } from 'src/app/problems/models/User';
 
 @Component({
@@ -9,4 +10,16 @@ import { User } from 'src/app/problems/models/User';
 export class EditBtnComponent {
 
   @Input() User?: User;
+  
+  constructor(
+    private AuthService: AuthService,
+  ) {}
+
+  changepass(): void {
+    // llamada al servicio de auth para cambiar contraseña
+  }
+
+  changedescription(): void {
+    // llamada al servicio de user para cambiar descripción
+  }
 }

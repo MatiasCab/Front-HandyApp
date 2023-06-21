@@ -1,7 +1,9 @@
 export interface signUpInfo{
-    cedula: string;
-    nombre: string;
-    apellido: string;
-    email: string;
-    fechaDeNacimiento: Date;
+    CI: string
+    username: string
+    password: string
+    name: string
+    lastname: string
+    email: string
+    birthday: string
 };

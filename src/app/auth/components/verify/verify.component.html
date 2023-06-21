@@ -1,0 +1,36 @@
+<div class="box">
+    <div>
+        <div class="logo">
+            <img class="" src="assets/handyLogo.png" alt="Logo" height="100">
+        </div>
+
+
+        <div class="login">
+            <div class="textLogIn"><h1>Verificar email</h1></div>
+            <div class="textLogIn"><p>Hemos enviado un código a tu email para verificar tu cuenta, ingresa tu email y el código que encontraras en tu bandeja de entrada</p></div>
+
+            <form class="">
+
+                <div class="form-group">
+                    <label class="form-label" for="floatingInput">Email</label>
+                    <app-user-input #email class="" [inputLabel]="'Email'"
+                        [inputTypeAutocomplete]="'nickname'">
+                    </app-user-input>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="floatingInput">Código</label>
+                    <app-user-input #code class="" [inputLabel]="'Código'"
+                        [inputTypeAutocomplete]="'nickname'" (enterpressEvent)="checkcode()">
+                    </app-user-input>
+                </div>
+
+                <div class="form-group buttonCenter">
+                    <button type="button" class="" (click)="checkcode()">Verificar email</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -22,13 +22,14 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
   exports: [ 
     SideNavComponent,
     TopBarComponent
-   ],
-//   providers: [
-//     {
-//       provide: HTTP_INTERCEPTORS,  
-//       useClass: AuthInterceptor,  
-//       multi: true 
-//     }
-//   ]
+   ] /* ,
+   providers: [
+     {
+       provide: HTTP_INTERCEPTORS,  
+       useClass:, //AuthInterceptor,  
+       multi: true 
+     }
+   ]
+   */
 })
 export class CoreModule { }
