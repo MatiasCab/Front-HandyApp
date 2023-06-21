@@ -72,14 +72,14 @@ export class SideNavComponent {
 
   goFriendsMyFriends(){
     this.disableAll();
-    this.Router.navigate(['/problems']);
+    this.Router.navigate(['/friends']);
     this.friends = true;
     this.friends_myfriends = true;
   }
 
   goFriendsAddFriends(){
     this.disableAll();
-    this.Router.navigate(['/problems']);
+    this.Router.navigate(['/friends/addfriends']);
     this.friends = true;
     this.friends_addfriends = true;
   }

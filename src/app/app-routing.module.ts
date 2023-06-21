@@ -6,7 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const routes: Routes = [
   {path: '', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
   {path: 'problems', loadChildren: () => import('./problems/problems.module').then(m => m.ProblemsModule)},
-  {path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)}
+  {path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)},
+  {path: 'friends', loadChildren: () => import('./friends/friends.module').then(m => m.FriendsModule)},
 ];
 
 @NgModule({
