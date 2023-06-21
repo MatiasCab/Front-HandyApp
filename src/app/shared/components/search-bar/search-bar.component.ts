@@ -1,11 +1,11 @@
 import { Component, ViewChild, Output, EventEmitter} from '@angular/core';
 
-import { Skill } from '../../models/Skill';
+import { Skill } from 'src/app/core/models/Skill';
 import { SkillService} from '../../services/skill.service';
 
 import { SkillListComponent } from '../skill-list/skill-list.component';
 
-import { Problem } from 'src/app/problems/models/Problem';
+import { Problem } from 'src/app/core/models/Problem';
 import { ProblemService } from 'src/app/problems/services/problem.service';
 
 

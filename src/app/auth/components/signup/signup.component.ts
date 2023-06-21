@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserInputComponent } from '../user-input/user-input.component';
-import { signUpInfo } from 'src/app/shared/models/signUpInfo';
+import { signUpInfo } from 'src/app/core/models/signUpInfo';
 
 @Component({
   selector: 'app-signup',

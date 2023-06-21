@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ProblemService } from '../../services/problem.service';
-import { Problem } from '../../models/Problem';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Problem } from '../../../core/models/Problem';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-problem-view-page',

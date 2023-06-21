@@ -1,5 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
-import { DeleteProblemModalComponent } from '../delete-problem-modal/delete-problem-modal.component';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-my-problems',

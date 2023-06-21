@@ -10,6 +10,7 @@ import { MyProblemsRoutingModule } from './my-problems-routing.module';
 import { AddProblemButtonComponent } from './components/add-problem-button/add-problem-button.component';
 import { AddEditProblemComponent } from './components/add-edit-problem/add-edit-problem.component';
 import { DeleteProblemModalComponent } from './components/delete-problem-modal/delete-problem-modal.component';
+import { UploadPhotoComponent } from './components/upload-photo/upload-photo.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { DeleteProblemModalComponent } from './components/delete-problem-modal/d
     AddProblemButtonComponent,
     AddEditProblemComponent,
     DeleteProblemModalComponent,
+    UploadPhotoComponent,
   ],
   imports: [
     CommonModule,

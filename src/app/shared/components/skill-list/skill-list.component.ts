@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Skill } from '../../models/Skill';
+import { Skill } from 'src/app/core/models/Skill';
 
 import { SkillService} from '../../services/skill.service';
 

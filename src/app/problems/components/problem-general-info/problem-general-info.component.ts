@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Problem } from '../../models/Problem';
+import { Problem } from '../../../core/models/Problem';
 
 @Component({
   selector: 'app-problem-general-info',

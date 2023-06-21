@@ -1,7 +1,14 @@
-<div class='filters'>
+<div class='filters' *ngIf="option=='searchPage'">
     <span>Ordenar por: </span>
     <app-tag class="closestTag" [option]="'filter'" [text]="'Más cercanos'" #orderByClosest ></app-tag>
     <span>Mostrar por: </span>
-    <app-tag class='seeAllTag' [option]="'filter'" [isSpanSelectedFilter]="true" [text]="'Todos'" #seeAllTag (filterBy)="filterBy($event)"></app-tag>
-    <app-tag class='seeFriendsTag' [option]="'filter'" [text]="'Amigos'" #seeFriendsTag (filterBy)="filterBy($event)"></app-tag>
+    <app-tag class='seeAllTag' [option]="'filter'" [isSpanSelectedFilter]="true" [text]="'Todos'" #seeAllTag (filterBy)="filterByFriends($event)"></app-tag>
+    <app-tag class='seeFriendsTag' [option]="'filter'" [text]="'Amigos'" #seeFriendsTag (filterBy)="filterByFriends($event)"></app-tag>
+</div>
+
+<div class="filters"  *ngIf="option=='myProblems'">
+    <span>Mostrar: </span>
+    <app-tag class='seeAllTag' [option]="'filter'" [isSpanSelectedFilter]="true" [text]="'Todos'" #seeAllTag2 (filterBy)="filterByStatus(1)"></app-tag>
+    <app-tag class='seeResolvedTag' [option]="'filter'" [text]="'Resueltos(' + resolvedNumber +')'" #seeResolvedTag (filterBy)="filterByStatus(3)"></app-tag>
+    <app-tag class='seePendingTag' [option]="'filter'" [text]="'Pendientes(' + pendingNumber + ')'" #seePendingTag (filterBy)="filterByStatus(2)"></app-tag>
 </div>
