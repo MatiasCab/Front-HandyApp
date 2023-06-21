@@ -1,0 +1,31 @@
+<div class="box">
+    <div>
+        <div class="logo">
+            <img class="" src="assets/handyLogo.png" alt="Logo" height="100">
+        </div>
+
+
+        <div class="login">
+            <div class="textLogIn"><h1>Añadir ubicación</h1></div>
+            <form class="">
+
+                <div class="form-group">
+                    <label class="form-label" for="floatingInput">Dirección</label>
+                    <div class="inline">
+                        <app-user-input #location class="locationInput" [inputLabel]="'Dirección'"
+                            [inputTypeAutocomplete]="'direccion'"></app-user-input>
+                        <button type="button" class="" (click)="searchlocation()">Buscar</button>
+                    </div>
+                </div>
+
+                <div class="map">
+                    <p>aca va el mapa</p>
+                </div>
+                <div class="confirmbtn">
+                    <button type="button" class="cbutton" (click)="confirmlocation()">Confirmar ubicación</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

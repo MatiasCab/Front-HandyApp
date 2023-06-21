@@ -1,47 +1,41 @@
 <div class="panel">
-    <button routerLinke="/problems" type="button" class="side-btn button-hov first {{problemsCollapsed ? '' : 'opened focused'}}" (click)="focusedOption()" routerLink="/problems" routerLinkActive="active">
-        <p><i class="bi bi-exclamation-triangle-fill me-2"></i>Problemas</p>
-    </button>
-    <button type="button" class="side-btn button-hov {{chatsCollapsed ? '' : 'opened'}} {{leftLine[0] || leftLine[1] ? 'focused' : ''}}" (click)="chatsCollapsed = !chatsCollapsed"
-        [attr.aria-expanded]="!chatsCollapsed" aria-controls="collapseExample">
-        <p class="expanded"><i class="bi bi-wechat me-2"></i>Chats<i class="bi bi-arrow-right-short ms-auto"></i></p>
-    </button>
-    <div #collapse="ngbCollapse" [(ngbCollapse)]="chatsCollapsed">
-        <button class="side-second-btn {{leftLine[0]}}" role="button" (click)="collapsedOptionClicked(0)">
-            <p class="second-button-title">Mis problemas</p>
-        </button>
-        <button class="side-second-btn {{leftLine[1]}}" role="button"(click)="collapsedOptionClicked(1)">
-            <p>Otros Problemas</p>
-        </button>
+    <div class="logo">
+        <img src="assets/handyLogo.png" alt="logo" height="90px">
     </div>
-    <button type="button" class="side-btn button-hov {{friendsCollapsed ? '' : 'opened'}} {{leftLine[2] || leftLine[3] ? 'focused' : ''}}" (click)="friendsCollapsed = ! friendsCollapsed"
-        [attr.aria-expanded]="!friendsCollapsed" aria-controls="collapseExample">
-        <p class="expanded">
-            <i class="bi bi-people-fill me-2"></i>
-            Amigos
-            <i class="bi bi-arrow-right-short ms-auto"></i>
-        </p>
-    </button>
-    <div #collapse="ngbCollapse" [(ngbCollapse)]="friendsCollapsed">
-        <button class="side-second-btn {{leftLine[2]}}" role="button" (click)="collapsedOptionClicked(2)">
-            <p class="second-button-title">Mis amigos</p>
-        </button>
-        <button class="side-second-btn {{leftLine[3]}}" role="button" (click)="collapsedOptionClicked(3)">
-            <p>Buscar amigos</p>
-        </button>
-    </div>
-    <button type="button" class="side-btn button-hov {{profileCollapsed? '' : 'opened'}} {{leftLine[4] || leftLine[5] ? 'focused' : ''}}"
-        (click)="profileCollapsed = !profileCollapsed " [attr.aria-expanded]="!profileCollapsed"
-        aria-controls="collapseExample">
-        <p class="expanded"><i class="bi bi-person-fill-gear me-2"></i>Perfil<i
-                class="bi bi-arrow-right-short ms-auto"></i></p>
-    </button>
-    <div #collapse="ngbCollapse" [(ngbCollapse)]="profileCollapsed">
-        <button class="side-second-btn {{leftLine[4]}}" role="button" (click)="collapsedOptionClicked(4)">
-            <p class="second-button-title">Ver mi perfil</p>
-        </button>
-        <button class="side-second-btn {{leftLine[5]}}" role="button" (click)="collapsedOptionClicked(5)" routerLink="/my-problems" routerLinkActive="active">
-            <p class="second-button-title">Mis problemas</p>
-        </button>
+    <div class="botonesbox">
+        <div class="boton">
+            <button type="button" class="main-btn" [ngClass]="{'selected' : problems}" (click)="goProblems()"><i class="bi bi-p-circle"></i>Problemas</button>
+        </div>
+        <div class="boton">
+            <button type="button" class="main-btn" [ngClass]="{'selected-main' : chats}" (click)="goChatsMyProblems()"><i class="bi bi-chat"></i>Chats</button>     
+        </div>
+        <div class="boton">
+            <button type="button" class="sub-btn" [ngClass]="{'selected-sub' : chats_myproblems}" (click)="goChatsMyProblems()">Mis problemas</button>     
+        </div>
+        <div class="boton">
+            <button type="button" class="sub-btn" [ngClass]="{'selected-sub' : chats_otherproblems}" (click)="goChatsOtherProblems()">Otros problemas</button>     
+        </div>
+        <div class="boton">
+            <button type="button" class="main-btn" [ngClass]="{'selected-main' : friends}" (click)="goFriendsMyFriends()"><i class="bi bi-people"></i>
+                Amigos</button>     
+        </div>
+        <div class="boton">
+            <button type="button" class="sub-btn" [ngClass]="{'selected-sub' : friends_myfriends}" (click)="goFriendsMyFriends()">Mis amigos</button>     
+        </div>
+        <div class="boton">
+            <button type="button" class="sub-btn" [ngClass]="{'selected-sub' : friends_addfriends}" (click)="goFriendsAddFriends()">Agregar amigos</button>     
+        </div>
+        <div class="boton">
+            <button type="button" class="main-btn" [ngClass]="{'selected' : profiles}" (click)="goProfilesMyProfile()"><i class="bi bi-person-circle"></i>Perfiles</button>     
+        </div>
+        <div class="boton">
+            <button type="button" class="sub-btn" [ngClass]="{'selected-sub' : profiles_myprofile}" (click)="goProfilesMyProfile()">Mi perfil</button>     
+        </div>
+        <div class="boton">
+            <button type="button" class="sub-btn" [ngClass]="{'selected-sub' : profiles_myproblems}" (click)="goProfilesMyProblems()">Mis problemas</button>     
+        </div>
+        <div class="boton">
+            <button type="button" class="sub-btn" (click)="logout()">Cerrar sesión</button>     
+        </div>
     </div>
 </div>

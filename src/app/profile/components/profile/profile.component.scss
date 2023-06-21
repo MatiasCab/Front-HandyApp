@@ -1,16 +1,43 @@
 .exterior{
-    margin-top: 75px;
+    margin-top: 85px;
+    height: 80vh;
 }
 
-.window{
+.profile-info{
     display: flex;
-    height: 90vh;
+    height: 80vh;
     width: 80vw;
     background-color: #CAF0F8;
+    padding-left: 3%;
 }
 
-.skills{
-    position: absolute;
-    margin-top: 580px;
-    z-index: 100;
+.padding-left, .padding-left{
+    height: auto;
+}
+
+.h {
+    display: flex;
+}
+
+
+.secondary-button {
+    width: 48.5%;
+}
+.buttons-ajust {
+    display: flex;
+    height: 28%;
+    justify-content: space-between;
+}
+
+.padding-left {
+    padding-left: 4%;
+}
+
+.left-column {
+    width: 30.5vw;
+}
+
+.chat-button {
+    width: auto;
+    height: auto;
 }
