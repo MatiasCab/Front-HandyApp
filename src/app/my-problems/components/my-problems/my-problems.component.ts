@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { DeleteProblemModalComponent } from '../delete-problem-modal/delete-problem-modal.component';
 
 @Component({
   selector: 'app-my-problems',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./my-problems.component.scss']
 })
 export class MyProblemsComponent {
+
+
 
 }

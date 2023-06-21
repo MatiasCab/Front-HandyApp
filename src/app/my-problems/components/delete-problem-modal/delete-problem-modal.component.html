@@ -1,0 +1,15 @@
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Eliminar problema</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<h5>¿Desea eliminar el problema permanentemente?</h5>
+        <p>Todos los datos relacionados a este problema se borraran.</p>
+        <p id="warningText">Esta acción no se puede deshacer</p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">No</button>
+		<button type="button" class="btn btn-outline-primary" (click)="modal.close('Save click')">Eliminar</button>
+	</div>
+</ng-template>

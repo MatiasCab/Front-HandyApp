@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Problem } from '../../../problems/models/Problem';
 import { User } from 'src/app/problems/models/User';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-long-card',
   templateUrl: './long-card.component.html',
@@ -9,8 +11,17 @@ import { User } from 'src/app/problems/models/User';
 })
 export class LongCardComponent {
 
+  constructor(
+    private router: Router
+  ){}
+
   @Input() problem?: Problem
   @Input() userId?: number;
   @Input() option?: string;
+
+  editProblem(){
+    const link = `/my-problems/edit-problem/${this.problem?.id}`;
+    this.router.navigateByUrl(link);
+  }
 
 }

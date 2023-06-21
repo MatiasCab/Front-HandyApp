@@ -7,7 +7,7 @@
         <p>{{string}}</p>
     </div>
     <div class="trashButton">
-        <span data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="bi bi-trash3"></i></span>
+        <span><i class="bi bi-trash3"></i></span>
     </div>
 </div>
 
@@ -16,7 +16,7 @@
         <span class="badge text-bg-danger">Pendiente</span>
     </div>
     <div class="editButton">
-        <span><i class="bi" [ngClass]="iconClass" (mouseenter)="changeIcon(true)" (mouseleave)="changeIcon(false)"></i></span>
+        <span (click)="editProblem()" ><i class="bi" [ngClass]="iconClass" (mouseenter)="changeIcon(true)" (mouseleave)="changeIcon(false)"></i></span>
     </div>
     <div class="trashButton">
         <span data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="bi bi-trash3"></i></span>
@@ -24,22 +24,3 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="deleteModalLabel">Eliminar problema</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <h5>¿Desea eliminar el problema permanentemente?</h5>
-            <p>Todos los datos relacionados a este problema se borraran.</p>
-            <p id="warningText">Esta acción no se puede deshacer</p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteProblem()">Eliminar</button>
-        </div>
-      </div>
-    </div>
-</div>

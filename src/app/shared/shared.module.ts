@@ -38,7 +38,8 @@ import { ActionButtonsComponent } from './components/action-buttons/action-butto
     SearchBarComponent,
     ProblemComponent,
     SkillListComponent,
-    OrderByFilterComponent
+    OrderByFilterComponent,
+    TagComponent
    ]
 })
 export class SharedModule { }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-action-buttons',
@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ActionButtonsComponent {
 
+  @Output() editProblemEmitter: EventEmitter<any>= new EventEmitter<any>();
   @Input() solved?: string
   @Input() date?: Date
   iconClass: string = 'bi bi-pencil'
@@ -38,5 +39,9 @@ export class ActionButtonsComponent {
   deleteProblem() {
     throw new Error('Method not implemented.');
     }
+
+  editProblem(){
+    this.editProblemEmitter.emit();
+  }
     
 }
