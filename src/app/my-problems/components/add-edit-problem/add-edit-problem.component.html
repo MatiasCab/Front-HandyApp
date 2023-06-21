@@ -1,0 +1,54 @@
+<div class="problem-info">
+    <div class="padding">
+        <div class="info-box">
+            <div class="first-section ms-3 me-3 mb-3 pt-3">
+                <h5>Título</h5>
+                <label for="floatingTitle">Introduzca un título para el problema</label>
+                <input type="text" class="form-control" id="floatingTitle" [value]="problem?.name">
+            </div>
+            <div class="ms-3 mt-3 me-3 description">
+                <h5>Descripción</h5>
+                <textarea #problemDescriptionText [value]="problem?.description" (keyup)="countCharacters(problemDescriptionText.value)" [maxLength]="400" placeholder="Introduzca una descripción"></textarea>
+                <small class="form-text text-muted">{{counterOfChars}}/400</small>
+            </div>
+        </div>
+    </div>  
+    <div class="padding-left left-column">
+        <img class="user-view" src="https://i.stack.imgur.com/sqh4L.png">
+    </div>
+</div>
+
+<div class="skillbox  me-3 mb-3 pt-3">
+    <h5>Habilidades Requeridas</h5>
+    <div class="skill-list" *ngIf="idSkillsProblem">
+        <app-skill-list class="skills" [skills]="idSkillsProblem!" [option]="'searchBar'"></app-skill-list>
+    </div>
+    <div class="btnbox" >
+        <button class="editbtn" data-bs-toggle="modal" data-bs-target="#SkillListModal">Seleccionar habilidades</button>
+    </div>
+</div>
+
+<div class="buttons">
+    <button *ngIf="!problem" class="btn btns btn-success">Crear</button>
+    <button *ngIf="problem" class="btn btns btn-success">Editar</button>
+    <button class="btn btns btn-danger">Cancelar</button>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="SkillListModal" tabindex="-1" aria-labelledby="SkillListModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="SkillListModalLabel">Habilidades</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-skill-list [option]="'modal'" [skills]="idSkillsModal!" (sendIdsSkillsFilter)="addSkillToTempList($event)"></app-skill-list>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="skillsToList()">Editar</button>
+        </div>
+      </div>
+    </div>
+</div>
