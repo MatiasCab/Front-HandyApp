@@ -1,15 +1,15 @@
 <div class="exterior">
-    <div class="window">
-        <div class="info">
+    <div class="profile-info">
+        <div class="padding">
             <app-profile-info [User]="User"></app-profile-info>
-        </div>
-
-        <div class="reviews">
+            <div class="chat-button">
+                <app-skills [User]="User" [MyProfile]="MyProfile"></app-skills>
+            </div>
+        </div> 
+        <div class="padding-left">
             <app-profile-reviews [User]="User"></app-profile-reviews>
-        </div>
-
-        <div class="skills">
-            <app-skills [User]="User" [MyProfile]="MyProfile"></app-skills>
+            <app-edit-btn [User]="User" *ngIf="MyProfile"></app-edit-btn>
+            <app-friend-btn [User]="User" *ngIf="!MyProfile"></app-friend-btn>
         </div>
     </div>
 </div>

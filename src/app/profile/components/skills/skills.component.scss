@@ -1,15 +1,12 @@
-.skillbox{
-    background-color: skyblue;
-}
 
 .skillbox {
-    border-radius: 13px;
     background-color: white;
     width: 45vw;
     height: 20vh;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    margin-left: 7%;
-    //margin-top: 30px;
+    margin-top: 35px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 13px;
+    border: none;
 }
 
 h2 {
@@ -20,19 +17,24 @@ h2 {
     padding-top: 1%;
 }
 
+.skill-list{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
 .btnbox{
     display: flex;
     justify-content: center;
+    margin-top: 30px;
     margin-bottom: 10px;
-    //padding-left: 15%;
-    //padding-right: 15%;
-    //padding-top: 3%;
 }
 
 .editbtn{
-    width: 165px;
-    height: 34px;
+    width: 200px;
+    height: 35px;
     background: #FFB703;
+    border: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 13px;
 }
