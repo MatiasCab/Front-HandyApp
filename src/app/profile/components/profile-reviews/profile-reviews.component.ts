@@ -12,6 +12,7 @@ export class ProfileReviewsComponent {
 
   @Input() User: User | undefined;
   reviews!: Reviews;
+  score: number = 1;
   //id?: number;
   //viewOption?: string; //['otherView', 'myView', 'myCompleteView']
 
@@ -23,18 +24,5 @@ export class ProfileReviewsComponent {
     this.ReviewsService.getReviews(1).subscribe(profile => {
       this.reviews = profile[0];
     });
-    /*
-    this.route.params.subscribe(params => {
-      this.id = params['problemId']; // 'id' es el nombre del parámetro definido en tu archivo de enrutamiento
-      if(this.id == 1) {
-        this.viewOption = 'otherView';
-      } else if (this.id == 2) {
-        this.viewOption = 'myView';
-      } else {
-        this.viewOption = 'myCompleteView';
-      }
-    
-    });
-    */
   }
 }

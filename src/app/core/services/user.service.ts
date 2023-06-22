@@ -19,7 +19,7 @@ export class UserService {
     description: "Hola soy rosana",
     profileImage: "https://www.w3schools.com/howto/img_avatar.png",
     friendshipStatus: 2,
-    skills: [1,2],
+    skills: [1],
     friendsAmount: 10,
   }
 
@@ -43,11 +43,19 @@ export class UserService {
     return of(this.Users1);
   }
 
+  getProfile(username: string): Observable<User>{
+    return of(this.Users2);
+  }
+
   getMyFriends(): Observable<User[]>{
     return of(this.UsersList);
   }
 
   getUser(id: number): Observable<User>{
     return of(this.Users1);
+  }
+
+  getNotFriends(): Observable<User[]>{
+    return of(this.UsersList);
   }
 }

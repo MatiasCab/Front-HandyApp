@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ProfileService } from '../../services/profile.service';
+import { UserService } from 'src/app/core/services/user.service';
 import { User } from 'src/app/core/models/User';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -9,28 +10,31 @@ import { User } from 'src/app/core/models/User';
 })
 export class ProfileComponent {
 
+  username?: string;
   User?: User;
   MyProfile: Boolean|false = true;
   //id?: number;
   //viewOption?: string; //['otherView', 'myView', 'myCompleteView']
 
   constructor(
-    private ProfileService: ProfileService,
+    private userService : UserService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.ProfileService.getProfile().subscribe(profile => {
-      this.User = profile[0];
-
-
-      //Checkear si el perfil mostrado es el del usuario logueado
-      // Si es mi perfil
-      //this.MyProfile = true;
-
-      //Si no es mi perfil
-      // revisar si soy amigo de este perfil
-      
+    this.route.params.subscribe(params => {
+      this.username = params['username'];
+      if(this.username === undefined) {
+        this.userService.getMyProfile().subscribe(profile => {
+          this.User = profile;
+        });
+        this.MyProfile = true;
+      } else {
+        this.userService.getProfile(this.username!).subscribe(profile => {
+          this.User = profile;
+        });
+        this.MyProfile = false;
+      }
     });
-    this.MyProfile = true;
   }
 }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { User } from 'src/app/core/models/User';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-addfriends',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AddfriendsComponent {
 
+  people?: User[];
+  constructor(
+    private userService: UserService
+  ) { }
+
+  ngOnInit(){
+    this.userService.getNotFriends().subscribe(friend => {
+      this.people = friend;
+    });
+  }
 }

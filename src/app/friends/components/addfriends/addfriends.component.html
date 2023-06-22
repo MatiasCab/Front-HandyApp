@@ -3,6 +3,6 @@
         <h1 class="titulo">Barra de busqueda jeje</h1>
     </div>
     <div class="lista">
-        <app-friend-item></app-friend-item>
+        <app-friend-item *ngFor="let user of people" [user]="user"></app-friend-item>
     </div>
 </div>
