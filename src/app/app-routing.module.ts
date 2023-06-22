@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: 'problems', loadChildren: () => import('./problems/problems.module').then(m => m.ProblemsModule)},
   {path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)},
   {path: 'friends', loadChildren: () => import('./friends/friends.module').then(m => m.FriendsModule)},
+  {path: 'chats', loadChildren: () => import('./chats/chats.module').then(m => m.ChatsModule)},
 ];
 
 @NgModule({

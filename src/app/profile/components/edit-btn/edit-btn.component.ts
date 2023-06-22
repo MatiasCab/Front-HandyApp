@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { User } from 'src/app/problems/models/User';
+import { User } from 'src/app/core/models/User';
 
 @Component({
   selector: 'app-edit-btn',
