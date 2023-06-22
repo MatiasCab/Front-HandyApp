@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserInputComponent } from '../user-input/user-input.component';
-import { signUpInfo } from 'src/app/shared/models/signUpInfo';
+import { AuthService } from '../../services/auth.service';
+import { signUpInfo } from 'src/app/core/models/signUpInfo';
 
 @Component({
   selector: 'app-signup',
@@ -16,6 +17,7 @@ export class SignupComponent implements OnInit{
   @ViewChild('lastname') lastnameInput?: UserInputComponent;
   @ViewChild('email') emailInput?: UserInputComponent;
   @ViewChild('birthday') birthdayInput?: UserInputComponent;
+  @ViewChild('referredCode') referredCodeInput?: UserInputComponent;
 
   validci : boolean = false;
   validusername : boolean = false;
@@ -23,15 +25,16 @@ export class SignupComponent implements OnInit{
   validname : boolean = false;
   validlastname : boolean = false;
   validemail : boolean = false;
+  errorMessage?: string;
 
   constructor(
-    //private authService: AuthService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
   }
 
-  validinformation() : boolean {
+  validInformation() : boolean { //Camel case
     if (this.validci && this.validusername && this.validpassword && this.validname && this.validlastname && this.validemail){
       return true;
     }else{
@@ -40,29 +43,34 @@ export class SignupComponent implements OnInit{
   }
 
   register() {
-    let ci = this.ciInput?.InputInfo ? this.ciInput?.InputInfo : '';
+    let ci = this.ciInput?.InputInfo ? +this.ciInput?.InputInfo : +'';
     let username = this.usernameInput?.InputInfo ? this.usernameInput?.InputInfo : '';
     let password = this.passwordInput?.InputInfo ? this.passwordInput?.InputInfo : '';
     let name = this.nameInput?.InputInfo ? this.nameInput?.InputInfo : '';
     let lastname = this.lastnameInput?.InputInfo ? this.lastnameInput?.InputInfo : '';
     let email = this.emailInput?.InputInfo ? this.emailInput?.InputInfo : '';
     let birthday = this.birthdayInput?.InputInfo ? this.birthdayInput?.InputInfo : '';
+    let referredCode = this.referredCodeInput?.InputInfo ? +this.referredCodeInput?.InputInfo : +'';
 
-    if (this.validinformation()){
+    //FIXME VALIDATION INFO
+    console.log(this.validInformation());
+    if (this.validInformation() || true){
       const user: signUpInfo = {
-        CI : ci,
-        username : username,
-        password : password,
-        name : name,
-        lastname : lastname,
-        email : email,
-        birthday : birthday
+        CI: ci,
+        username: username,
+        password: password,
+        name: name,
+        lastname: lastname,
+        email: email,
+        birthdate: birthday,
+        referredCode: referredCode
       };
 
       console.log(user)
 
-      /*
+      //FIXME RESPONSE
       this.authService.signup(user).subscribe(res => {
+        console.log(res);
         if (res.error) {
           if (res.type == 'RepitedCredentials') {
             this.errorMessage = 'El nombre de usuario o email ya se encuentran en nuestra base de datos.';
@@ -73,22 +81,24 @@ export class SignupComponent implements OnInit{
           //this.openVerifyCodeModal();
         }
       });
-      */
     }else{
       // error invalid information.
     }
   }
 
+  //FIXME CHECKID
   checkCI(event: any) {
     let ci = this.ciInput?.InputInfo ? this.ciInput?.InputInfo : '';
     let cistr = ci.toString();
     if (cistr == "" || cistr.length != 8) {
-      console.log('No es un numero');
+      this.validci = false;
     }else{
-      console.log('Es un numero');
+      this.validci = true;
     }
+    
   }
 
+  //FIXME CHECKUSERNAME
   checkUsername(event:any) {
     let username = this.usernameInput?.InputInfo ? this.usernameInput?.InputInfo : '';
     let usernamelower = username.toLowerCase();
@@ -96,26 +106,31 @@ export class SignupComponent implements OnInit{
     let result = !/\s/.test(usernamelower);
     let result2 = !/[^a-z]/.test(usernamelower)
     if (result && result2){
-      // valid mail
-      console.log("valid")
+      this.validusername = true;
     }else{
-      // invalid mail
-      console.log("invalid")
+      this.validusername = false;
     }
   }
 
+  //FIXME CHECKPASSWORD USER VALIDATORS
   checkPassword() {
     let password = this.passwordInput?.InputInfo ? this.passwordInput?.InputInfo : '';
+    this.validpassword = true;
   }
 
+  //FIXME CHECK NAME
   checkName() {
     let name = this.nameInput?.InputInfo ? this.nameInput?.InputInfo : '';
+    this.validname = true;
   }
 
+  //FIXME CHECK LASTNAME
   checkLastname() {
     let lastname = this.lastnameInput?.InputInfo ? this.lastnameInput?.InputInfo : '';
+    this.validlastname = true;
   }
 
+  //FIXME CHECK EMAIL
   checkEmail(event: any) {
     let email = this.emailInput?.InputInfo ? this.emailInput?.InputInfo : '';
     const expression: RegExp = /^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/;
@@ -123,9 +138,9 @@ export class SignupComponent implements OnInit{
     const result: boolean = expression.test(email);
 
     if (result){
-      // valid mail
+      this.validemail = true;
     }else{
-      // invalid mail
+      this.validemail = false;
     }
   }
 

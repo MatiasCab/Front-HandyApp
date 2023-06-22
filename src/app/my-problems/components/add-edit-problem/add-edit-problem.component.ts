@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Skill } from 'src/app/shared/models/Skill';
+import { Skill } from 'src/app/core/models/Skill';
 import { SkillService } from 'src/app/shared/services/skill.service';
 import { SkillListComponent } from 'src/app/shared/components/skill-list/skill-list.component';
 
