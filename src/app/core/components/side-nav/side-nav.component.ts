@@ -25,15 +25,32 @@ export class SideNavComponent {
 
   constructor(
     private location: Location, private Router: Router
-  ) {}
+  ) {
+    Router.events.subscribe((val) => {
+      this.ngOnInit();
+  });
+  }
 
   ngOnInit() {
+    this.disableAll();
     var url = this.location.path();
     if (url.startsWith('/problems')){
       this.problems = true;
     }
     if (url.startsWith('/profile')){
       this.profiles = true;
+    }if (url == '/friends'){
+      this.friends = true;
+      this.friends_myfriends = true;
+    }if (url =='/friends/addfriends'){
+      this.friends = true;
+      this.friends_addfriends = true;
+    }if (url =='/chats/myproblems'){
+      this.chats = true;
+      this.chats_myproblems = true;
+    }if (url =='/chats/otherproblems'){
+      this.chats = true;
+      this.chats_otherproblems = true;
     }
   }
 
@@ -58,28 +75,28 @@ export class SideNavComponent {
 
   goChatsMyProblems(){
     this.disableAll();
-    this.Router.navigate(['/problems']);
+    this.Router.navigate(['/chats/myproblems']);
     this.chats = true;
     this.chats_myproblems = true;
   }
 
   goChatsOtherProblems(){
     this.disableAll();
-    this.Router.navigate(['/problems']);
+    this.Router.navigate(['/chats/otherproblems']);
     this.chats = true;
     this.chats_otherproblems = true;
   }
 
   goFriendsMyFriends(){
     this.disableAll();
-    this.Router.navigate(['/problems']);
+    this.Router.navigate(['/friends']);
     this.friends = true;
     this.friends_myfriends = true;
   }
 
   goFriendsAddFriends(){
     this.disableAll();
-    this.Router.navigate(['/problems']);
+    this.Router.navigate(['/friends/addfriends']);
     this.friends = true;
     this.friends_addfriends = true;
   }

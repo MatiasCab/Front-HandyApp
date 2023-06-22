@@ -11,16 +11,16 @@ export class ProfileService {
 
   Profile: User = {
     id: 1,
-    profilePic: "https://www.w3schools.com/howto/img_avatar.png",
-    ci: "4232332423",
-    firstName: "Gaston",
-    lastname: "Gutierrez",
-    description: "Faso",
-    email: "fasito@gmail.com",
-    skills: [1,2]
-    //birthdate: Date,
-    //address: string,
-    //joinedDate: Date,
+    firstname: "Rosana",
+    lastname: "Melo",
+    username: "rosamelo",
+    //singupDate?: ,
+    email: "rosamelo@gmail.com",
+    description: "Hola soy rosana",
+    profileImage: "https://www.w3schools.com/howto/img_avatar.png",
+    friendshipStatus: 1,
+    skills: [1,2],
+    friendsAmount: 10,
   }
 
   Problems: User[] = [

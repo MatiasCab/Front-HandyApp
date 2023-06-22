@@ -1,14 +1,14 @@
-export interface User {
+export interface User{
     id?: number;
-    profilePic?: string;
-    ci?: string;
-    firstName?: string;
+    firstname?: string;
     lastname?: string;
-    description?: string;
+    username?: string;
+    singupDate?: string;
     email?: string;
-    birthdate?: Date;
-    address?: string;
-    joinedDate?: Date;
+    description?: string;
+    profileImage?: string;
+    friendshipStatus?: number;
     skills?: number[];
+    friendsAmount?: number;
 }
 
