@@ -1,11 +1,14 @@
 <div class="problem-info">
     <div class="padding">
         <div class="info-box">
+            <div class="picAndTitle">
+            <app-upload-photo [selectedFileURL]="problem?.picture!"></app-upload-photo>
             <div class="first-section ms-3 me-3 mb-3 pt-3">
                 <h5>Título</h5>
                 <label for="floatingTitle">Introduzca un título para el problema</label>
-                <input type="text" class="form-control" id="floatingTitle" [value]="problem?.name">
+                <input [maxLength]="30" type="text" class="form-control" id="floatingTitle" [value]="problem?.name">
             </div>
+        </div>
             <div class="ms-3 mt-3 me-3 description">
                 <h5>Descripción</h5>
                 <textarea #problemDescriptionText [value]="problem?.description" (keyup)="countCharacters(problemDescriptionText.value)" [maxLength]="400" placeholder="Introduzca una descripción"></textarea>
@@ -21,7 +24,7 @@
 <div class="skillbox  me-3 mb-3 pt-3">
     <h5>Habilidades Requeridas</h5>
     <div class="skill-list" *ngIf="idSkillsProblem">
-        <app-skill-list class="skills" [skills]="idSkillsProblem!" [option]="'searchBar'"></app-skill-list>
+        <app-skill-list class="skills" [skills]="idSkillsProblem!" [option]="'problemInfo'"></app-skill-list>
     </div>
     <div class="btnbox" >
         <button class="editbtn" data-bs-toggle="modal" data-bs-target="#SkillListModal">Seleccionar habilidades</button>

@@ -1,9 +1,7 @@
 <h3>Mis problemas</h3>
 <div class="tagsButtonContainer">
     <div class="tags">
-        <app-tag class='seeAllTag' [option]="'filter'" [isSpanSelectedFilter]="true" [text]="'Todos'" #seeAllTag (filterBy)="filterBy(1)"></app-tag>
-        <app-tag class='seeResolvedTag' [option]="'filter'" [text]="'Resueltos(' + resolvedQuantity + ')'" #seeFilteredTag (filterBy)="filterBy(2)"></app-tag>
-        <app-tag class='seePendingTag' [option]="'filter'" [text]="'Pendientes(' + pendingQuantity + ')'" #seeFilteredTag (filterBy)="filterBy(3)"></app-tag>
+        <app-order-by-filter [option]="'myProblems'" [resolvedNumber]="" [pendingNumber]=""></app-order-by-filter>
     </div>
     <div class="buttonContainer">
         <app-add-problem-button></app-add-problem-button>

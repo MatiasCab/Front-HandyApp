@@ -1,5 +1,5 @@
 <div class="exterior">
     <app-search-bar (problemSender)="sendProblemsToDisplay()"></app-search-bar>
-    <app-order-by-filter></app-order-by-filter>
+    <app-order-by-filter [option]="'searchPage'" ></app-order-by-filter>
     <app-problems-grid [option]="'searchPage'"></app-problems-grid>
 </div>

@@ -5,7 +5,7 @@ import { Skill } from 'src/app/core/models/Skill';
 import { SkillService } from 'src/app/shared/services/skill.service';
 import { SkillListComponent } from 'src/app/shared/components/skill-list/skill-list.component';
 
-import { Problem } from 'src/app/problems/models/Problem';
+import { Problem } from 'src/app/core/models/Problem';
 import { ProblemService } from 'src/app/problems/services/problem.service';
 
 

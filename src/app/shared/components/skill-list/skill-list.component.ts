@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Skill } from '../../../core/models/Skill';
 
+import { Skill } from '../../../core/models/Skill';
 import { SkillService} from '../../services/skill.service';
 
 @Component({

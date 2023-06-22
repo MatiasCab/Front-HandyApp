@@ -11,3 +11,4 @@ export interface User{
     skills?: number[];
     friendsAmount?: number;
 }
+
