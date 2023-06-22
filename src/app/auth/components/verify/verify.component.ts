@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { UserInputComponent } from '../user-input/user-input.component';
 
 @Component({
   selector: 'app-verify',
@@ -7,8 +9,20 @@ import { Component } from '@angular/core';
 })
 export class VerifyComponent {
 
+  @ViewChild('email') emailInput?: UserInputComponent;
+  @ViewChild('code') codeInput?: UserInputComponent;
+
+  constructor(
+    private authService: AuthService,
+  ) { }
+  
   checkcode(): void{
-    // llamada al servicio de auth para verificar código
+    let code = this.codeInput?.InputInfo ? this.codeInput?.InputInfo : '';
+    this.authService.verifycode("", code).subscribe(res => {
+      console.log(res);
+    })
   }
+
+  //TODO Validations
 
 }
