@@ -1,6 +1,6 @@
 import { Component, Output, Input, EventEmitter, ChangeDetectorRef } from '@angular/core';
 
-import { Skill } from '../../models/Skill';
+import { Skill } from '../../../core/models/Skill';
 
 @Component({
   selector: 'app-tag',

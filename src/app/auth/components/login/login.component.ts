@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit{
 
   @ViewChild('username') usernameInput?: UserInputComponent;
   @ViewChild('password') passwordInput?: UserInputComponent;
+  errorMessage?: string;
 
   constructor(
     private authService: AuthService,
@@ -34,7 +35,6 @@ export class LoginComponent implements OnInit{
     let username = this.usernameInput?.InputInfo ? this.usernameInput?.InputInfo : '';
     const password = this.passwordInput?.InputInfo ? this.passwordInput?.InputInfo : '';
 
-    /*
     this.authService.login(username, password).subscribe(response => {
       if (response.error) {
         if (response.type == 'InvalidCredentials') {
@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit{
         this.router.navigateByUrl('/home');
       }
     });
-    */
   }
+
+  //TODO VALIDATORS
 }

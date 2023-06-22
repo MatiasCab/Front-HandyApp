@@ -1,7 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { Problem } from '../../models/Problem';
-
 import { ProblemsGridComponent } from 'src/app/shared/components/problems-grid/problems-grid.component';
 
 @Component({
@@ -15,7 +13,6 @@ export class ProblemsSearchComponent {
 
 
   sendProblemsToDisplay(){
-    console.log()
     this.problemsGridComponent.refreshList();
   }
 }

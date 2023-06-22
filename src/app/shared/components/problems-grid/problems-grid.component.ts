@@ -11,6 +11,7 @@ import { ProblemService } from 'src/app/problems/services/problem.service'; //Ti
 export class ProblemsGridComponent {
 
   @Input() problems?: Problem[]; //Tiene sentido que sea INPUT?
+  @Input() option: string = '';
 
   constructor(
     private problemService: ProblemService,
