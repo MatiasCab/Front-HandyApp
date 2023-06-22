@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Problem } from 'src/app/problems/models/Problem';
+import { Problem } from 'src/app/core/models/Problem';
 import { ProblemService } from 'src/app/problems/services/problem.service'; //Tiene sentido la ruta?
 
 @Component({

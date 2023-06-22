@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, TemplateRef } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-add-problem-button',

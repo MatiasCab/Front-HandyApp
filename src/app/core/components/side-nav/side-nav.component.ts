@@ -93,7 +93,7 @@ export class SideNavComponent {
 
   goProfilesMyProblems(){
     this.disableAll();
-    this.Router.navigate(['/profile']);
+    this.Router.navigate(['/my-problems']);
     this.profiles = true;
     this.profiles_myproblems = true;
   }

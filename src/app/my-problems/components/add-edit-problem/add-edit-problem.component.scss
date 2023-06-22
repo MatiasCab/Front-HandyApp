@@ -6,6 +6,14 @@
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
+.picAndTitle{
+    display: flex;
+}
+
+app-upload-photo{
+    padding-left: 4%;
+    padding-top: 4%;
+}
 .description {
     height: 35%;
 }
@@ -38,7 +46,7 @@ img {
 textarea{
     resize: none;
     width: 100%;
-    height: 30vh;
+    height: 25vh;
 }
 
 small{
@@ -65,7 +73,7 @@ small{
 .btnbox{
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 3%;
 }
 
 .editbtn{
@@ -77,10 +85,6 @@ small{
     border-radius: 13px;
 }
 
-.btn{
-    width: 10vw;
-}
-
 .buttons{
     display: flex;
     flex-direction: row-reverse;
@@ -88,9 +92,13 @@ small{
 }
 
 .btn-danger{
-    margin-right: 5.3%;
+    margin-right: 2%;
 }
 
 .btns{
+    font-size: xx-large;
+    color: black;
+    font-weight: 700;
     height: 20vh;
+    width: 11.2vw;
 }

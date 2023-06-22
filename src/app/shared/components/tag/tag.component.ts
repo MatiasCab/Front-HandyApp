@@ -1,4 +1,4 @@
-import { Component, Output, Input, EventEmitter, ChangeDetectorRef } from '@angular/core';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
 
 import { Skill } from '../../../core/models/Skill';
 
@@ -18,7 +18,6 @@ export class TagComponent {
   @Input() text?: string;
 
   constructor(
-    private cd: ChangeDetectorRef
   ) {}
 
   deleteSkill() {

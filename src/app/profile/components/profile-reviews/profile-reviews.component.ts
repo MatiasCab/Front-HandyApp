@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { User } from 'src/app/problems/models/User';
+import { User } from 'src/app/core/models/User';
 import { Reviews } from 'src/app/core/models/Reviews';
 import { ReviewsService } from '../../services/reviews.service';
 

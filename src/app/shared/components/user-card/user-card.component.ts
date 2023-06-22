@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { User } from 'src/app/problems/models/User';
+import { User } from 'src/app/core/models/User';
 import { UserService } from 'src/app/problems/services/user.service';
 
 @Component({
