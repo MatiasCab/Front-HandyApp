@@ -1,7 +1,13 @@
+import { Review } from "./Review";
+
 export interface Reviews{
-    user?: string;
-    good?: number;
-    mid?: number;
-    bad?: number;
-    problems?: string[];
+    good: number;
+    mid: number;
+    bad: number;
+    reviewedUser: {
+        id: number;
+        firstname: string;
+        creatorUsername: string;
+    };
+    reviews: Review[];
 }

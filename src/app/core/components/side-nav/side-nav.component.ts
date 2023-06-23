@@ -36,9 +36,11 @@ export class SideNavComponent {
     var url = this.location.path();
     if (url.startsWith('/problems')){
       this.problems = true;
-    }
-    if (url.startsWith('/profile')){
+    }if (url.startsWith('/profile')){
       this.profiles = true;
+    }if (url == '/profile'){
+      this.profiles = true;
+      this.profiles_myprofile = true;
     }if (url == '/friends'){
       this.friends = true;
       this.friends_myfriends = true;
@@ -51,6 +53,11 @@ export class SideNavComponent {
     }if (url =='/chats/otherproblems'){
       this.chats = true;
       this.chats_otherproblems = true;
+    }if (url =='/my-problems'){
+      this.profiles = true;
+      this.profiles_myproblems = true;
+    }if (url.startsWith('/my-problems/edit-problem')){
+      this.problems = true;
     }
   }
 

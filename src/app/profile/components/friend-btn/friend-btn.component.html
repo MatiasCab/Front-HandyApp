@@ -6,11 +6,11 @@
     <h2>{{title}}</h2>
 </div>
 
-<div class="friendbtn requested" *ngIf="status == 2" data-bs-toggle="modal" data-bs-target="#requestedFriend">
+<div class="friendbtn requested" *ngIf="status == 3" data-bs-toggle="modal" data-bs-target="#requestedFriend">
     <h2>{{title}}</h2>
 </div>
 
-<div class="friendbtn accept" *ngIf="status == 3" data-bs-toggle="modal" data-bs-target="#acceptFriend">
+<div class="friendbtn accept" *ngIf="status == 2" data-bs-toggle="modal" data-bs-target="#acceptFriend">
   <h2>{{title}}</h2>
 </div>
 
@@ -81,7 +81,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Seguro quieres eliminar la solicitud de amistad a {{User?.firstname}} {{User?.lastname}}?</p>
+        <p>Seguro quieres agregar a {{User?.firstname}} {{User?.lastname}} a tus amigos?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="acceptFriend()">Si</button>
