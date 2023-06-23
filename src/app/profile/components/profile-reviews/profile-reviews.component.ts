@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { User } from 'src/app/core/models/User';
 import { Reviews } from 'src/app/core/models/Reviews';
 import { ReviewsService } from '../../services/reviews.service';
+import { Review } from 'src/app/core/models/Review';
 
 @Component({
   selector: 'app-profile-reviews',
@@ -12,6 +13,7 @@ export class ProfileReviewsComponent {
 
   @Input() User: User | undefined;
   reviews!: Reviews;
+  problems: Review[] = [];
   score: number = 1;
   //id?: number;
   //viewOption?: string; //['otherView', 'myView', 'myCompleteView']
@@ -24,5 +26,6 @@ export class ProfileReviewsComponent {
     this.ReviewsService.getReviews(1).subscribe(profile => {
       this.reviews = profile[0];
     });
+    this.problems = this.reviews.reviews;
   }
 }

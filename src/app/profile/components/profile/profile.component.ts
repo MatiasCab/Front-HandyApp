@@ -32,8 +32,8 @@ export class ProfileComponent {
       } else {
         this.userService.getProfile(this.username!).subscribe(profile => {
           this.User = profile;
+          this.MyProfile = false;
         });
-        this.MyProfile = false;
       }
     });
   }

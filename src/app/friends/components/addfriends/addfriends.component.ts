@@ -19,4 +19,13 @@ export class AddfriendsComponent {
       this.people = friend;
     });
   }
+
+  searchNotFriends(event : any){
+    var name = event["name"];
+    var skills = event["skills"];
+    console.log("name =", name, "skills =", skills);
+    this.userService.filterNotMyFriends(name, skills).subscribe(people => {
+      this.people = people
+    });
+  }
 }

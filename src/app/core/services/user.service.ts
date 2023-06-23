@@ -32,19 +32,26 @@ export class UserService {
     email: "rosadias@gmail.com",
     description: "yo tambien soy rosa",
     profileImage: "https://www.w3schools.com/howto/img_avatar.png",
-    friendshipStatus: 1,
+    friendshipStatus: 2,
     skills: [1,2],
     friendsAmount: 100,
   }
 
   UsersList: User[] = [this.Users1,this.Users2]
+  UsersList2: User[] = [this.Users2]
 
   getMyProfile(): Observable<User>{
     return of(this.Users1);
   }
 
   getProfile(username: string): Observable<User>{
-    return of(this.Users2);
+    if(username === "rosamelo") {
+      return of(this.Users1)
+    }else if(username === "rosadias"){
+      return of(this.Users2)
+    }else{
+      return of();
+    }
   }
 
   getMyFriends(): Observable<User[]>{
@@ -58,4 +65,17 @@ export class UserService {
   getNotFriends(): Observable<User[]>{
     return of(this.UsersList);
   }
+
+  filterMyFriends(name: string, skills: number[]): Observable<User[]>{
+    return of(this.UsersList);
+  }
+
+  filterNotMyFriends(name: string, skills: number[]): Observable<User[]>{
+    return of(this.UsersList2);
+  }
+
+  // Actualizar las skills del usuario.
+  updateUserSkills(skills: number[]): Observable<User>{
+    return of(this.Users1);
+  } //PUT
 }

@@ -20,7 +20,7 @@ import { MyProblemsModule } from './my-problems/my-problems.module';
     SharedModule,
     HttpClientModule,
     ProblemsModule,
-    MyProblemsModule
+    MyProblemsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
