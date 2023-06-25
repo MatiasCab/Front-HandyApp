@@ -1,14 +1,17 @@
+import { Skill } from "./Skill";
+
 export interface User{
     id?: number;
+    CI: number;
     firstname?: string;
     lastname?: string;
     username?: string;
-    singupDate?: string;
+    singupDate?: Date;
     email?: string;
     description?: string;
     profileImage?: string;
     friendshipStatus?: number;
-    skills?: number[];
+    skills?: Skill[];
     friendsAmount?: number;
 }
 
