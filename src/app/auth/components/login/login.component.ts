@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit{
           this.errorMessage = 'Lo sentimos no hemos podido procesar su solicitud';
         }
       } else {
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/problems');
       }
     });
   }

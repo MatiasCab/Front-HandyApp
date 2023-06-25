@@ -2,7 +2,7 @@
     <div class="padding">
         <div class="info-box">
             <div class="picAndTitle">
-            <app-upload-photo (URLToSend)="pictureSaver($event)" [selectedFileURL]="problem?.imageURL!"></app-upload-photo>
+            <app-upload-photo (URLToSend)="pictureSaver($event)" [selectedFileURL]="this.problem?.imageURL!"></app-upload-photo>
             <div class="first-section ms-3 me-3 mb-3 pt-3">
                 <h5>Título</h5>
                 <label for="floatingTitle">Introduzca un título para el problema</label>
@@ -18,7 +18,7 @@
         </div>
     </div>  
     <div class="padding-left left-column">
-        <app-map></app-map>
+        <app-map #m></app-map>
     </div>
 </div>
 
@@ -35,7 +35,7 @@
 <div class="buttons">
     <button *ngIf="!problem" (click)="postProblem(problemTitleText.value, problemDescriptionText.value)" class="btn btns btn-success">Crear</button>
     <button *ngIf="problem" class="btn btns btn-success">Editar</button>
-    <button class="btn btns btn-danger">Cancelar</button>
+    <button class="btn btns btn-danger" (click)="edit()">Cancelar</button>
 </div>
 
 

@@ -16,18 +16,13 @@ export class UploadPhotoComponent {
   @Input() selectedFileURL: string | null = null;
   @Output() URLToSend = new EventEmitter<string>();
 
-  isFileSelected: boolean = false;
-
   ngOnInit(){
-    if(this.selectedFileURL){
-      this.isFileSelected = true;
-    }
+
   }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0] as File;
     if (this.selectedFile) {
-      this.isFileSelected= true;
       const reader = new FileReader();
       reader.onload = () => {
         this.selectedFileURL = reader.result as string;
