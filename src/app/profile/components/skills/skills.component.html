@@ -1,7 +1,7 @@
 <div class="skillbox">
     <h2>{{title}}</h2>
     <div class="skill-list">
-        <app-skill-list class="skills" [skills]="userSkills" [option]="'problemInfo'"></app-skill-list>
+        <app-skill-list class="skills" [skills]="userSkills" [option]="'profile'"></app-skill-list>
     </div>
     <div class="btnbox" *ngIf="MyProfile as true;">
         <button class="editbtn" data-bs-toggle="modal" data-bs-target="#editSkills">Cambiar habilidades</button>
@@ -18,7 +18,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <app-skill-list [option]="'modal'" [skills]="skills" (sendIdsSkillsFilter)="addSkillToFilterTempList($event)"></app-skill-list>
+          <app-skill-list  #skillListModal [option]="'modal'" [skills]="skills" (sendIdsSkillsFilter)="addSkillToFilterTempList($event)"></app-skill-list>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="changeSkills()">Confirmar cambios</button>

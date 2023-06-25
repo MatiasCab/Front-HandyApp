@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/User';
 import { ProfileService } from '../../services/profile.service';
 import { MapComponent } from 'src/app/shared/components/map/map.component';
@@ -25,6 +26,7 @@ export class EditBtnComponent {
   constructor(
     private AuthService: AuthService,
     private profileService : ProfileService,
+    private Router: Router
   ) {}
 
   changepass(): void {
@@ -62,52 +64,93 @@ export class EditBtnComponent {
     var newdescription = this.newdescription?.nativeElement.value;
     if(this.selectedFile != null){
       if (newdescription != this.User?.description){
-        console.log("hay descripcion y foto para subir xd");
         //SUBIR DESCRIPCIÓN Y FOTO
+        let skillList : number[] = [];
+        this.User?.skills?.forEach(element => {
+          skillList.push(element.id);
+        });
+        let imagen = this.cleanBase64(this.selectedFileURL!);
         var body = {
-          image: this.selectedFile,
+          image: imagen,
           description: newdescription,
-          skills : this.User?.skills,
+          skills : skillList,
           lat: this.User?.lat,
           lng: this.User?.lng,
         }
-        this.profileService.updateProfile(body).subscribe(profile => {});
+        this.profileService.updateProfile(body).subscribe(profile => {
+          this.reload();
+        });
       }else{
-        console.log("hay foto para subir xd");
         //SUBIR SOLO FOTO
-        var body = {
-          image: this.selectedFile,
+        let skillList : number[] = [];
+        this.User?.skills?.forEach(element => {
+          skillList.push(element.id);
+        });
+        let imagen = this.cleanBase64(this.selectedFileURL!);
+        let body = {
+          image: imagen,
           description: this.User?.description,
-          skills : this.User?.skills,
+          skills : skillList,
           lat: this.User?.lat,
           lng: this.User?.lng,
         }
-        this.profileService.updateProfile(body).subscribe(profile => {});
+        this.profileService.updateProfile(body).subscribe(profile => {
+          this.reload();
+        });
       }
     }else{
       //NO HAY FOTO PARA SUBIR
       // si hay descripcion para subir
       if (newdescription != this.User?.description) {
-        console.log("hay descripcion para subir xd");
         //SUBIR DESCRIPCIÓN Y EDITAR EL PERFIL
-        console.log("hay description para editar xd");
+        let skillList : number[] = [];
+        this.User?.skills?.forEach(element => {
+          skillList.push(element.id);
+        });
         let body = {
           description: newdescription,
-          skills : this.User?.skills,
+          skills : skillList,
           lat: this.User?.lat,
           lng: this.User?.lng,
         }
         this.profileService.updateProfile(body).subscribe(profile => {
-          console.log("profile",profile);
+          this.reload();
         });
       }else{
         //NO HAY NADA PARA SUBIR
       }
     }
+
   }
 
   changeubi(): void {
-    console.log("lat",this.mapComponent.markerLat);
-    console.log("lng",this.mapComponent.markerLng);
+    let newLat = this.mapComponent.markerLat;
+    let newLong = this.mapComponent.markerLng;
+    let body = {
+      description: this.User?.description,
+      skills : this.User?.skills,
+      lat: newLat,
+      lng: newLong,
+    }
+    this.profileService.updateProfile(body).subscribe(profile => {});
+  }
+
+  cleanBase64(img:string): string {
+    const index = img.indexOf(",");
+    
+    if (index !== -1) {
+      return img.slice(index + 1);
+    } else {
+      return img;
+    }
+  }
+
+  reload(): void {
+    //recarga la pagina
+    const currentUrl = this.Router.url;
+    this.Router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      console.log(decodeURI(currentUrl));
+      this.Router.navigate([currentUrl]);
+    });
   }
 }

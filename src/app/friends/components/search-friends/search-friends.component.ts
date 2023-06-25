@@ -27,26 +27,13 @@ export class SearchFriendsComponent {
   ) { }
 
   ngOnInit() {
-    this.skillService.getSkills().subscribe((skills: Skill[]) => {
-      skills.forEach((skill: Skill) => {
+    this.skillService.getSkills().subscribe(skills => {
+        let skillsAux: Skill[] = skills["skills"];
+        skillsAux.forEach((skill: Skill) => {
         this.skills.push(skill.id);
       })
     });
   }
-
-  /*
-  addSkillToFilterTempList(ids: number[]) {
-    this.skillsList = ids;
-  }
-
-  skillsToFilter(){
-    this.skillService.getSkills().subscribe((skills: Skill[]) => {
-      this.skillsFilter = skills.filter(skill => this.skillsList.includes(skill.id)).map(skill => skill.id);
-      this.skillListComponent.refreshList(this.skillsFilter);
-
-    })
-  }
-*/
 
   deleteSkill(id: number){
     this.skillListModal.tagComponent.forEach(x =>{
