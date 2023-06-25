@@ -17,8 +17,9 @@ export class VerifyComponent {
   ) { }
   
   checkcode(): void{
-    let code = this.codeInput?.InputInfo ? this.codeInput?.InputInfo : ''
-    this.authService.verifycode("", code).subscribe(res => {
+    let code = this.codeInput?.InputInfo ? this.codeInput?.InputInfo : '';
+    let email = this.emailInput?.InputInfo ? this.emailInput?.InputInfo : '';
+    this.authService.verifycode(email, code).subscribe(res => {
       console.log(res);
     })
   }

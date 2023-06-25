@@ -21,6 +21,12 @@ export class ProblemViewPageComponent {
 
   ngOnInit(): void {
     this.problemService.getProblems().subscribe(problems => {
+      if(problems.error){
+
+      }
+      else{
+        console.log(problems);
+      }
       this.problem = problems[0];
     });
     this.route.params.subscribe(params => {

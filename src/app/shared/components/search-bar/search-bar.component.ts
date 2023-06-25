@@ -69,7 +69,7 @@ export class SearchBarComponent {
   searchProblem(name: string, skills: number[]){
     let problemsFiltered: Problem[] = [];
     this.problemService.getProblems().subscribe(problems => {
-      problems.forEach(problemX => {
+      problems.forEach((problemX: Problem) => {
         if(problemX && problemX.name!.toLowerCase().includes(name.toLowerCase())){
           problemsFiltered.push(problemX);
         }

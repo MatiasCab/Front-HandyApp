@@ -17,6 +17,7 @@ export class MyfriendsComponent {
 
   ngOnInit(){
     this.friendsService.getFriends().subscribe(friend => {
+      console.log(friend);
       this.friends = friend;
     });
   }

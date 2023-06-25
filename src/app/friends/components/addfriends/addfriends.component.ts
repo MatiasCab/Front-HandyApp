@@ -17,6 +17,7 @@ export class AddfriendsComponent {
 
   ngOnInit(){
     this.friendsService.getNotFriends().subscribe(friend => {
+      console.log(friend);
       this.people = friend;
     });
   }
