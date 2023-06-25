@@ -1,25 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { API_URL } from 'src/app/core/const';
-import { Observable, catchError, map, of, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Review } from 'src/app/core/models/Review';
-import { Reviews } from 'src/app/core/models/Reviews';
+import { catchError, of } from 'rxjs';
 
 const API_AUTH_URL = `${API_URL}/users`;
 
 @Injectable({
   providedIn: 'root'
 })
-export class ReviewsService {
+export class ProfileService {
 
   constructor(
     private http: HttpClient
   ) { }
 
 
-  getReviews(id:string) {
-    return this.http.get<any>(`${API_AUTH_URL}/${id}/reviews`).pipe(
-      catchError(this.handleError<any>('getReviews'))
+  getProfile(id: string) {
+    return this.http.get<any>(`${API_AUTH_URL}/${id}`).pipe(
+      catchError(this.handleError<any>('getProfile'))
+    );
+  }
+
+  updateProfile(body: any) {
+    return this.http.put<any>(`${API_AUTH_URL}/`, body).pipe(
+      catchError(this.handleError<any>('updateProfile'))
     );
   }
 

@@ -53,6 +53,4 @@ export class MapComponent {
       this.markerLng = latLng.lng();
     }
 
-  } 
-
-  
+} 

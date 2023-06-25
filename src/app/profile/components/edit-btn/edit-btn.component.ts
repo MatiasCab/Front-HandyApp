@@ -1,6 +1,8 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { User } from 'src/app/core/models/User';
+import { ProfileService } from '../../services/profile.service';
+import { MapComponent } from 'src/app/shared/components/map/map.component';
 
 @Component({
   selector: 'app-edit-btn',
@@ -18,9 +20,11 @@ export class EditBtnComponent {
   @ViewChild('password1') password1?: ElementRef<HTMLInputElement>;
   @ViewChild('password2') password2?: ElementRef<HTMLInputElement>;
   @ViewChild('newdescription') newdescription?: ElementRef<HTMLInputElement>;
+  @ViewChild (MapComponent) mapComponent!: MapComponent;
   
   constructor(
     private AuthService: AuthService,
+    private profileService : ProfileService,
   ) {}
 
   changepass(): void {
@@ -57,22 +61,53 @@ export class EditBtnComponent {
   editprofile(): void {
     var newdescription = this.newdescription?.nativeElement.value;
     if(this.selectedFile != null){
-      //hay foto para subir xd
-      console.log("hay foto para subir xd");
-
-      //SUBIR FOTO Y EDITAR EL PERFIL
+      if (newdescription != this.User?.description){
+        console.log("hay descripcion y foto para subir xd");
+        //SUBIR DESCRIPCIÓN Y FOTO
+        var body = {
+          image: this.selectedFile,
+          description: newdescription,
+          skills : this.User?.skills,
+          lat: this.User?.lat,
+          lng: this.User?.lng,
+        }
+        this.profileService.updateProfile(body).subscribe(profile => {});
+      }else{
+        console.log("hay foto para subir xd");
+        //SUBIR SOLO FOTO
+        var body = {
+          image: this.selectedFile,
+          description: this.User?.description,
+          skills : this.User?.skills,
+          lat: this.User?.lat,
+          lng: this.User?.lng,
+        }
+        this.profileService.updateProfile(body).subscribe(profile => {});
+      }
+    }else{
+      //NO HAY FOTO PARA SUBIR
+      // si hay descripcion para subir
+      if (newdescription != this.User?.description) {
+        console.log("hay descripcion para subir xd");
+        //SUBIR DESCRIPCIÓN Y EDITAR EL PERFIL
+        console.log("hay description para editar xd");
+        let body = {
+          description: newdescription,
+          skills : this.User?.skills,
+          lat: this.User?.lat,
+          lng: this.User?.lng,
+        }
+        this.profileService.updateProfile(body).subscribe(profile => {
+          console.log("profile",profile);
+        });
+      }else{
+        //NO HAY NADA PARA SUBIR
+      }
     }
-
-    // si hay descripcion para subir
-    if (newdescription != this.User?.description) {
-      console.log("hay descripcion para subir xd");
-
-      //SUBIR DESCRIPCIÓN Y EDITAR EL PERFIL
-    }
-
   }
 
   changeubi(): void {
-    //SUBIR UBICACIÓN Y EDITAR EL PERFIL
+    console.log("lat",this.mapComponent.markerLat);
+    console.log("lng",this.mapComponent.markerLng);
   }
 }

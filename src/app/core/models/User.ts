@@ -13,5 +13,7 @@ export interface User{
     friendshipStatus?: number;
     skills?: Skill[];
     friendsAmount?: number;
+    lat?: number;
+    lng?: number;
 }
 
