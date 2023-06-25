@@ -7,7 +7,7 @@
     </div> 
     <div class="padding-left">
         <app-problem-user-info [User]="this.importantUserInfo"></app-problem-user-info>
-        <img class="mt-4" src="https://i.stack.imgur.com/sqh4L.png">
+        <img class="mt-4" src="{{this.problem?.locationImage}}">
     </div>
 </div>
 
@@ -16,15 +16,15 @@
         <app-problem-general-info [problem]="this.problem"></app-problem-general-info> 
         <div class="buttons-ajust">
             <div class="secondary-button">
-                <app-button [type]="'chat'" [label]="'Chats'"></app-button>
+                <app-button [type]="'chat'" [label]="'Chats'" (click)="chatsRedirect()"></app-button>
             </div>
             <div class="secondary-button">
-                <app-button [type]="'edit'" [label]="'Editar'"></app-button>
+                <app-button [type]="'edit'" [label]="'Editar'" (click)="chatsRedirect()"></app-button>
             </div>
         </div>
     </div> 
     <div class="padding-left left-column">
-        <img class="user-view" src="https://i.stack.imgur.com/sqh4L.png">
+        <img class="user-view" src="{{this.problem?.locationImage}}">
         <app-button [type]="'pending'" [label]="'Pendiente'"></app-button>
     </div>
 </div>

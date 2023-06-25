@@ -1,7 +1,7 @@
 <label for="fileInput" class="upload-button">
   <input id="fileInput" type="file" (change)="onFileSelected($event)" accept="image/*">
-  <span class="photo" *ngIf="isFileSelected">
+  <span class="photo" *ngIf="selectedFileURL">
     <img [src]="selectedFileURL" alt="Selected Image">
   </span>
-  <span class="button" *ngIf="!isFileSelected"><i class="bi bi-plus-square-dotted"></i></span>
+  <span class="button" *ngIf="!selectedFileURL"><i class="bi bi-plus-square-dotted"></i></span>
 </label>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 
@@ -9,23 +9,33 @@ import { environment } from 'src/environments/environment';
 })
 export class MapComponent {
 
+  @Input() markerLat: number = -34.882764;
+  @Input() markerLng: number = -56.169615;
+  googleMapKey: string = environment.googleApiKey;
+  
+  ngAfterViewInit() {
+    this.initMap();
+  }
+
   ngOnInit() {
     this.initMap();
   }
 
-  markerLat?: number
-  markerLng?: number
-  googleMapKey: string = environment.googleApiKey;
+  reload(lat: number, lng: number) {
+    this.markerLat = lat;
+    this.markerLng = lng;
+    this.initMap();
+  }
 
   initMap() {
-    const myLatLng = { lat: -34.882764, lng: -56.169615 };
-    this.markerLat = myLatLng.lat;
-    this.markerLng = myLatLng.lng;
+    //const myLatLng = { lat: -34.882764, lng: -56.169615 };
+    //this.markerLat = myLatLng.lat;
+    //this.markerLng = myLatLng.lng;
   
     const mapElement = document.getElementById('map');
     if (mapElement) {
       const map = new google.maps.Map(mapElement, {
-        center: myLatLng,
+        center: { lat: this.markerLat, lng: this.markerLng },
         zoom: 10,
         mapTypeControlOptions: {
           mapTypeIds: []
@@ -34,7 +44,7 @@ export class MapComponent {
       });
 
       const marker = new google.maps.Marker({
-        position: myLatLng,
+        position: { lat: this.markerLat, lng: this.markerLng },
         map,
         title: 'Mi ubicación',
         draggable : true

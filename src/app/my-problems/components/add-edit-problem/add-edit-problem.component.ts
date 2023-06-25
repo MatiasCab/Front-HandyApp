@@ -22,7 +22,7 @@ export class AddEditProblemComponent {
   @ViewChild ('problemDescriptionText') problemDescriptionText!: HTMLTextAreaElement;
   @ViewChild ('problemTitleText') problemTitleText!: HTMLInputElement;
   @ViewChild (MapComponent) mapComponent!: MapComponent;
-  
+  @ViewChild ('m') m!: any;
 
   constructor(
     private skillService: SkillService,
@@ -32,7 +32,7 @@ export class AddEditProblemComponent {
   }
   
   problem?: Problem
-  idSkillsProblem: number[] = []
+  idSkillsProblem?: number[];
   idSkillsModal: number[] = [];
   idSkillsTempList: number[] = [];
   idSkillsAux: number[] = [];
@@ -50,8 +50,9 @@ export class AddEditProblemComponent {
 
   ngOnInit(){
     this.dateString = this.formatDateToString();
-    this.skillService.getSkills().subscribe((skills: Skill[]) => {
-      skills.forEach((skill: Skill) => {
+    this.skillService.getSkills().subscribe((skills:any) => {
+      console.log(skills)
+      skills['skills'].forEach((skill: Skill) => {
         this.idSkillsModal.push(skill.id);
       })
     });
@@ -131,14 +132,22 @@ export class AddEditProblemComponent {
           console.error('Error 404: PROBLEM NOT FOUND');
           return;
         } else {
-          this.problem = problem;
+          this.problem = problem['problem'];
+          console.log(this.problem?.imageURL!);
           this.idSkillsProblem = []; 
+          this.m.reload(this.problem?.lat, this.problem?.lng)
+          console.log(this.problem!.skills);
           this.problem!.skills?.forEach(skill => {
-              this.idSkillsProblem.push(skill.id!);
+            console.log(skill);
+              this.idSkillsProblem?.push(skill.id!);
           })
         }
       })
     }
+  }
+
+  edit(){
+    
   }
 
   validateInput(input: string): boolean {

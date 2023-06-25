@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ProblemService } from '../../services/problem.service';
 import { Problem } from '../../../core/models/Problem';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/core/models/User';
 
 @Component({
@@ -19,7 +19,8 @@ export class ProblemViewPageComponent {
 
   constructor(
     private problemService: ProblemService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -40,18 +41,17 @@ export class ProblemViewPageComponent {
           if(ownerId != actualUserId) {
             if(this.isResolved()){
               this.viewOption = '';
-            }else {
+            } else {
               this.viewOption = 'otherView';
               this.importantUserInfo = owner;
               console.log(this.importantUserInfo)
             }
           } else {
             if(this.problem?.resolvedDate){
-              this.viewOption = '';
+              this.viewOption = 'myCompleteView';
             }else {
-              this.viewOption = 'otherView';
+              this.viewOption = 'myView';
             }
-          this.viewOption = 'myView';
           }
         }
       });
@@ -62,6 +62,13 @@ export class ProblemViewPageComponent {
     if(this.problem?.resolvedDate) return true;
     return false;
   }
-    
+  
+  public chatsRedirect(){
+    this.router.navigateByUrl('/chats/myproblems');
+  }
+
+  public edit(){
+    this.router.navigateByUrl('/my-problems/edit-problem/id');
+  }
 
 }
