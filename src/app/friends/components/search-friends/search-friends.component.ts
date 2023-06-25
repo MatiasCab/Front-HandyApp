@@ -14,12 +14,12 @@ export class SearchFriendsComponent {
   skills:  number[] = [];
   skillsList: number[] = [];
   skillsFilter: number[] = [];
-
   valorInput: string = '';
 
   @Output() friendSender = new EventEmitter<{name: string, skills:number[]}>();
 
-  @ViewChild (SkillListComponent) skillListComponent!: SkillListComponent;
+  @ViewChild ('skillsList') skillListFilter!: SkillListComponent;
+  @ViewChild ('skillsModal') skillListModal!: SkillListComponent;
   
   constructor(
     private skillService: SkillService,
@@ -34,6 +34,7 @@ export class SearchFriendsComponent {
     });
   }
 
+  /*
   addSkillToFilterTempList(ids: number[]) {
     this.skillsList = ids;
   }
@@ -45,20 +46,36 @@ export class SearchFriendsComponent {
 
     })
   }
+*/
 
-  searchFriends(name: string, skills: number[]){
-    this.friendSender.emit({name: name, skills: skills});
-    /*
-    let problemsFiltered: Problem[] = [];
-    this.problemService.getProblems().subscribe(problems => {
-      problems.forEach(problemX => {
-        if(problemX && problemX.name!.toLowerCase().includes(name.toLowerCase())){
-          problemsFiltered.push(problemX);
-        }
-      })
-      this.problemService.sendProblems(problemsFiltered);
-      this.friendSender.emit();
+  deleteSkill(id: number){
+    this.skillListModal.tagComponent.forEach(x =>{
+      if(x.skill?.id === id){
+        x.deactivateSkill();
+      }
     })
-    */
+    this.skillsList.forEach((skill, index) => {
+      if(skill === id) this.skillsList.splice(index, 1);
+    });
   }
+
+  addSkillToFilterTempList(ids: number[]) {
+    this.skillsList = ids;
+  }
+
+  skillsToFilter(){
+    const skillTemp: number[] = []
+    this.skillListModal.tagComponent.forEach(tag => {
+      if(tag.isSpanSelected){
+        if(tag.skill)
+        skillTemp.push(tag.skill?.id);
+      }
+    })
+    this.skillListFilter.refreshList(skillTemp);
+  }
+
+  searchFriends(name: string){
+    this.friendSender.emit({name: name, skills: this.skillsList});
+  }
+
 }
