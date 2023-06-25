@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input} from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-upload-photo',
@@ -14,6 +14,7 @@ export class UploadPhotoComponent {
 
   selectedFile: File | null= null;
   @Input() selectedFileURL: string | null = null;
+  @Output() URLToSend = new EventEmitter<string>();
 
   isFileSelected: boolean = false;
 
@@ -30,18 +31,10 @@ export class UploadPhotoComponent {
       const reader = new FileReader();
       reader.onload = () => {
         this.selectedFileURL = reader.result as string;
+        this.URLToSend.emit(this.selectedFileURL);
       };
       reader.readAsDataURL(this.selectedFile);
-    }
-  }
-
-  onUpload() {
-    if (this.selectedFile) {
-      // Perform the upload logic here
-      console.log('Uploading file:', this.selectedFile);
-      // You can send the file to your server or perform any other necessary actions
-    } else {
-      console.log('No file selected.');
+      
     }
   }
 

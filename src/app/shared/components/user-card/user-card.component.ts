@@ -10,8 +10,8 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class UserCardComponent {
 
-  @Input() userId?: number;
-  user?: User;
+  
+  @Input() user?: User;
 
   joinedDateString?: string;
 
@@ -32,13 +32,7 @@ export class UserCardComponent {
   }
 
   ngOnInit(): void {
-    this.userService.getUser(this.userId!).subscribe(user => {
-      this.user = user;
-      if (user) {
-        var datee = new Date(user.singupDate!);
-        this.joinedDateString = this.convertDateToString(datee);
-      }
-    });
+    this.joinedDateString = this.convertDateToString(this.user?.singupDate!);
   }
 
 }

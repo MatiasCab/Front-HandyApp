@@ -28,17 +28,18 @@ export class ProblemViewPageComponent {
         console.log(problems);
       }
       this.problem = problems[0];
+      this.route.params.subscribe(params => {
+        this.id = params['problemId']; // 'id' es el nombre del parámetro definido en tu archivo de enrutamiento
+        if(this.id == 1) {
+          this.viewOption = 'otherView';
+        } else if (this.id == 2) {
+          this.viewOption = 'myView';
+        } else {
+          this.viewOption = 'myCompleteView';
+        }
+      });
     });
-    this.route.params.subscribe(params => {
-      this.id = params['problemId']; // 'id' es el nombre del parámetro definido en tu archivo de enrutamiento
-      if(this.id == 1) {
-        this.viewOption = 'otherView';
-      } else if (this.id == 2) {
-        this.viewOption = 'myView';
-      } else {
-        this.viewOption = 'myCompleteView';
-      }
-    });
+    
   }
     
 

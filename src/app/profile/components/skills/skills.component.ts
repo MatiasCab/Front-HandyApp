@@ -35,7 +35,7 @@ export class SkillsComponent {
         this.title = "Habilidades";
       }
 
-      this.userSkills = this.User!.skills!;
+      this.User?.skills?.forEach(skill => this.userSkills.push(skill.id))
 
       this.skillService.getSkills().subscribe((skills: Skill[]) => {
         skills.forEach((skill: Skill) => {

@@ -18,9 +18,21 @@ export class ProblemsGridComponent {
     ) { }
 
   ngOnInit(): void {
+    if(!this.option){
+    this.getProblems();
+    }
+  }
+
+  getProblems(){
     this.problemService.getProblems().subscribe(problems => {
-      this.problems = problems;
-    });
+      if(problems.error){
+        console.log('Error???')
+      }
+      else{
+        
+        this.problems=problems;
+      }
+    })
   }
 
   refreshList(){
