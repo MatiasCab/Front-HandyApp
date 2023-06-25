@@ -9,6 +9,17 @@
     </div>
 </div>
 
+<div class="list" *ngIf="option=='profile'">
+    <div class="skillList" *ngIf="skills">
+        <app-tag *ngFor="let skillX of skillsList" [skill]="skillX" [option]="'simple'">
+        </app-tag>
+    </div>
+    <div class="skillList">
+
+    </div>
+</div>
+
+
 <div class="listInfo" *ngIf="option=='problemInfo'">
     <app-tag *ngFor="let skillX of skillsList" [skill]="skillX" [option]="'simple'">
     </app-tag>

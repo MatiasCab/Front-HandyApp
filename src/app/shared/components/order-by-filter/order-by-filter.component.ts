@@ -16,7 +16,7 @@ export class OrderByFilterComponent {
   @ViewChild ('seeAllTag2') seeAllTag2!: TagComponent;
   @ViewChild ('seePendingTag') seePendingTag!: TagComponent;
 
-  @Output() filterEmitter = new EventEmitter<string>();
+  @Output() filterEmitter = new EventEmitter<string | number>();
 
   @Input() option: string = ''
   @Input() resolvedNumber?: number;
@@ -50,6 +50,7 @@ export class OrderByFilterComponent {
       this.seeResolvedTag.isSpanSelectedFilter = true;
       this.seePendingTag.isSpanSelectedFilter = false;
     }
+    this.filterEmitter.emit(option);
   }
 
 }
