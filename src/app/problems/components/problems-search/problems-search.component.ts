@@ -11,6 +11,10 @@ export class ProblemsSearchComponent {
 
   @ViewChild (ProblemsGridComponent) problemsGridComponent!: ProblemsGridComponent;
 
+  problemSearch(event: any){
+    this.problemsGridComponent.searchProblems(event);
+  }
 
+  areProblems: boolean = false
   
 }

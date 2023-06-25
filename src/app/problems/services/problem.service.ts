@@ -17,8 +17,6 @@ const API_AUTH_URL = `${API_URL}/problems`;
 })
 export class ProblemService {
 
-  
-
   constructor(
     private http: HttpClient
   ) { }
@@ -43,6 +41,13 @@ export class ProblemService {
   postProblem(problem: Problem){
     return this.http.post<any>(`${API_AUTH_URL}`, problem).pipe(
       catchError(this.handleError<any>('postProblem'))
+    );
+  }
+
+  getProblemsFiltered(name: string, skills: string) {
+    console.log(`${API_AUTH_URL}?${name}${skills}`);
+    return this.http.get<any>(`${API_AUTH_URL}?${name}${skills}`).pipe(
+      catchError(this.handleError<any>('getFriendsSearch'))
     );
   }
   
