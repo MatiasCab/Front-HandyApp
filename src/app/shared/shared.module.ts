@@ -13,6 +13,7 @@ import { UserCardComponent } from './components/user-card/user-card.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { OrderByFilterComponent } from './components/order-by-filter/order-by-filter.component';
 import { ActionButtonsComponent } from './components/action-buttons/action-buttons.component';
+import { MapComponent } from './components/map/map.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ActionButtonsComponent } from './components/action-buttons/action-butto
     UserCardComponent,
     SearchBarComponent,
     OrderByFilterComponent,
-    ActionButtonsComponent
+    ActionButtonsComponent,
+    MapComponent
    ],
   exports: [ 
     ProblemsGridComponent,
@@ -39,7 +41,8 @@ import { ActionButtonsComponent } from './components/action-buttons/action-butto
     ProblemComponent,
     SkillListComponent,
     OrderByFilterComponent,
-    TagComponent
+    TagComponent,
+    MapComponent
    ]
 })
 export class SharedModule { }

@@ -1,7 +1,7 @@
 <div class="search-bar">
     <input type="text" [(ngModel)]="valorInput" (keyup.enter)="searchProblem(valorInput, skills)" placeholder="Buscar problemas" />
     <div class="tags-container">
-      <app-skill-list [option]="'searchBar'" [skills]="skillsFilter"></app-skill-list>
+      <app-skill-list #skillsList [option]="'searchBar'" (sendId)="deleteSkill($event)" [skills]="skillsFilter"></app-skill-list>
     </div>
     <button type="button" class="skillButton" data-bs-toggle="modal" data-bs-target="#SkillListModal"><i class="bi bi-tools"></i></button>
     <button class="searchButton" (click)="searchProblem(valorInput, skillsFilter)">Buscar</button>
@@ -17,7 +17,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <app-skill-list [option]="'modal'" [skills]="skills" (sendIdsSkillsFilter)="addSkillToFilterTempList($event)"></app-skill-list>
+        <app-skill-list #skillsModal [option]="'modal'" [skills]="skills" (sendIdsSkillsFilter)="addSkillToFilterTempList($event)"></app-skill-list>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="skillsToFilter()">Editar</button>

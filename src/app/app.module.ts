@@ -8,6 +8,8 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProblemsModule } from './problems/problems.module';
 import { MyProblemsModule } from './my-problems/my-problems.module';
+import { GoogleMapsModule } from '@angular/google-maps';
+
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { MyProblemsModule } from './my-problems/my-problems.module';
     HttpClientModule,
     ProblemsModule,
     MyProblemsModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
