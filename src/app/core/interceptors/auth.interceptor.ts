@@ -11,6 +11,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private router: Router) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log("HOLALALALLALALA");
     if (req.url.includes(API_URL)) {
       const idToken = localStorage.getItem(TOKEN_NAME_LS);
       console.log(idToken);
