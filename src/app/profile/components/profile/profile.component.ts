@@ -3,6 +3,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { User } from 'src/app/core/models/User';
 import { ActivatedRoute } from '@angular/router';
 import { ReviewsService } from '../../services/reviews.service';
+import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,13 +13,16 @@ import { ReviewsService } from '../../services/reviews.service';
 export class ProfileComponent {
 
   username?: string;
-  User?: User;
+  User!: User;
   MyProfile: Boolean|false = true;
+
+  isDataAvailable:boolean = false;
+
   //id?: number;
   //viewOption?: string; //['otherView', 'myView', 'myCompleteView']
 
   constructor(
-    private reviewsservice : ReviewsService,
+    private profileService : ProfileService,
     private route: ActivatedRoute
   ) {}
 
@@ -28,14 +32,18 @@ export class ProfileComponent {
       if(this.username === undefined) {
         // acceder al local 
         var id = localStorage.getItem('user_ID');
-        this.reviewsservice.getProfile(id!).subscribe(profile => {
+        this.profileService.getProfile(id!).subscribe(profile => {
           this.User = profile["user"];
           this.MyProfile = true;
+          this.isDataAvailable = true;
       });
       } else {
-        this.reviewsservice.getProfile(this.username).subscribe(profile => {
+        this.profileService.getProfile(this.username).subscribe(profile => {
+          console.log("PERFIL",profile)
           this.User = profile["user"];
+          console.log("USER", this.User);
           this.MyProfile = false;
+          this.isDataAvailable = true;
         });
       }
     });

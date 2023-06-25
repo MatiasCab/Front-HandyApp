@@ -41,6 +41,7 @@ export class FriendItemComponent {
   }
 
   ngOnInit(): void {
+    console.log("USUARIO", this.user?.firstname, this.user?.id);
     var datee = new Date(this.user!.singupDate!);
     this.joinedDateString = this.convertDateToString(datee);
     console.log(this.user);
@@ -95,6 +96,7 @@ export class FriendItemComponent {
   }
 
   buttonFriends(){
+    console.log("SOLICITUD", this.user?.firstname, this.user?.id);
     if(this.user!.friendshipStatus == 0){
       //llamada a la api para solicitar amistad
       this.friendsService.requestFriend(this.user!.id!.toString()).subscribe();

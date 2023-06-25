@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { User } from 'src/app/core/models/User';
+import { FriendsService } from 'src/app/friends/services/friends.service';
 
 @Component({
   selector: 'app-friend-btn',
@@ -16,6 +17,7 @@ export class FriendBtnComponent {
   
 
   constructor(
+    private friendsServices: FriendsService
   ) {}
 
   ngOnInit(): void {
@@ -35,22 +37,25 @@ export class FriendBtnComponent {
     }
   }
 
-removeFriend(): void{
-  //Llamada al servicio para eliminar la amistad
-  this.title = "Agregar amigo";
-  this.status= 0;
-}
+  removeFriend(): void{
+    //Llamada al servicio para eliminar la amistad
+    this.friendsServices.deleteFriend(this.User!.id!.toString()).subscribe();
+    this.title = "Agregar amigo";
+    this.status= 0;
+  }
 
-addFriend(): void{
-  //Llamada al servicio para enviar solicitud de amistad
-  this.title = "Solicitud enviada";
-  this.status= 3;
-}
+  addFriend(): void{
+    //Llamada al servicio para enviar solicitud de amistad
+    this.friendsServices.requestFriend(this.User!.id!.toString()).subscribe();
+    this.title = "Solicitud enviada";
+    this.status= 3;
+  }
 
-acceptFriend(): void{
-  //Llamada al servicio para aceptar la amistad
-  this.title = "Amigos";
-  this.status= 1;
-}
+  acceptFriend(): void{
+    //Llamada al servicio para aceptar la amistad
+    this.friendsServices.acceptFriend(this.User!.id!.toString()).subscribe();
+    this.title = "Amigos";
+    this.status= 1;
+  }
 
 }
