@@ -12,7 +12,5 @@ export class ProblemsSearchComponent {
   @ViewChild (ProblemsGridComponent) problemsGridComponent!: ProblemsGridComponent;
 
 
-  sendProblemsToDisplay(){
-    this.problemsGridComponent.refreshList();
-  }
+  
 }

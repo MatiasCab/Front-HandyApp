@@ -32,7 +32,8 @@ export class UserCardComponent {
   }
 
   ngOnInit(): void {
-    this.joinedDateString = this.convertDateToString(this.user?.singupDate!);
+    let date: Date = new Date(this.user?.singupDate!);
+    this.joinedDateString = this.convertDateToString(date);
   }
 
 }
