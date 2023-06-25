@@ -1,9 +1,9 @@
-<div class="problemsGrid" *ngIf="problems && option=='searchPage'">
+<div class="problemsGrid" *ngIf="problems">
     <div class="row gx-2 gy-2 w-100 gridContainer ">
         <app-long-card *ngFor="let problemX of problems"
         [option]="'problems'"
         [problem]="problemX"
-        [userId]="problemX.userid"
+        [user]="problemX.ownerUser"
         ></app-long-card>
     </div>
 </div>
@@ -19,7 +19,7 @@
         <app-long-card *ngFor="let problemX of problems"
         [option]="'my-problems'"
         [problem]="problemX"
-        [userId]="problemX.userid"
+        [user]="problemX.ownerUser"
         ></app-long-card>
     </div>
 </div>

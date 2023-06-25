@@ -10,4 +10,11 @@ export class ProblemGeneralInfoComponent {
 
   @Input() problem?: Problem;
 
+  problemSkillsIds: number[] =[]
+
+  ngOnInit(){
+    this.problem?.skills?.forEach(skill => {
+      this.problemSkillsIds.push(skill.id);
+    })
+  }
 }

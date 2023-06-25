@@ -8,6 +8,12 @@
     align-items: center;
 }
 
+.gridContainer{
+    align-items: center;
+    max-height: 800px;
+    overflow: scroll;
+}
+
 h1{
     font-family: Helvetica, Verdana, Arial;
     font-weight: bold;

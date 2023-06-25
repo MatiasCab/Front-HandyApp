@@ -11,13 +11,18 @@ export class ProblemComponent {
   @Input() problem?: Problem;
   @Input() fullInfo?: boolean;
 
+  problemSkillsIds: number[] = [];
   dateString?: string;
 
   constructor() { }
 
   ngOnInit(): void {
     if (this.problem) {
-      this.dateString = dateToString(this.problem.date!);
+      let date: Date = new Date(this.problem.postedDate!);
+      this.dateString = dateToString(date);
+      this.problem.skills?.forEach(skill => {
+        this.problemSkillsIds.push(skill.id)
+      })
     }
   }
 }
