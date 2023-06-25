@@ -23,9 +23,13 @@ export class ProfileReviewsComponent {
   ) {}
 
   ngOnInit(): void {
-    this.ReviewsService.getReviews(1).subscribe(profile => {
-      this.reviews = profile[0];
+    this.ReviewsService.getReviews(this.User!.id!.toString()).subscribe(profile => {
+      console.log(profile);
+      this.reviews = profile["reviewsInfo"];
+      console.log(this.reviews);
+      this.problems = this.reviews["reviews"];
+      console.log(this.problems);
     });
-    this.problems = this.reviews.reviews;
+    
   }
 }

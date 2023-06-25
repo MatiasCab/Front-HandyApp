@@ -17,8 +17,7 @@ export class MyfriendsComponent {
 
   ngOnInit(){
     this.friendsService.getFriends().subscribe(friend => {
-      console.log(friend);
-      this.friends = friend;
+      this.friends = friend["users"];
     });
   }
 
@@ -37,7 +36,7 @@ export class MyfriendsComponent {
       }
     }
     this.friendsService.getFriendsSearch(name, skills).subscribe(friend => {
-      this.friends = friend
+      this.friends = friend["users"]
     });
   }
 }

@@ -27,6 +27,7 @@ export class SignupComponent implements OnInit{
   validname : boolean = false;
   validlastname : boolean = false;
   validemail : boolean = false;
+  validbirthday : boolean = false;
   errorMessage?: string;
 
   constructor(
@@ -37,7 +38,8 @@ export class SignupComponent implements OnInit{
   }
 
   validInformation() : boolean { //Camel case
-    if (this.validci && this.validusername && this.validpassword && this.validname && this.validlastname && this.validemail){
+    this.checkBirthday("a");
+    if (this.validci && this.validusername && this.validpassword && this.validname && this.validlastname && this.validemail && this.validbirthday){
       return true;
     }else{
       return false;
@@ -164,6 +166,20 @@ export class SignupComponent implements OnInit{
       this.validemail = true;
     }else{
       this.validemail = false;
+    }
+  }
+
+  //FIXME CHECK BIRTHDAY
+  // ESTO NO ANDA LPM HAY QUE ARREGLARLO.
+  checkBirthday(event: any) {
+    let birthday = this.birthdayInput?.InputInfo ? this.birthdayInput?.InputInfo : '';
+
+    if (true){
+      console.log("invalid date");
+      this.validbirthday = false;
+    }else{
+      console.log("valid date");
+      this.validbirthday = true;
     }
   }
 

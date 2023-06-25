@@ -55,7 +55,7 @@ export class FriendItemComponent {
 
 
   showprofile(){
-    this.Router.navigate(['/profile/' + this.user!.username]);
+    this.Router.navigate(['/profile/' + this.user!.id]);
   }
 
   showproblems(){

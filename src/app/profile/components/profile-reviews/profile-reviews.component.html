@@ -9,9 +9,9 @@
         <ul class="list-group">
             <li class="list-group-item" *ngFor="let review of problems">
                 <div class="emoji">
-                    <i class="bi bi-emoji-smile" *ngIf="review.score == 1"></i>
+                    <i class="bi bi-emoji-smile" *ngIf="review.score == 3"></i>
                     <i class="bi bi-emoji-neutral" *ngIf="review.score == 2"></i>
-                    <i class="bi bi-emoji-angry"*ngIf="review.score == 3"></i>
+                    <i class="bi bi-emoji-angry"*ngIf="review.score == 1"></i>
                 </div>
                 <div class="review">
                     <h5>{{review.problemName}}</h5>

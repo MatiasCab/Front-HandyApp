@@ -1,68 +1,48 @@
+import { HttpClient } from '@angular/common/http';
+import { API_URL } from 'src/app/core/const';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import { Review } from 'src/app/core/models/Review';
 import { Reviews } from 'src/app/core/models/Reviews';
+
+const API_AUTH_URL = `${API_URL}/users`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReviewsService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  Review1: Review = {
-    id: 1,
-    description: 'iso un buen trabajo',
-    score: 1,
-    problemId: 1,
-    problemName: 'Problem 1',
-    creator: {
-      id: 1,
-      firstname: 'John',
-      creatorUsername: 'john123'
-    },
-    reviewedUser: {
-      id: 1,
-      firstname: 'John',
-      creatorUsername: 'john123'
-    }
+
+  getReviews(id:string) {
+    return this.http.get<any>(`${API_AUTH_URL}/${id}/reviews`).pipe(
+      catchError(this.handleError<any>('getReviews'))
+    );
   }
 
-  Review2: Review = {
-    id: 1,
-    description: 'rompio todo jajsj que hdp',
-    score: 3,
-    problemId: 1,
-    problemName: 'Problem 2',
-    creator: {
-      id: 1,
-      firstname: 'John',
-      creatorUsername: 'john123'
-    },
-    reviewedUser: {
-      id: 1,
-      firstname: 'John',
-      creatorUsername: 'john123'
-    }
+  getProfile(id: string) {
+    return this.http.get<any>(`${API_AUTH_URL}/${id}`).pipe(
+      catchError(this.handleError<any>('getProfile'))
+    );
   }
 
-  Reviews: Reviews = {
-    good: 1,
-    mid: 0,
-    bad: 1,
-    reviewedUser: {
-      id: 1,
-      firstname: 'John',
-      creatorUsername: 'john123'
-    },
-    reviews: [this.Review1, this.Review2]
-  }
-
-  ListReviews: Reviews[] = [
-    this.Reviews
-  ]
-
-  getReviews(user:number): Observable<Reviews[]>{
-    return of(this.ListReviews);
+  //FIXME HANDLER ERROS RESPONSE
+  private handleError<T>(operation: String) {
+    return (error: any) => {
+      console.log(error);
+      console.error(`${operation} failed: ${error.error.message}`);
+      if (error.error.name == 'CredentialsAlredyExistsError') {
+        return of({ error: true, type: 'RepitedCredentials' });
+      } else if (error.error.name == 'InvalidUsernameOrPassword') {
+        return of({ error: true, type: 'InvalidCredentials' });
+      } else if (error.error.name == 'InvalidVerificationCode') {
+        return of({ error: true, type: 'InvalidCode' })
+      } else {
+        return of({ error: true, type: 'Server' });
+      }
+    };
   }
 }
