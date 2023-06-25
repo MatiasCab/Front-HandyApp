@@ -11,6 +11,7 @@ import { API_URL } from 'src/app/core/const';
 import { HttpClient } from '@angular/common/http';
 
 const API_AUTH_URL = `${API_URL}/problems`;
+const API_AUTH_URL_MY_PROBLEMS = `${API_URL}/users`;
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,12 @@ export class ProblemService {
     );
   }
 
+  getMyProblems(){
+    const idUser = localStorage.getItem('user_ID');
+    console.log(`${API_AUTH_URL_MY_PROBLEMS}/${idUser}/problems`);
+    return this.http.get<any>(`${API_AUTH_URL_MY_PROBLEMS}/${idUser}/problems`)
+  }
+
   getProblemById(id: number) {
     return this.http.get<any>(`${API_AUTH_URL}/${id}`)
   }
@@ -45,8 +52,15 @@ export class ProblemService {
   }
 
   getProblemsFiltered(name: string, skills: string) {
-    console.log(`${API_AUTH_URL}?${name}${skills}`);
+    console.log(`${API_AUTH_URL}?${name}${skills}`)
     return this.http.get<any>(`${API_AUTH_URL}?${name}${skills}`).pipe(
+      catchError(this.handleError<any>('getFriendsSearch'))
+    );
+  }
+
+  getProblemsFilteredFriends(friendshipstatus: string, name?: string, skills?: string){
+    console.log(`${API_AUTH_URL}${friendshipstatus}${name?name:''}${skills?skills:''}`)
+    return this.http.get<any>(`${API_AUTH_URL}${friendshipstatus}${name?name:''}${skills?skills:''}`).pipe(
       catchError(this.handleError<any>('getFriendsSearch'))
     );
   }

@@ -1,4 +1,4 @@
-<div class="gridContainer " *ngIf="problems && !option">
+<div class="gridContainer " *ngIf="problems && !option && problems.length > 0">
     <app-long-card *ngFor="let problemX of problems"
     [option]="'problems'"
     [problem]="problemX"

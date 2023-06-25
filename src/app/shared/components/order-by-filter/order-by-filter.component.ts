@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild} from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 
 import { TagComponent } from '../tag/tag.component';
 
@@ -16,6 +16,8 @@ export class OrderByFilterComponent {
   @ViewChild ('seeAllTag2') seeAllTag2!: TagComponent;
   @ViewChild ('seePendingTag') seePendingTag!: TagComponent;
 
+  @Output() filterEmitter = new EventEmitter<string>();
+
   @Input() option: string = ''
   @Input() resolvedNumber?: number;
   @Input() pendingNumber?: number;
@@ -29,6 +31,7 @@ export class OrderByFilterComponent {
       this.seeFriendsTag.isSpanSelectedFilter = true;
       this.seeAllTag.isSpanSelectedFilter = false;
     }
+    this.filterEmitter.emit(text);
   }
 
   filterByStatus(option :number){
