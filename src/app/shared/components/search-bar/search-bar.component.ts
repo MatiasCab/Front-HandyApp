@@ -36,8 +36,9 @@ export class SearchBarComponent {
   ) { }
   
   ngOnInit() {
-    this.skillService.getSkills().subscribe((skills: Skill[]) => {
-      skills.forEach((skill: Skill) => {
+    this.skillService.getSkills().subscribe(skills => {
+      let skillZ: Skill[] = skills['skills']
+      skillZ.forEach((skill: Skill) => {
         this.skills.push(skill.id);
       })
     });

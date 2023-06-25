@@ -1,3 +1,19 @@
 .list{
     display: flex;
 }
+
+.listInfo{
+    display: flex;
+    max-width: 250px;
+    overflow-x: scroll;
+}
+
+.listInfo::-webkit-scrollbar {
+    display: none;
+}
+
+.listModal{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
