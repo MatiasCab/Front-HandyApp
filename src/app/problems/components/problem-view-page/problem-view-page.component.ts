@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProblemService } from '../../services/problem.service';
 import { Problem } from '../../../core/models/Problem';
 import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/core/models/User';
 
 @Component({
   selector: 'app-problem-view-page',
@@ -14,6 +15,7 @@ export class ProblemViewPageComponent {
   id?: number;
   viewOption?: string; //['otherView', 'myView', 'myCompleteView']
   contactLabel?: string;
+  importantUserInfo?: User;
 
   constructor(
     private problemService: ProblemService,
@@ -40,6 +42,8 @@ export class ProblemViewPageComponent {
               this.viewOption = '';
             }else {
               this.viewOption = 'otherView';
+              this.importantUserInfo = owner;
+              console.log(this.importantUserInfo)
             }
           } else {
             if(this.problem?.resolvedDate){
