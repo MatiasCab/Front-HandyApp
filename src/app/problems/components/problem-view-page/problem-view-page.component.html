@@ -1,8 +1,8 @@
 <div class="problem-info" *ngIf="this.viewOption == 'otherView'">
     <div class="padding">
-        <app-problem-general-info [problem]="problem"></app-problem-general-info> 
+        <app-problem-general-info [problem]="this.problem"></app-problem-general-info> 
         <div class="chat-button">
-            <app-button [type]="'contact'" [label]="'Contactar a Roxana'"></app-button>
+            <app-button [type]="'contact'" [label]="this.contactLabel"></app-button>
         </div>
     </div> 
     <div class="padding-left">
@@ -13,7 +13,7 @@
 
 <div class="problem-info" *ngIf="this.viewOption == 'myView'">
     <div class="padding">
-        <app-problem-general-info [problem]="problem"></app-problem-general-info> 
+        <app-problem-general-info [problem]="this.problem"></app-problem-general-info> 
         <div class="buttons-ajust">
             <div class="secondary-button">
                 <app-button [type]="'chat'" [label]="'Chats'"></app-button>
@@ -32,7 +32,7 @@
 <div class="problem-info complete-view" *ngIf="this.viewOption == 'myCompleteView'">
     <div  class="h">
         <div class="padding">
-            <app-problem-general-info [problem]="problem"></app-problem-general-info> 
+            <app-problem-general-info [problem]="this.problem"></app-problem-general-info> 
         </div> 
         <div class="padding-left all">
             <app-problem-user-info></app-problem-user-info>

@@ -13,6 +13,7 @@ export class ProblemViewPageComponent {
   problem?: Problem;
   id?: number;
   viewOption?: string; //['otherView', 'myView', 'myCompleteView']
+  contactLabel?: string;
 
   constructor(
     private problemService: ProblemService,
@@ -20,26 +21,42 @@ export class ProblemViewPageComponent {
   ) {}
 
   ngOnInit(): void {
-    this.problemService.getProblems().subscribe(problems => {
-      if(problems.error){
-
-      }
-      else{
-        console.log(problems);
-      }
-      this.problem = problems[0];
-      this.route.params.subscribe(params => {
-        this.id = params['problemId']; // 'id' es el nombre del parámetro definido en tu archivo de enrutamiento
-        if(this.id == 1) {
-          this.viewOption = 'otherView';
-        } else if (this.id == 2) {
+    this.route.params.subscribe(params => {
+      const problemId = params['problemId'];
+      this.problemService.getProblemById(problemId).subscribe(problem => {
+        if(problem.error){
+          
+        }
+        else{
+          console.log(problem);
+          this.problem = problem['problem'];
+          this.id = problemId;
+          let owner = this.problem!.ownerUser;
+          let ownerId = owner?.id?.toString();
+          this.contactLabel = `Contactar a ${owner?.firstname}`;
+          let actualUserId = localStorage.getItem('user_ID'); // 'id' es el nombre del parámetro definido en tu archivo de enrutamiento
+          if(ownerId != actualUserId) {
+            if(this.isResolved()){
+              this.viewOption = '';
+            }else {
+              this.viewOption = 'otherView';
+            }
+          } else {
+            if(this.problem?.resolvedDate){
+              this.viewOption = '';
+            }else {
+              this.viewOption = 'otherView';
+            }
           this.viewOption = 'myView';
-        } else {
-          this.viewOption = 'myCompleteView';
+          }
         }
       });
     });
-    
+  }
+
+  private isResolved(){
+    if(this.problem?.resolvedDate) return true;
+    return false;
   }
     
 

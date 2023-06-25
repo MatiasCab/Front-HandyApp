@@ -14,7 +14,7 @@ const routes: Routes = [
         data: {  }
     },
     {
-        path: 'register',
+        path: 'signup',
         component: SignupComponent,
         data: {  }
     },
