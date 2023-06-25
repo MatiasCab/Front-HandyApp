@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     width: 79vw;
-    height: 80vh;
+    height: 110vh;
     margin-left: 1vw;
     justify-content: center;
     align-items: center;
@@ -10,9 +10,15 @@
 
 .gridContainer{
     align-items: center;
-    max-height: 800px;
+    display: flex;
+    flex-direction: column;
+    max-height: 690px;
     overflow: scroll;
 }
+
+.gridContainer::-webkit-scrollbar {
+    display: none;
+  }
 
 h1{
     font-family: Helvetica, Verdana, Arial;

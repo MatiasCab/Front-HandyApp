@@ -8,7 +8,7 @@ import { ProblemService } from 'src/app/problems/services/problem.service'; //Ti
   templateUrl: './problems-grid.component.html',
   styleUrls: ['./problems-grid.component.scss']
 })
-export class ProblemsGridComponent {
+export class  ProblemsGridComponent {
 
   @Input() problems?: Problem[]; //Tiene sentido que sea INPUT?
   problems2:Problem[] = [];
