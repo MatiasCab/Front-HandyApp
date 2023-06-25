@@ -18,6 +18,7 @@ export class FriendItemComponent {
   modaltitle: string = "";
   modaltext: string = "";
   modalbutton: string = "";
+  modelSelectedId: string = "";
 
   //var myModal = new bootstrap.Modal(document.getElementById('friendsModal'))
   //myModal.show()
@@ -42,6 +43,7 @@ export class FriendItemComponent {
   ngOnInit(): void {
     var datee = new Date(this.user!.singupDate!);
     this.joinedDateString = this.convertDateToString(datee);
+    console.log(this.user);
     if(this.user!.friendshipStatus == 0){
       this.botonText = "Agregar amigo";
     }else if(this.user!.friendshipStatus == 1){
@@ -88,7 +90,7 @@ export class FriendItemComponent {
     modalTitle!.textContent = this.modaltitle;
     modalBody!.textContent = this.modaltext;
     modalButton!.textContent = this.modalbutton;
-    var modal = new bootstrap.Modal(document.getElementById('friendsModal')!);
+    var modal = new bootstrap.Modal(document.getElementById(this.user!.id!.toString())!);
     modal.show();
   }
 
