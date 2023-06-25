@@ -15,7 +15,7 @@ export class LongCardComponent {
   ){}
 
   @Input() problem?: Problem
-  @Input() userId?: number;
+  @Input() user?: User;
   @Input() option?: string;
 
   editProblem(){

@@ -19,25 +19,24 @@ export class SignupComponent implements OnInit{
   @ViewChild('birthday') birthdayInput?: UserInputComponent;
   @ViewChild('referredCode') referredCodeInput?: UserInputComponent;
 
-  @ViewChild('toast') toast?: ElementRef<HTMLInputElement>;
-
   validci : boolean = false;
   validusername : boolean = false;
   validpassword : boolean = false;
   validname : boolean = false;
   validlastname : boolean = false;
   validemail : boolean = false;
+  validbirthday : boolean = false;
   errorMessage?: string;
 
   constructor(
     private authService: AuthService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
   }
 
   validInformation() : boolean { //Camel case
-    if (this.validci && this.validusername && this.validpassword && this.validname && this.validlastname && this.validemail){
+    if (this.validci && this.validusername && this.validpassword && this.validname && this.validlastname && this.validemail && this.validbirthday){
       return true;
     }else{
       return false;
@@ -45,7 +44,7 @@ export class SignupComponent implements OnInit{
   }
 
   register() {
-    this.toast?.nativeElement.classList.remove('show');
+    if(this.validInformation() == true){
     let ci = this.ciInput?.InputInfo ? +this.ciInput?.InputInfo : +'';
     let username = this.usernameInput?.InputInfo ? this.usernameInput?.InputInfo : '';
     let password = this.passwordInput?.InputInfo ? this.passwordInput?.InputInfo : '';
@@ -55,9 +54,6 @@ export class SignupComponent implements OnInit{
     let birthday = this.birthdayInput?.InputInfo ? this.birthdayInput?.InputInfo : '';
     let referredCode = this.referredCodeInput?.InputInfo ? +this.referredCodeInput?.InputInfo : +'';
 
-    //FIXME VALIDATION INFO
-    console.log(this.validInformation());
-    if (this.validInformation() || true){
       const user: signUpInfo = {
         CI: ci,
         username: username,
@@ -89,33 +85,32 @@ export class SignupComponent implements OnInit{
     }
   }
 
-  //FIXME CHECKID
-  checkCI(event: any) {
+  // ACA SOLO VERIFICAMOS EL LARGO DE LA CEDULA, PERO NO VERIFICAMOS QUE SEA UN NUMERO. FELICITACIONES
+  checkCI() {
     let ci = this.ciInput?.InputInfo ? this.ciInput?.InputInfo : '';
     let cistr = ci.toString();
-    if (cistr == "" || cistr.length != 8) {
+    if (cistr == "" || cistr.length <= 6 || cistr.length >= 9) {
       this.validci = false;
     }else{
       this.validci = true;
     }
-    
   }
 
-  //FIXME CHECKUSERNAME
-  checkUsername(event:any) {
+  // TIENE PINTA DE OK, FELICITACIONES
+  checkUsername() {
     let username = this.usernameInput?.InputInfo ? this.usernameInput?.InputInfo : '';
     let usernamelower = username.toLowerCase();
 
     let result = !/\s/.test(usernamelower);
     let result2 = !/[^a-z]/.test(usernamelower);
-    if (result && result2){
-      this.validusername = true;
-    }else{
+    if (result || result2 || usernamelower.length < 3 || usernamelower.length > 20){
       this.validusername = false;
+    }else{
+      this.validusername = true;
     }
   }
 
-  //FIXME CHECKPASSWORD USER VALIDATORS
+  // ESTO ESTA BIEN, TIENE PINTA. FELICITACIONES
   checkPassword() {
     let password = this.passwordInput?.InputInfo ? this.passwordInput?.InputInfo : '';
     if(password.length >= 8){
@@ -125,7 +120,7 @@ export class SignupComponent implements OnInit{
     }
   }
 
-  //FIXME CHECK NAME
+  // ESTO ESTA BIEN, FELICITACIONES
   checkName() {
     let name = this.nameInput?.InputInfo ? this.nameInput?.InputInfo : '';
 
@@ -139,7 +134,7 @@ export class SignupComponent implements OnInit{
     }
   }
 
-  //FIXME CHECK LASTNAME
+  // ESTO ESTA BIEN, FELICITACIONES
   checkLastname() {
     let lastname = this.lastnameInput?.InputInfo ? this.lastnameInput?.InputInfo : '';
 
@@ -153,12 +148,12 @@ export class SignupComponent implements OnInit{
     }
   }
 
-  //FIXME CHECK EMAIL
-  checkEmail(event: any) {
+  // ESTO ESTA BIEN, FELICITACIONES.
+  checkEmail() {
     let email = this.emailInput?.InputInfo ? this.emailInput?.InputInfo : '';
-    const expression: RegExp = /^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$/;
+    var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    const result: boolean = expression.test(email);
+    const result: boolean = regex.test(email);
 
     if (result){
       this.validemail = true;
@@ -167,4 +162,19 @@ export class SignupComponent implements OnInit{
     }
   }
 
+  // ESTO ESTA BIEN, FELICITACIONES.
+  checkBirthday() {
+    let birthday = this.birthdayInput?.InputInfo ? this.birthdayInput?.InputInfo : '';
+    var yearInp = birthday.substring(0,4);
+    var date = new Date();
+    var yearAct = date.getFullYear();
+    var yearmin = yearAct - 18;
+    var yearmax = yearAct - 100;
+
+    if (parseInt(yearInp) < yearmax || parseInt(yearInp) > yearmin){
+      this.validbirthday = false;
+    }else{
+      this.validbirthday = true;
+    }
+  }
 }

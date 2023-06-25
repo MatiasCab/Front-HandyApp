@@ -1,12 +1,12 @@
 <div class="problemInfo">
     <div class="problemPic">
-        <img class="problemImg" src="{{problem?.picture}}" alt="">
+        <img class="problemImg" src="{{problem?.imageURL}}" alt="">
     </div>
     <div class="problemData">
         <h3>{{problem?.name}}</h3>
         <span><i class="bi bi-calendar"></i> {{dateString}}</span>
         <div *ngIf="!fullInfo">
-            <app-skill-list class="skills" [skills]="problem?.skills!" [option]="'problemInfo'"></app-skill-list>
+            <app-skill-list class="skills" [skills]="problemSkillsIds" [option]="'problemInfo'"></app-skill-list>
         </div>
         <div *ngIf="fullInfo">
             <span><i class="bi bi-x-circle"></i> Sin realizar...</span>

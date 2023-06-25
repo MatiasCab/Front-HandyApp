@@ -1,11 +1,17 @@
+import { Skill } from "./Skill";
+import { User } from "./User";
+
 export interface Problem{
     id?: number;
-    picture?: string;
+    imageURL?: string;
     name?: string;
+    distance: number;
     description?: string;
-    date?: Date;
-    location?: string;
+    postedDate?: Date;
+    resolvedDate?: Date;
+    lat?: number;
+    lng?: number;
     status?: string;
-    skills?: number[];
-    userid?: number
+    skills?: Skill[];
+    ownerUser?: User
 }

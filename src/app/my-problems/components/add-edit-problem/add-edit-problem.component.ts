@@ -7,6 +7,7 @@ import { SkillListComponent } from 'src/app/shared/components/skill-list/skill-l
 
 import { Problem } from 'src/app/core/models/Problem';
 import { ProblemService } from 'src/app/problems/services/problem.service';
+import { MapComponent } from 'src/app/shared/components/map/map.component';
 
 
 @Component({
@@ -18,6 +19,10 @@ export class AddEditProblemComponent {
   
   @ViewChild (SkillListComponent) skillListComponent!: SkillListComponent;
   @ViewChild ('skillListModal') skillListComponentModal!: SkillListComponent;
+  @ViewChild ('problemDescriptionText') problemDescriptionText!: HTMLTextAreaElement;
+  @ViewChild ('problemTitleText') problemTitleText!: HTMLInputElement;
+  @ViewChild (MapComponent) mapComponent!: MapComponent;
+  
 
   constructor(
     private skillService: SkillService,
@@ -33,6 +38,13 @@ export class AddEditProblemComponent {
   idSkillsAux: number[] = [];
 
   counterOfChars:number = 0
+
+  warningTitle?:string;
+  warningDescription?: string;
+  warningSkills?: string;
+  warningPhoto?: string;
+  
+  newProblemPicture?: string
   
   dateString?: string
 
@@ -49,9 +61,9 @@ export class AddEditProblemComponent {
   ngAfterViewInit(){
     setTimeout(() => {
       this.problem?.skills?.forEach(x => {
-      if(this.idSkillsModal.includes(x)){
+      if(this.idSkillsModal.includes(x.id)){
         this.skillListComponentModal.tagComponent.forEach(tag => {
-          if(tag.skill?.id === x){
+          if(tag.skill?.id === x.id){
             tag.activateSkill()
           }
         })
@@ -85,6 +97,7 @@ export class AddEditProblemComponent {
         skillTemp.push(tag.skill?.id);
       }
     })
+    this.idSkillsProblem = skillTemp;
     this.skillListComponent.refreshList(skillTemp);
   }
 
@@ -95,6 +108,18 @@ export class AddEditProblemComponent {
     }else{
       return undefined;
     }
+  }
+
+  pictureSaver(base64: string){
+    this.newProblemPicture = base64;
+  }
+
+  postProblem(title: string, description: string){
+    if(!this.validateInput(title) || !this.validateInput(description)){
+
+    }
+    
+
   }
 
   getProblem(): void {
@@ -108,21 +133,27 @@ export class AddEditProblemComponent {
         } else {
           this.problem = problem;
           this.idSkillsProblem = []; 
-          this.problem.skills?.forEach(skillId => {
-            this.skillService.getSkillById(skillId).subscribe(x => {
-              if (x == undefined) {
-                console.error("Error 404: SKILL NOT FOUND");
-                return;
-              }
-              this.idSkillsProblem.push(x.id!);
-            });
-          });
+          this.problem!.skills?.forEach(skill => {
+              this.idSkillsProblem.push(skill.id!);
+          })
         }
-      });
+      })
     }
-
   }
 
+  validateInput(input: string): boolean {
+    if (input.trim() === '') {
+      return false;
+    }
+
+    const specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+    if (specialChars.test(input)) {
+      return false;
+    }
+  
+    return true;
+  }
+  
 
   
 }
