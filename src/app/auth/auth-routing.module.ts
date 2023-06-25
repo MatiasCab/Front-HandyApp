@@ -19,8 +19,8 @@ const routes: Routes = [
         data: {  }
     },
     {
-        path: 'recoverpassword',
-        component: RecoverComponent,
+        path: 'changePassword',
+        component: ChangeComponent,
         data: {  }
     },
     {

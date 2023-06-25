@@ -33,13 +33,11 @@ export class AuthService {
     );
   }
 
-  /*
   sendemailcode(email: string) {
     return this.http.post<any>(`${API_AUTH_URL}/sendemailcode`, email).pipe(
       catchError(this.handleError<any>('signup'))
     );
   }
-  */
 
 
   verifycode(email: string, verificationCode: string) {
@@ -56,14 +54,11 @@ export class AuthService {
   }
 
 
-  /// TOTALMENTE INSEGURO JASJDASJDASJDJ
-  /*
-  changepass(cedula: string, password: string) {
-    return this.http.post<any>(`${API_AUTH_URL}/changepassword`, {cedula,password}).pipe(
-      catchError(this.handleError<any>('signup'))
+  changepass(password: string) {
+    return this.http.put<any>(`${API_AUTH_URL}/passwords`, {password}).pipe(
+      catchError(this.handleError<any>('changePassword'))
     );
   }
-  */
 
   //FIXME HANDLER ERROS RESPONSE
   private handleError<T>(operation: String) {
@@ -76,6 +71,10 @@ export class AuthService {
         return of({ error: true, type: 'InvalidCredentials' });
       } else if (error.error.name == 'InvalidVerificationCode') {
         return of({ error: true, type: 'InvalidCode' })
+      } else if (error.error.name == 'InvalidIDCardNumber') {
+        return of({ error: true, type: 'InvalidIDCardNumber' })
+      }else if (error.error.name == 'InvalidReferralCode') {
+        return of({ error: true, type: 'InvalidReferralCode' })
       } else {
         return of({ error: true, type: 'Server' });
       }
