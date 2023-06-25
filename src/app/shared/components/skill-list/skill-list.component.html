@@ -9,7 +9,7 @@
     </div>
 </div>
 
-<div class="list" *ngIf="option=='problemInfo'">
+<div class="listInfo" *ngIf="option=='problemInfo'">
     <app-tag *ngFor="let skillX of skillsList" [skill]="skillX" [option]="'simple'">
     </app-tag>
 </div>
@@ -19,7 +19,7 @@
     </app-tag>
 </div>
 
-<div class="list" *ngIf="option=='modal'">
+<div class="listModal" *ngIf="option=='modal'">
     <app-tag #tag *ngFor="let skillX of skillsList" [skill]="skillX" [option]="'modalFilter'" (sendIdToFilter)="addSkillToFilter($event)">
     </app-tag>
 </div>

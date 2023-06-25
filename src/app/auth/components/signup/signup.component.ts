@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserInputComponent } from '../user-input/user-input.component';
 import { AuthService } from '../../services/auth.service';
 import { signUpInfo } from 'src/app/core/models/signUpInfo';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -30,7 +31,8 @@ export class SignupComponent implements OnInit{
 
   constructor(
     private authService: AuthService,
-  ) {}
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -72,12 +74,16 @@ export class SignupComponent implements OnInit{
         console.log(res);
         if (res.error) {
           if (res.type == 'RepitedCredentials') {
-            this.errorMessage = 'El nombre de usuario o email ya se encuentran en nuestra base de datos.';
+            this.errorMessage = 'El nombre de usuario, email, o cedula ya se encuentran en nuestra base de datos.';
+          } else if (res.type == 'InvalidReferralCode') {
+            this.errorMessage = 'El codigo de referidos es incorrecto.';
+          } else if (res.type == 'InvalidIDCardNumber') {
+            this.errorMessage = 'La cedula es incorrecta.';
           } else {
             this.errorMessage = 'Lo sentimos, no hemos podido procesar su solicitud.';
           }
         } else {
-          //this.openVerifyCodeModal();
+          this.router.navigateByUrl('/verify');
         }
       });
     }else{

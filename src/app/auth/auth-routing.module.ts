@@ -14,13 +14,13 @@ const routes: Routes = [
         data: {  }
     },
     {
-        path: 'register',
+        path: 'signup',
         component: SignupComponent,
         data: {  }
     },
     {
-        path: 'recoverpassword',
-        component: RecoverComponent,
+        path: 'changePassword',
+        component: ChangeComponent,
         data: {  }
     },
     {

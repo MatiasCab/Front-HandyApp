@@ -4,19 +4,23 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { MyProblemsComponent } from './components/my-problems/my-problems.component';
 import { AddEditProblemComponent } from './components/add-edit-problem/add-edit-problem.component';
+import { AuthGuard } from '../core/guards/auth-guard.guard';
 
 const routes: Routes = [
     {
         path: '', 
-        component: MyProblemsComponent
+        component: MyProblemsComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'add-problem',
-        component: AddEditProblemComponent
+        component: AddEditProblemComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'edit-problem/:problemId',
-        component: AddEditProblemComponent
+        component: AddEditProblemComponent,
+        canActivate: [AuthGuard]
     }
 ];
 

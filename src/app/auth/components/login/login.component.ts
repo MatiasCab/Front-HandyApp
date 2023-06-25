@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit{
     this.authService.login(username, password).subscribe(response => {
       if (response.error) {
         if (response.type == 'InvalidCredentials') {
-          this.errorMessage = 'Nombre de usuario y/o contraseña incorrectos';
+          this.errorMessage = 'Nombre de usuario y/o contraseña incorrectos.';
         } else {
           this.errorMessage = 'Lo sentimos no hemos podido procesar su solicitud';
         }
