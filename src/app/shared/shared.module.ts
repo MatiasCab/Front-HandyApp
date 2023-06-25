@@ -14,6 +14,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { OrderByFilterComponent } from './components/order-by-filter/order-by-filter.component';
 import { ActionButtonsComponent } from './components/action-buttons/action-buttons.component';
 import { MapComponent } from './components/map/map.component';
+import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MapComponent } from './components/map/map.component';
     SearchBarComponent,
     OrderByFilterComponent,
     ActionButtonsComponent,
-    MapComponent
+    MapComponent,
+    ProfileInfoComponent
    ],
   exports: [ 
     ProblemsGridComponent,
@@ -42,7 +44,8 @@ import { MapComponent } from './components/map/map.component';
     SkillListComponent,
     OrderByFilterComponent,
     TagComponent,
-    MapComponent
+    MapComponent,
+    ProfileInfoComponent
    ]
 })
 export class SharedModule { }
