@@ -1,4 +1,4 @@
-<div class="review-box">
+<div class="review-box" *ngIf="isDataAvailable && problems.length != 0">
     <h3>Reviews</h3>
     <div class="emojis">
         <i class="bi bi-emoji-smile"><p>{{reviews.good}}</p></i>
@@ -21,3 +21,11 @@
         </ul>
     </div>
 </div> 
+
+<div class="review-box-empty" *ngIf="!isDataAvailable && problems.length == 0">
+    <div class="noreview">
+        <span class="bi bi-emoji-frown"></span>
+        <h1>No hay reviews para mostrar</h1>
+        <p>Este usuario no ha recibido ninguna review</p>
+    </div>
+</div>

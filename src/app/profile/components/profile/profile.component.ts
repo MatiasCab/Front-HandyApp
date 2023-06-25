@@ -12,8 +12,11 @@ import { ReviewsService } from '../../services/reviews.service';
 export class ProfileComponent {
 
   username?: string;
-  User?: User;
+  User!: User;
   MyProfile: Boolean|false = true;
+
+  isDataAvailable:boolean = false;
+
   //id?: number;
   //viewOption?: string; //['otherView', 'myView', 'myCompleteView']
 
@@ -31,11 +34,15 @@ export class ProfileComponent {
         this.reviewsservice.getProfile(id!).subscribe(profile => {
           this.User = profile["user"];
           this.MyProfile = true;
+          this.isDataAvailable = true;
       });
       } else {
         this.reviewsservice.getProfile(this.username).subscribe(profile => {
+          console.log("PERFIL",profile)
           this.User = profile["user"];
+          console.log("USER", this.User);
           this.MyProfile = false;
+          this.isDataAvailable = true;
         });
       }
     });

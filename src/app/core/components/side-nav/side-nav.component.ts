@@ -36,9 +36,9 @@ export class SideNavComponent {
     var url = this.location.path();
     if (url.startsWith('/problems')){
       this.problems = true;
-    }if (url == '/profile/'){
+    }if (url === '/profile/'){
       this.profiles = true;
-    }if (url == '/profile'){
+    }if (url === '/profile'){
       this.profiles = true;
       this.profiles_myprofile = true;
     }if (url == '/friends'){
@@ -112,6 +112,7 @@ export class SideNavComponent {
     this.disableAll();
     this.Router.navigate(['/profile']);
     this.profiles = true;
+    console.log(this.profiles);
     this.profiles_myprofile = true;
   }
 

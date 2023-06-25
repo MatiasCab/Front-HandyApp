@@ -11,10 +11,13 @@ import { Review } from 'src/app/core/models/Review';
 })
 export class ProfileReviewsComponent {
 
-  @Input() User: User | undefined;
+  @Input() User!: User;
   reviews!: Reviews;
   problems: Review[] = [];
   score: number = 1;
+
+  isDataAvailable:boolean = false;
+
   //id?: number;
   //viewOption?: string; //['otherView', 'myView', 'myCompleteView']
 
@@ -24,11 +27,11 @@ export class ProfileReviewsComponent {
 
   ngOnInit(): void {
     this.ReviewsService.getReviews(this.User!.id!.toString()).subscribe(profile => {
-      console.log(profile);
       this.reviews = profile["reviewsInfo"];
-      console.log(this.reviews);
-      this.problems = this.reviews["reviews"];
-      console.log(this.problems);
+      if(this.reviews != undefined){
+        this.problems = this.reviews["reviews"];
+        this.isDataAvailable = true;
+      }
     });
     
   }

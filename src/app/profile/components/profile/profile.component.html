@@ -1,13 +1,13 @@
 <div class="exterior">
     <div class="profile-info">
         <div class="padding">
-            <app-profile-info [User]="User"></app-profile-info>
+            <app-profile-info [User]="User" *ngIf="isDataAvailable"></app-profile-info>
             <div class="chat-button">
-                <app-skills [User]="User" [MyProfile]="MyProfile"></app-skills>
+                <app-skills [User]="User" [MyProfile]="MyProfile" *ngIf="isDataAvailable"></app-skills>
             </div>
         </div> 
         <div class="padding-left">
-            <app-profile-reviews [User]="User"></app-profile-reviews>
+            <app-profile-reviews [User]="User" *ngIf="isDataAvailable"></app-profile-reviews>
             <app-edit-btn [User]="User" *ngIf="MyProfile"></app-edit-btn>
             <app-friend-btn [User]="User" *ngIf="!MyProfile"></app-friend-btn>
         </div>
