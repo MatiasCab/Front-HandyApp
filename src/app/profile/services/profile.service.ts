@@ -26,6 +26,7 @@ export class ProfileService {
       catchError(this.handleError<any>('updateProfile'))
     );
   }
+  //yes
 
   //FIXME HANDLER ERROS RESPONSE
   private handleError<T>(operation: String) {
