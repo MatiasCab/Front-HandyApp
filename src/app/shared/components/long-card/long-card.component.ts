@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Problem } from '../../../core/models/Problem';
 import { User } from 'src/app/core/models/User';
-
 import { Router } from '@angular/router';
 
 @Component({

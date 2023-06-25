@@ -20,8 +20,42 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
+.editbox{
+    height: 100%;
+    width: 47%;
+}
+
+.editpass{
+    height: 45%;
+    width: 100%;
+    background-color: #1689F4;
+    border-radius: 13px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    cursor: pointer;
+    margin-bottom: 9%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editubi{
+    height: 45%;
+    width: 100%;
+    background-color: #1689F4;
+    border-radius: 13px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+textarea{
+    height: 200px;
+}
 .changepass{
     height: 100%;
     width: 47%;
@@ -33,6 +67,6 @@
     justify-content: center;
 }
 
-h2{
+h2,h3{
     text-align: center;
 }

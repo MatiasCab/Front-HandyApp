@@ -11,6 +11,10 @@
     height: 35%;
 }
 
+i{
+    padding-right: 10px;
+}
+
 //Box de foto y informacion
 .profileInfo{
     vertical-align: middle;
@@ -30,5 +34,6 @@
 
 .profilePic{
     height: 150px;
+    width: 150px;
     border-radius: 13px;
 }

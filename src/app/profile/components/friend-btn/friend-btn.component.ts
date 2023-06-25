@@ -11,7 +11,7 @@ export class FriendBtnComponent {
   @Input() User?: User;
 
   title: String = "Agregar amigo";
-  status: number = 0; //0: no son amigos, 1: son amigos, 2: solicitud enviada, 3: solicitud recibida
+  status: number = 0; //0: no son amigos, 1: son amigos, 2: solicitud recibida, 3: solicitud enviada
 
   
 
@@ -19,10 +19,8 @@ export class FriendBtnComponent {
   ) {}
 
   ngOnInit(): void {
+    this.status = this.User!.friendshipStatus!;
 
-    //Llamada al servicio para obtener el estado de la amistad
-
-    // La llamada devuelve status: 0, 1, 2 o 3
     if (this.status == 0){
       this.title = "Agregar amigo";
     }
@@ -30,10 +28,10 @@ export class FriendBtnComponent {
       this.title = "Amigos";
     }
     else if (this.status == 2){
-      this.title = "Solicitud enviada";
+      this.title = "Aceptar solicitud";
     }
     else if (this.status == 3){
-      this.title = "Aceptar solicitud";
+      this.title = "Solicitud enviada";
     }
   }
 
@@ -46,7 +44,7 @@ removeFriend(): void{
 addFriend(): void{
   //Llamada al servicio para enviar solicitud de amistad
   this.title = "Solicitud enviada";
-  this.status= 2;
+  this.status= 3;
 }
 
 acceptFriend(): void{

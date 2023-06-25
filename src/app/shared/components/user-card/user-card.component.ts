@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-
 import { User } from 'src/app/core/models/User';
-import { UserService } from 'src/app/problems/services/user.service';
+import { UserService } from 'src/app/core/services/user.service';
+
 
 @Component({
   selector: 'app-user-card',
@@ -35,7 +35,8 @@ export class UserCardComponent {
     this.userService.getUser(this.userId!).subscribe(user => {
       this.user = user;
       if (user) {
-        this.joinedDateString = this.convertDateToString(user.joinedDate!);
+        var datee = new Date(user.singupDate!);
+        this.joinedDateString = this.convertDateToString(datee);
       }
     });
   }

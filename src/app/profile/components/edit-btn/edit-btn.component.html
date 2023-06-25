@@ -1,7 +1,13 @@
 <div class="editbtn d-flex justify-content-between">
-    <div class="editprofile" data-bs-toggle="modal" data-bs-target="#editModal"><h2>Editar perfil</h2></div>
+    <div class="editprofile" data-bs-toggle="modal" data-bs-target="#editModal"><h2>Editar Perfil</h2></div>
+    <!--
     <div class="editprofile" data-bs-toggle="modal" data-bs-target="#changeModal"><h2>Cambiar contraseña</h2></div>
-</div>
+    -->
+    <div class="editbox">
+      <div class="editpass" data-bs-toggle="modal" data-bs-target="#changeModal"><h3>Cambiar Contraseña</h3></div>
+      <div class="editubi" data-bs-toggle="modal" data-bs-target="#changeUbiModal"><h3>Cambiar Ubicación</h3></div>
+    </div>
+  </div>
 
 
 <!-- Modal editar perfil -->
@@ -15,13 +21,19 @@
         <div class="modal-body">
           <form>
             <div class="mb-3">
+              <label>Cambiar foto de perfil:</label>
+            </div>
+            <div class="mb-3">
+              <input id="fileInput" type="file" accept="image/*" (change)="onFileSelected($event)">
+            </div>
+            <div class="mb-3">
               <label for="message-text" class="col-form-label">Descripción:</label>
-              <textarea class="form-control" id="message-text">{{User?.description}}</textarea>
+              <textarea class="form-control" id="message-text" #newdescription maxlength="400">{{User?.description}}</textarea>
             </div>
           </form>
         </div>
         <div class="modal-footer justify-content-center">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="changedescription()">Editar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="editprofile()">Editar</button>
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
         </div>
       </div>
@@ -41,18 +53,43 @@
           <form>
             <div class="mb-3">
               <label for="recipient-name" class="col-form-label">Nueva contraseña:</label>
-              <input type="password" class="form-control" id="password1">
+              <input type="password" class="form-control" id="password1" #password1 (keyup)="checksamepass()"/>
             </div>
             <div class="mb-3">
               <label for="message-text" class="col-form-label">Repetir contraseña:</label>
-              <input type="password" class="form-control" id="password2">
+              <input type="password" class="form-control" id="password2" #password2 (keyup)="checksamepass()"/>
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="changepass()">Cambiar contraseña</button>
+          <button type="button" class="btn btn-secondary" id="buttonChangePass" disabled data-bs-dismiss="modal" (click)="changepass()">Cambiar contraseña</button>
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
         </div>
       </div>
     </div>
   </div>
+
+
+  <!-- Modal Cambiar Ubicación -->
+<div class="modal fade" id="changeUbiModal" tabindex="-1" aria-labelledby="changeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="changeModalLabel">Cambiar ubicación</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <!-- esto es el mapa -->
+            <label for="recipient-name" class="col-form-label">aca va el mapa</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="buttonChangePass" disabled data-bs-dismiss="modal" (click)="changeubi()">Cambiar ubicación</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

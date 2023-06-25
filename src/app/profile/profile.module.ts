@@ -9,6 +9,7 @@ import { ProfileReviewsComponent } from './components/profile-reviews/profile-re
 import { SkillsComponent } from './components/skills/skills.component';
 import { FriendBtnComponent } from './components/friend-btn/friend-btn.component';
 import { EditBtnComponent } from './components/edit-btn/edit-btn.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { EditBtnComponent } from './components/edit-btn/edit-btn.component';
     imports: [
         CommonModule,
         ProfileRoutingModule,
-        SharedModule
+        SharedModule,
+        FormsModule
     ]
 })
 export class ProfileModule { }

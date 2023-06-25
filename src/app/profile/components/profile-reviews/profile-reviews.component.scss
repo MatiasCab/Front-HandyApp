@@ -6,6 +6,16 @@
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
+.bi-emoji-angry, .bi-emoji-angry-fill {
+    color: #F81616;
+}
+.bi-emoji-neutral, .bi-emoji-neutral-fill {
+    color: #FBA500;
+}
+.bi-emoji-smile, .bi-emoji-smile-fill {
+    color: #30FF1E;
+}
+
 h3 {
     font-weight: 700;
     margin-left: auto;
@@ -26,15 +36,27 @@ h3 {
 
 .list-group-item{
     display: flex;
-    justify-content: left;
-    align-items: center;
+    //flex-direction: column;
+    //justify-content: left;
+    //align-items: center;
     border: none;
     border-bottom: 1px solid #E5E5E5;
     p{
         font-style: normal;
-        padding-left: 6%;
+        padding-left: 0%;
     }
 }
+
+i{
+    font-size: xx-large;
+}
+
+.emoji{
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
 .emojis {
     padding-left: 15%;
     padding-right: 15%;
@@ -42,17 +64,6 @@ h3 {
     display: flex;
     padding-top: 3%;
     justify-content: space-between;
-    
-
-    .bi-emoji-angry, .bi-emoji-angry-fill {
-        color: #F81616;
-    }
-    .bi-emoji-neutral, .bi-emoji-neutral-fill {
-        color: #FBA500;
-    }
-    .bi-emoji-smile, .bi-emoji-smile-fill {
-        color: #30FF1E;
-    }
 
     p{
         font-family: Arial, Helvetica, sans-serif;
