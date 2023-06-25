@@ -1,12 +1,7 @@
-<!-- <div class="exterior">
-    <app-search-bar></app-search-bar>
-    <app-order-by-filter [option]="'searchPage'" ></app-order-by-filter>
-    <app-problems-grid></app-problems-grid>
-</div> -->
-
 <div class="search-box">
     <div class="buscador">
-        <app-search-bar></app-search-bar>
+        <app-search-bar (problemSearchEmitter)="problemSearch($event)"></app-search-bar>
+        <app-order-by-filter (filterEmitter)="problemFilter($event)" *ngIf="areProblems" [option]="'searchPage'"></app-order-by-filter>
     </div>
-    <app-problems-grid></app-problems-grid>
+    <app-problems-grid (problemsEmmiter)="areProblems=true" ></app-problems-grid>
 </div>

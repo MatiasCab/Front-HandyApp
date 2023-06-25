@@ -22,13 +22,14 @@ export class SearchBarComponent {
   skillsFilter: number[] = [];
 
   @Output() problemSender = new EventEmitter();
+  @Output() problemSearchEmitter = new EventEmitter<{name: string, skills: number[]}>();
 
 
   valorInput: string = '';
 
   @ViewChild ('skillsList') skillListFilter!: SkillListComponent;
   @ViewChild ('skillsModal') skillListModal!: SkillListComponent;
-
+  
 
   constructor(
     private skillService: SkillService,
@@ -67,18 +68,8 @@ export class SearchBarComponent {
     this.skillListFilter.refreshList(skillTemp);
   }
 
-  searchProblem(name: string, skills: number[]){
-    let problemsFiltered: Problem[] = [];
-    this.problemService.getProblems().subscribe(problems => {
-      problems.forEach((problemX: Problem) => {
-        if(problemX && problemX.name!.toLowerCase().includes(name.toLowerCase())){
-          problemsFiltered.push(problemX);
-        }
-      })
-      this.problemService.sendProblems(problemsFiltered);
-      console.log(this.skillListFilter.tagComponent);
-      this.problemSender.emit();
-    })
+  searchProblem(name: string){
+    this.problemSearchEmitter.emit({name: name, skills: this.skillsList});
   }
 
   }

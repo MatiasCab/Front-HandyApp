@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-
+import { Component, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-upper-section',
@@ -7,20 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./upper-section.component.scss']
 })
 export class UpperSectionComponent {
-  pendingQuantity?: number;
-  resolvedQuantity?: number;
+  @Input() pendingQuantity?: number;
+  @Input() resolvedQuantity?: number;
+
+  @Output() 
 
   filterBy(number: number){
-    if(number == 1){
-
-    }
-    else if(number == 2){
-  
-    }
-    
-    else{
-
-    }
   }
 
 
