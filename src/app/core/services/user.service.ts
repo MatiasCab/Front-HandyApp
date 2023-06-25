@@ -71,28 +71,8 @@ export class UserService {
     }
   }
 
-  getMyFriends(): Observable<User[]>{
-    return of(this.UsersList);
-  }
-
   getUser(id: number): Observable<User>{
     return of(this.Users1);
-  }
-
-  getNotFriends(): Observable<User[]>{
-    return of(this.UsersList);
-  }
-
-  filterMyFriends(name: string, skills: number[]): Observable<User[]>{
-    if (name === "" && skills.length === 0){
-      return of(this.UsersList);
-    }else{
-      return of(this.UsersList2);
-    }
-  }
-
-  filterNotMyFriends(name: string, skills: number[]): Observable<User[]>{
-    return of(this.UsersList2);
   }
 
   // Actualizar las skills del usuario.

@@ -1,11 +1,9 @@
-<div class="problemsGrid" *ngIf="problems">
-    <div class="row gx-2 gy-2 w-100 gridContainer ">
-        <app-long-card *ngFor="let problemX of problems"
-        [option]="'problems'"
-        [problem]="problemX"
-        [user]="problemX.ownerUser"
-        ></app-long-card>
-    </div>
+<div class="gridContainer " *ngIf="problems && !option">
+    <app-long-card *ngFor="let problemX of problems"
+    [option]="'problems'"
+    [problem]="problemX"
+    [user]="problemX.ownerUser"
+    ></app-long-card>
 </div>
 
 <div class="noProblems" *ngIf="!problems || problems.length == 0">

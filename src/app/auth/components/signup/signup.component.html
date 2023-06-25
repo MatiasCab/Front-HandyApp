@@ -13,14 +13,14 @@
                 <div class="col colizq">
                     <label class="form-label" for="floatingInput">Cédula</label>
                     <app-user-input #ci class="" [inputLabel]="'Cédula'"
-                        [inputTypeAutocomplete]="'nickname'" [inputType]="'number'" (keyup)="checkCI($event)">
+                        [inputTypeAutocomplete]="'nickname'" [inputType]="'number'" (keyup)="checkCI()">
                     </app-user-input>
                 </div>
 
                 <div class="col colder">
                     <label class="form-label" for="floatingInput">Nombre de usuario</label>
                     <app-user-input #username class="" [inputLabel]="'Nombre de usuario'"
-                        [inputTypeAutocomplete]="'nickname'" (keyup)="checkUsername($event)">
+                        [inputTypeAutocomplete]="'nickname'" (keyup)="checkUsername()">
                     </app-user-input>
                 </div>
                 </div>
@@ -46,7 +46,7 @@
                 <div class="form-group">
                     <label class="form-label" for="floatingInput">Email</label>
                     <app-user-input #email class="" [inputLabel]="'Email'"
-                        [inputTypeAutocomplete]="'nickname'" (keyup)="checkEmail($event)">
+                        [inputTypeAutocomplete]="'nickname'" (keyup)="checkEmail()">
                     </app-user-input>
                 </div>
 
@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="form-group buttonCenter">
-                    <button type="button" class="" (click)="register()">Registrarse</button>
+                    <button type="button" class="" (click)="register()" #registerButton>Registrarse</button>
                 </div>
             </form>
 

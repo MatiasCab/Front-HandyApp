@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import * as bootstrap from 'bootstrap';
 import { User } from 'src/app/core/models/User';
+import { FriendsService } from '../../services/friends.service';
 
 @Component({
   selector: 'app-friend-item',
@@ -22,7 +23,8 @@ export class FriendItemComponent {
   //myModal.show()
 
   constructor(
-    private Router: Router
+    private Router: Router,
+    private friendsService: FriendsService
   ) { }
 
   convertDateToString(date: Date): string {
@@ -53,7 +55,7 @@ export class FriendItemComponent {
 
 
   showprofile(){
-    this.Router.navigate(['/profile/' + this.user!.username]);
+    this.Router.navigate(['/profile/' + this.user!.id]);
   }
 
   showproblems(){
@@ -92,13 +94,16 @@ export class FriendItemComponent {
 
   buttonFriends(){
     if(this.user!.friendshipStatus == 0){
-      //llamada a la api para agregar amigo
+      //llamada a la api para solicitar amistad
+      this.friendsService.requestFriend(this.user!.id!.toString()).subscribe();
     }else if(this.user!.friendshipStatus == 1){
       //llamada a la api para eliminar amigo
+      this.friendsService.deleteFriend(this.user!.id!.toString()).subscribe();
     }else if(this.user!.friendshipStatus == 2){
-      //llamada a la api para aceptar o cancelar solicitud
+      //llamada a la api para aceptar solicitud
+      this.friendsService.acceptFriend(this.user!.id!.toString()).subscribe();
     }else if(this.user!.friendshipStatus == 3){
-      //llamada a la api para cancelar solicitud
+      this.friendsService.deleteFriend(this.user!.id!.toString()).subscribe();
     }
 
     //recarga la pagina

@@ -27,13 +27,15 @@ export class SkillListComponent {
 
   ngOnInit() {
     this.skillService.getSkills().subscribe(skills => {
-      this.skillsList = skills.filter(skill => this.skills.includes(skill.id));
+      let skillZ: Skill[] = skills[('skills')]
+      this.skillsList = skillZ.filter(skill => this.skills.includes(skill.id));
     })
   }
 
   refreshList(skillsIds : number[]){
     this.skillService.getSkills().subscribe(skills => {
-      this.skillsList = skills.filter(skill => skillsIds.includes(skill.id));
+      let skillZ: Skill[] = skills[('skills')]
+      this.skillsList = skillZ.filter(skill => skillsIds.includes(skill.id));
       this.cd.detectChanges();
     });
   }

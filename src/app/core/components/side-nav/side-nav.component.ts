@@ -36,7 +36,7 @@ export class SideNavComponent {
     var url = this.location.path();
     if (url.startsWith('/problems')){
       this.problems = true;
-    }if (url.startsWith('/profile')){
+    }if (url == '/profile/'){
       this.profiles = true;
     }if (url == '/profile'){
       this.profiles = true;

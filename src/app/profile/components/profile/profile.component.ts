@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from 'src/app/core/services/user.service';
 import { User } from 'src/app/core/models/User';
 import { ActivatedRoute } from '@angular/router';
+import { ReviewsService } from '../../services/reviews.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,7 @@ export class ProfileComponent {
   //viewOption?: string; //['otherView', 'myView', 'myCompleteView']
 
   constructor(
-    private userService : UserService,
+    private reviewsservice : ReviewsService,
     private route: ActivatedRoute
   ) {}
 
@@ -25,13 +26,15 @@ export class ProfileComponent {
     this.route.params.subscribe(params => {
       this.username = params['username'];
       if(this.username === undefined) {
-        this.userService.getMyProfile().subscribe(profile => {
-          this.User = profile;
-        });
-        this.MyProfile = true;
+        // acceder al local 
+        var id = localStorage.getItem('user_ID');
+        this.reviewsservice.getProfile(id!).subscribe(profile => {
+          this.User = profile["user"];
+          this.MyProfile = true;
+      });
       } else {
-        this.userService.getProfile(this.username!).subscribe(profile => {
-          this.User = profile;
+        this.reviewsservice.getProfile(this.username).subscribe(profile => {
+          this.User = profile["user"];
           this.MyProfile = false;
         });
       }

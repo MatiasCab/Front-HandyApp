@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/core/services/user.service';
 import { User } from 'src/app/core/models/User';
+import { FriendsService } from '../../services/friends.service';
 
 @Component({
   selector: 'app-myfriends',
@@ -11,21 +12,31 @@ export class MyfriendsComponent {
 
   friends?: User[];
   constructor(
-    private userService: UserService
+    private friendsService: FriendsService
   ) { }
 
   ngOnInit(){
-    this.userService.getMyFriends().subscribe(friend => {
-      this.friends = friend;
+    this.friendsService.getFriends().subscribe(friend => {
+      this.friends = friend["users"];
     });
   }
 
   searchFriends(event : any){
-    var name = event["name"];
-    var skills = event["skills"];
-    console.log("name =", name, "skills =", skills);
-    this.userService.filterMyFriends(name, skills).subscribe(friend => {
-      this.friends = friend
+    var nameInput = event["name"];
+    var name = ""
+    if (nameInput !== ""){
+      name = "&name="+nameInput;
+    }
+    var skillsList = event["skills"];
+    var skillLenght = skillsList.length;
+    var skills = "";
+    if(skillLenght !== 0){
+      for (let i = 0; i < skillsList.length; i++) {
+        skills += "&skills[]="+skillsList[i];
+      }
+    }
+    this.friendsService.getFriendsSearch(name, skills).subscribe(friend => {
+      this.friends = friend["users"]
     });
   }
 }
