@@ -119,8 +119,6 @@ export class AddEditProblemComponent {
     if(!this.validateInput(title) || !this.validateInput(description)){
 
     }
-    
-
   }
 
   getProblem(): void {
@@ -147,7 +145,7 @@ export class AddEditProblemComponent {
   }
 
   edit(){
-    
+
   }
 
   validateInput(input: string): boolean {
