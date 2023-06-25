@@ -1,3 +1,8 @@
-<div class="chats-box">
-    <h1>Gente en obras</h1>
+<div class="friends-box">
+    <div class="buscador">
+        <app-search-chats></app-search-chats>
+    </div>
+    <div class="lista">
+        <app-chat-preview *ngFor="let chat of chats" [title]="chat.title" [name]="chat.name" [image]="chat.image"></app-chat-preview>
+    </div>
 </div>

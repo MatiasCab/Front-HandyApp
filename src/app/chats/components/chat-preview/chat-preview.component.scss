@@ -1,0 +1,88 @@
+.item{
+    background-color: white;
+    width: 70vw;
+    height: 15vh;
+    border-radius: 13px;
+    display: flex;
+    justify-content: space-between;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.info{
+    display: flex;
+    align-items: center;
+    width: 40%;
+    padding-left: 25px;
+}
+
+.info-text{
+    padding-left: 20px;
+    height: 14vh;
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    justify-content: center;
+}
+
+p{
+    margin: 0;
+    padding: 0;
+}
+
+.nombre{
+    font-size: 25px;
+    font-weight: bold;
+    height: auto;
+}
+
+.tiempo{
+    font-size: 15px;
+    height: auto;
+    color: #A0A0A0;
+}
+
+i{
+    padding-right: 5px;
+}
+
+img{
+    border-radius: 13px;
+    object-fit: cover;
+}
+
+.botones{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 20%;
+}
+
+.boton{
+    background-color: #1689F4;
+    border-radius: 13px;
+    width: 70%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.amigo{
+    background-color: #E80929;
+}
+
+.noamigo{
+    background-color: #008751;
+}
+
+.solicitudenviada{
+    background-color: #fb810f;
+}
+
+.solicitudrecibida{
+    background-color: #FBD20F;
+}

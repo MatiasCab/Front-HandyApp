@@ -1,5 +1,7 @@
 <div class="friends-box">
-    <app-search-friends (friendSender)="searchNotFriends($event)"></app-search-friends>
+    <div class="buscador">
+        <app-search-friends (friendSender)="searchNotFriends($event)"></app-search-friends>
+    </div>
     <div class="lista">
         <app-friend-item *ngFor="let user of people" [user]="user"></app-friend-item>
     </div>

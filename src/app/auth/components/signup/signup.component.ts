@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserInputComponent } from '../user-input/user-input.component';
 import { AuthService } from '../../services/auth.service';
 import { signUpInfo } from 'src/app/core/models/signUpInfo';
@@ -18,6 +18,8 @@ export class SignupComponent implements OnInit{
   @ViewChild('email') emailInput?: UserInputComponent;
   @ViewChild('birthday') birthdayInput?: UserInputComponent;
   @ViewChild('referredCode') referredCodeInput?: UserInputComponent;
+
+  @ViewChild('toast') toast?: ElementRef<HTMLInputElement>;
 
   validci : boolean = false;
   validusername : boolean = false;
@@ -43,6 +45,7 @@ export class SignupComponent implements OnInit{
   }
 
   register() {
+    this.toast?.nativeElement.classList.remove('show');
     let ci = this.ciInput?.InputInfo ? +this.ciInput?.InputInfo : +'';
     let username = this.usernameInput?.InputInfo ? this.usernameInput?.InputInfo : '';
     let password = this.passwordInput?.InputInfo ? this.passwordInput?.InputInfo : '';
@@ -104,7 +107,7 @@ export class SignupComponent implements OnInit{
     let usernamelower = username.toLowerCase();
 
     let result = !/\s/.test(usernamelower);
-    let result2 = !/[^a-z]/.test(usernamelower)
+    let result2 = !/[^a-z]/.test(usernamelower);
     if (result && result2){
       this.validusername = true;
     }else{
@@ -115,19 +118,39 @@ export class SignupComponent implements OnInit{
   //FIXME CHECKPASSWORD USER VALIDATORS
   checkPassword() {
     let password = this.passwordInput?.InputInfo ? this.passwordInput?.InputInfo : '';
-    this.validpassword = true;
+    if(password.length >= 8){
+      this.validpassword = true;
+    }else{
+      this.validpassword = false;
+    }
   }
 
   //FIXME CHECK NAME
   checkName() {
     let name = this.nameInput?.InputInfo ? this.nameInput?.InputInfo : '';
-    this.validname = true;
+
+    let result = !/\s/.test(name);
+    let result2 = !/[^a-z]/.test(name);
+
+    if (name == "" || name.length < 3 || name.length > 20 || !result || !result2){
+      this.validname = false;
+    }else{
+      this.validname = true;
+    }
   }
 
   //FIXME CHECK LASTNAME
   checkLastname() {
     let lastname = this.lastnameInput?.InputInfo ? this.lastnameInput?.InputInfo : '';
-    this.validlastname = true;
+
+    let result = !/\s/.test(lastname);
+    let result2 = !/[^a-z]/.test(lastname);
+
+    if (lastname == "" || lastname.length < 3 || lastname.length > 20 || !result || !result2){
+      this.validlastname = false;
+    }else{
+      this.validlastname = true;
+    }
   }
 
   //FIXME CHECK EMAIL

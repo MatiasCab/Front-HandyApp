@@ -1,6 +1,6 @@
 .friends-box{
     display: flex;
-    height: 80vh;
+    height: 100vh;
     width: 80vw;
     background-color: #CAF0F8;
     padding-left: 1%;
@@ -9,13 +9,18 @@
 }
 
 .buscador{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding-left: 5%;
 }
 
 .lista{
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-height: 800px;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 }
+
+.lista::-webkit-scrollbar {
+    display: none;
+  }
