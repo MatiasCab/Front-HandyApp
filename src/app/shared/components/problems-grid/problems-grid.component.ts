@@ -11,6 +11,7 @@ import { ProblemService } from 'src/app/problems/services/problem.service'; //Ti
 export class ProblemsGridComponent {
 
   @Input() problems?: Problem[]; //Tiene sentido que sea INPUT?
+  problems2:Problem[] = [];
   @Input() option: string = '';
 
   constructor(
@@ -29,15 +30,12 @@ export class ProblemsGridComponent {
         console.log('Error???')
       }
       else{
-        
-        this.problems=problems;
+        this.problems=problems['problems'];
+        console.log(this.problems);
       }
     })
   }
 
-  refreshList(){
-    this.problemService.problems$.subscribe(problemsX => {
-      this.problems = problemsX})
-  }
+  
 
 }

@@ -18,7 +18,8 @@ export class ProblemComponent {
 
   ngOnInit(): void {
     if (this.problem) {
-      this.dateString = dateToString(this.problem.postedDate!);
+      let date: Date = new Date(this.problem.postedDate!);
+      this.dateString = dateToString(date);
       this.problem.skills?.forEach(skill => {
         this.problemSkillsIds.push(skill.id)
       })

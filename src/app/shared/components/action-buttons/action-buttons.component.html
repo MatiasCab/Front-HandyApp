@@ -1,4 +1,4 @@
-<div *ngIf="solved=='Resuelto'" class="exterior">
+<div *ngIf="solved=='OPEN'" class="exterior">
     <div class="solvedSpan">
         <span class="badge text-bg-success">Resuelto</span>
     </div>
@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div *ngIf="solved=='Pendiente'" class="exterior">
+<div *ngIf="solved=='CLOSED'" class="exterior">
     <div class="pendingSpan">
         <span class="badge text-bg-danger">Pendiente</span>
     </div>
