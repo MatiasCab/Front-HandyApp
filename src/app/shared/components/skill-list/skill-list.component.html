@@ -20,7 +20,7 @@
 </div>
 
 <div class="list" *ngIf="option=='modal'">
-    <app-tag *ngFor="let skillX of skillsList" [skill]="skillX" [option]="'modalFilter'" (sendIdToFilter)="addSkillToFilter($event)">
+    <app-tag #tag *ngFor="let skillX of skillsList" [skill]="skillX" [option]="'modalFilter'" (sendIdToFilter)="addSkillToFilter($event)">
     </app-tag>
 </div>
 

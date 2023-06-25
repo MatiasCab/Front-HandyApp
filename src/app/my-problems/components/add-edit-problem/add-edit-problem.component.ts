@@ -17,6 +17,7 @@ import { ProblemService } from 'src/app/problems/services/problem.service';
 export class AddEditProblemComponent {
   
   @ViewChild (SkillListComponent) skillListComponent!: SkillListComponent;
+  @ViewChild ('skillListModal') skillListComponentModal!: SkillListComponent;
 
   constructor(
     private skillService: SkillService,
@@ -45,6 +46,20 @@ export class AddEditProblemComponent {
     this.getProblem();
   }
 
+  ngAfterViewInit(){
+    setTimeout(() => {
+      this.problem?.skills?.forEach(x => {
+      if(this.idSkillsModal.includes(x)){
+        this.skillListComponentModal.tagComponent.forEach(tag => {
+          if(tag.skill?.id === x){
+            tag.activateSkill()
+          }
+        })
+      }
+      })
+    })
+  }
+
   formatDateToString(): string {
     const date = new Date();
     const day = date.getDate();
@@ -63,11 +78,14 @@ export class AddEditProblemComponent {
   }
 
   skillsToList(){
-    this.skillService.getSkills().subscribe((skills: Skill[]) => {
-      this.idSkillsTempList = skills.filter(skill => this.idSkillsAux.includes(skill.id)).map(skill => skill.id);
-      this.skillListComponent.refreshList(this.idSkillsTempList);
-
+    const skillTemp: number[] = []
+    this.skillListComponentModal.tagComponent.forEach(tag => {
+      if(tag.isSpanSelected){
+        if(tag.skill)
+        skillTemp.push(tag.skill?.id);
+      }
     })
+    this.skillListComponent.refreshList(skillTemp);
   }
 
   getRouteId(routeId: string): string | undefined{

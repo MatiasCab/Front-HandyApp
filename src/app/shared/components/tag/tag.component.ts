@@ -18,7 +18,11 @@ export class TagComponent {
   @Input() text?: string;
 
   constructor(
+
   ) {}
+
+  ngOnInit(){
+  }
 
   deleteSkill() {
     this.isSpanSelected = false;
@@ -31,6 +35,14 @@ export class TagComponent {
   addSkillToFilter() {
     this.isSpanSelected = !this.isSpanSelected;
     this.sendIdToFilter.emit(this.skill!.id);
+  }
+
+  activateSkill(){
+    this.isSpanSelected = true;
+  }
+
+  deactivateSkill(){
+    this.isSpanSelected = false;
   }
   
   filter(){

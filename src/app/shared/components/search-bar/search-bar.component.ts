@@ -26,7 +26,8 @@ export class SearchBarComponent {
 
   valorInput: string = '';
 
-  @ViewChild (SkillListComponent) skillListComponent!: SkillListComponent;
+  @ViewChild ('skillsList') skillListFilter!: SkillListComponent;
+  @ViewChild ('skillsModal') skillListModal!: SkillListComponent;
 
 
   constructor(
@@ -42,16 +43,27 @@ export class SearchBarComponent {
     });
   }
 
+  deleteSkill(id: number){
+    this.skillListModal.tagComponent.forEach(x =>{
+      if(x.skill?.id === id){
+        x.deactivateSkill();
+      }
+    })
+  }
+
   addSkillToFilterTempList(ids: number[]) {
     this.skillsList = ids;
   }
 
   skillsToFilter(){
-    this.skillService.getSkills().subscribe((skills: Skill[]) => {
-      this.skillsFilter = skills.filter(skill => this.skillsList.includes(skill.id)).map(skill => skill.id);
-      this.skillListComponent.refreshList(this.skillsFilter);
-
+    const skillTemp: number[] = []
+    this.skillListModal.tagComponent.forEach(tag => {
+      if(tag.isSpanSelected){
+        if(tag.skill)
+        skillTemp.push(tag.skill?.id);
+      }
     })
+    this.skillListFilter.refreshList(skillTemp);
   }
 
   searchProblem(name: string, skills: number[]){
@@ -63,6 +75,7 @@ export class SearchBarComponent {
         }
       })
       this.problemService.sendProblems(problemsFiltered);
+      console.log(this.skillListFilter.tagComponent);
       this.problemSender.emit();
     })
   }

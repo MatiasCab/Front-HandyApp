@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GoogleMap } from '@angular/google-maps';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -13,6 +13,8 @@ export class MapComponent {
     this.initMap();
   }
 
+  googleMapKey: string = environment.googleApiKey;
+
   initMap() {
     const myLatLng = { lat: -34.882764, lng: -56.169615 };
   
@@ -20,7 +22,11 @@ export class MapComponent {
     if (mapElement) {
       const map = new google.maps.Map(mapElement, {
         center: myLatLng,
-        zoom: 10
+        zoom: 10,
+        mapTypeControlOptions: {
+          mapTypeIds: []
+        },
+        streetViewControl: false
       });
 
       const marker = new google.maps.Marker({

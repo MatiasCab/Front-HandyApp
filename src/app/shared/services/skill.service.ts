@@ -12,13 +12,11 @@ export class SkillService {
 skill1: Skill = {
   id: 1,
   name: 'Jardineria',
-  description: 'Cuidado de plantas y flores'
 };
 
 skill2: Skill = {
   id: 2,
   name: 'Botánica',
-  description: 'Estudio de las plantas'
 };
 
 skills: Skill[] = [this.skill1, this.skill2];
