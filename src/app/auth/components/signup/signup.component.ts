@@ -37,6 +37,7 @@ export class SignupComponent implements OnInit{
   ngOnInit(): void {
   }
 
+<<<<<<< HEAD
   validInformation() : boolean { 
     console.log("1",this.validci);
     console.log("2",this.validusername);
@@ -46,6 +47,10 @@ export class SignupComponent implements OnInit{
     console.log("6",this.validemail);
     console.log("7",this.validbirthday);
     if (true || this.validci && this.validusername && this.validpassword && this.validname && this.validlastname && this.validemail && this.validbirthday){
+=======
+  validInformation() : boolean { //Camel case
+    if ( true ||this.validci && this.validusername && this.validpassword && this.validname && this.validlastname && this.validemail && this.validbirthday){
+>>>>>>> 519011e49ad27c350ba58abb7e54ace37e1a33e4
       return true;
     }else{
       return false;
