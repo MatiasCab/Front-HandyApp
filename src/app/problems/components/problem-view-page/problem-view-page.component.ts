@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { ProblemService } from '../../services/problem.service';
 import { Problem } from '../../../core/models/Problem';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -148,13 +148,13 @@ export class ProblemViewPageComponent {
     this.ReviewsService.createReview(body).subscribe(res => {
       if(res.error){
         this.errorReview=true;
+        alert('¡Nombre de usuario incorrecto!')
       }
       else{
         this.okReview = true;
         this.errorReview = false;
-        console.log(res);
         const currentUrl = this.router.url;
-        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigateByUrl('/', {skipLocationChange: false}).then(() => {
         this.router.navigate([currentUrl]);
       }) 
       }
