@@ -1,6 +1,6 @@
 <div class='filters' *ngIf="option=='searchPage'">
     <span>Ordenar por: </span>
-    <app-tag class="closestTag" [option]="'filter'" [text]="'Más cercanos'" #orderByClosest ></app-tag>
+    <app-tag class="closestTag" [option]="'filter'" [text]="'Más cercanos'" #orderByClosest (filterBy)="orderByDistance($event)"></app-tag>
     <span>Mostrar por: </span>
     <app-tag class='seeAllTag' [option]="'filter'" [isSpanSelectedFilter]="true" [text]="'Todos'" #seeAllTag (filterBy)="filterByFriends($event)"></app-tag>
     <app-tag class='seeFriendsTag' [option]="'filter'" [text]="'Amigos'" #seeFriendsTag (filterBy)="filterByFriends($event)"></app-tag>

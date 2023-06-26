@@ -17,6 +17,7 @@ export class OrderByFilterComponent {
   @ViewChild ('seePendingTag') seePendingTag!: TagComponent;
 
   @Output() filterEmitter = new EventEmitter<string | number>();
+  @Output() orderEmitter = new EventEmitter<string | number>();
 
   @Input() option: string = ''
   @Input() resolvedNumber?: number;
@@ -51,6 +52,10 @@ export class OrderByFilterComponent {
       this.seePendingTag.isSpanSelectedFilter = false;
     }
     this.filterEmitter.emit(option);
+  }
+
+  orderByDistance(type:string){
+    this.orderEmitter.emit(type);
   }
 
 }

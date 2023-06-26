@@ -63,6 +63,12 @@ export class ProblemService {
       catchError(this.handleError<any>('getFriendsSearch'))
     );
   }
+  getProblemsFiltered2(filters: string) {
+    console.log(`${API_AUTH_URL}?${filters}`)
+    return this.http.get<any>(`${API_AUTH_URL}?${filters}`).pipe(
+      catchError(this.handleError<any>('getFriendsSearch'))
+    );
+  }
 
   getProblemsFilteredFriends(friendshipstatus: string, name?: string, skills?: string){
     console.log(`${API_AUTH_URL}${friendshipstatus}${name?name:''}${skills?skills:''}`)

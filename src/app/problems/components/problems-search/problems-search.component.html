@@ -1,7 +1,7 @@
 <div class="search-box">
     <div class="buscador">
         <app-search-bar (problemSearchEmitter)="problemSearch($event)"></app-search-bar>
-        <app-order-by-filter (filterEmitter)="problemFilter($event)" *ngIf="areProblems" [option]="'searchPage'"></app-order-by-filter>
+        <app-order-by-filter (orderEmitter)="order($event)" (filterEmitter)="problemFilter($event)" *ngIf="areProblems" [option]="'searchPage'"></app-order-by-filter>
     </div>
     <app-problems-grid (problemsEmmiter)="areProblems=true" ></app-problems-grid>
 </div>
