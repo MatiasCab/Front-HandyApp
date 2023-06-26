@@ -17,3 +17,13 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.skillList{
+    display:flex;
+    max-width: 37vw;
+    overflow-x: scroll;
+}
+
+.skillList::-webkit-scrollbar {
+    display: none;
+}
