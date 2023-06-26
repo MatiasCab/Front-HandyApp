@@ -34,9 +34,10 @@ export class ProblemService {
     );
   }
 
-  getMyProblems(){
+  getMyProblems(filters?: string){
     const idUser = localStorage.getItem('user_ID');
-    return this.http.get<any>(`${API_AUTH_URL_MY_PROBLEMS}/${idUser}/problems`)
+    console.log(`${API_AUTH_URL_MY_PROBLEMS}/${idUser}/problems?${filters ? filters : ''}`);
+    return this.http.get<any>(`${API_AUTH_URL_MY_PROBLEMS}/${idUser}/problems?${filters ? filters : ''}`)
   }
 
   getProblemById(id: number) {
