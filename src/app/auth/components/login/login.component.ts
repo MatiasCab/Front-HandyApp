@@ -79,3 +79,4 @@ export class LoginComponent implements OnInit{
 
   //TODO VALIDATORS
 }
+}

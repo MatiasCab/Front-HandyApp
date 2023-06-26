@@ -56,7 +56,7 @@ export class ProblemComponent {
 
   dateToString(date: Date): string {
     const today: Date = new Date();
-    const diference: number = Math.floor((today.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
+    const diference: number = Math.floor((today.getTime() - date.getTime()) / (1000 * 60 * 60 * 24)) + 1;
     if (diference === 0) {
       return 'Hoy';
     } 
