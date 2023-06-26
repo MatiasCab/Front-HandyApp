@@ -68,6 +68,9 @@ small{
     margin-left: 5.5%;
     padding-left: 2%;
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .skill-list{

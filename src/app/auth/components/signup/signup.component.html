@@ -13,14 +13,14 @@
                 <div class="col colizq">
                     <label class="form-label" for="floatingInput">Cédula</label>
                     <app-user-input #ci class="" [inputLabel]="'Cédula'"
-                        [inputTypeAutocomplete]="'nickname'" [inputType]="'number'" (keyup)="checkCI()">
+                        [inputTypeAutocomplete]="'nickname'" [inputType]="'number'">
                     </app-user-input>
                 </div>
 
                 <div class="col colder">
                     <label class="form-label" for="floatingInput">Nombre de usuario</label>
                     <app-user-input #username class="" [inputLabel]="'Nombre de usuario'"
-                        [inputTypeAutocomplete]="'nickname'" (keyup)="checkUsername()">
+                        [inputTypeAutocomplete]="'nickname'">
                     </app-user-input>
                 </div>
                 </div>
@@ -44,7 +44,7 @@
                 <div class="form-group">
                     <label class="form-label" for="floatingInput">Email</label>
                     <app-user-input #email class="" [inputLabel]="'Email'"
-                        [inputTypeAutocomplete]="'nickname'" (keyup)="checkEmail()">
+                        [inputTypeAutocomplete]="'nickname'" >
                     </app-user-input>
                 </div>
 
@@ -68,8 +68,15 @@
                     <app-user-input #referredCode class="" [inputLabel]="'Codigo de invitacion'"
                         [inputTypeAutocomplete]="'nickname'">
                     </app-user-input>
-                    <small>Codigo incorrecto.</small>
                 </div>
+                </div>
+
+                <div *ngIf="areInvalidFields"  class="alert alert-danger mt-2" role="alert">
+                    <small>Los campos: {{invalidFields}} son incorrectos.</small>
+                </div>
+
+                <div *ngIf="repeatedCrendentials"  class="alert alert-danger mt-2" role="alert">
+                    <small>Ya hay un usuario con esa cedula, email o nombre de usuario registrado.</small>
                 </div>
 
                 <div class="form-group buttonCenter">

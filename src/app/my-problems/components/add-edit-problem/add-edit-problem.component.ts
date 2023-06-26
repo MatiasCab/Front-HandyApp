@@ -101,7 +101,7 @@ export class AddEditProblemComponent {
       }
     })
     this.idSkillsProblem = skillTemp;
-    this.skillListComponent.refreshList(skillTemp);
+    this.sk.refreshList(skillTemp);
   }
 
   getRouteId(routeId: string): string | undefined{
@@ -117,7 +117,15 @@ export class AddEditProblemComponent {
     this.newProblemPicture = base64;
   }
 
+  navigateBackwards(){
+    this.router.navigateByUrl('my-problems');
+  }
+
   postProblem() {
+    if(!this.sk){
+      alert("Debe ingresar un titulo, descripcion, y habilidades basicas.");
+      return
+    }
     let auxSkills: number[] = this.sk.skills;
     if(auxSkills && this.validateInput(this.problemDescriptionText.nativeElement.value) && this.validateInput(this.problemTitleText.nativeElement.value) && auxSkills.length != 0 && this.newProblemPicture) {
       let newProblem: any = {
@@ -207,11 +215,13 @@ export class AddEditProblemComponent {
     if (input.trim() === '') {
       return false;
     }
-    // const specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-    // if (specialChars.test(input)) {
-    //   return false;
-    // }
+    const specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+    if (specialChars.test(input)) {
+      console.log("Hola", specialChars.test(input))
+      return false;
+    }
     console.log("QUE TAL", input);
+    console.log("Hola", )
     return true;
   }
   
