@@ -122,12 +122,8 @@ export class AddEditProblemComponent {
   }
 
   postProblem() {
-    if(!this.sk){
-      alert("Debe ingresar un titulo, descripcion, y habilidades basicas.");
-      return
-    }
     let auxSkills: number[] = this.sk.skills;
-    if(auxSkills && this.validateInput(this.problemDescriptionText.nativeElement.value) && this.validateInput(this.problemTitleText.nativeElement.value) && auxSkills.length != 0 && this.newProblemPicture) {
+    if(auxSkills && this.validateInputSpaces(this.problemDescriptionText.nativeElement.value) && this.validateInput(this.problemTitleText.nativeElement.value) && auxSkills.length != 0 && this.newProblemPicture) {
       let newProblem: any = {
         name: this.problemTitleText.nativeElement.value,
         description: this.problemDescriptionText.nativeElement.value,
@@ -178,9 +174,7 @@ export class AddEditProblemComponent {
     if(auxSkills.length == 0){
       auxSkills = this.sk.skills;
     }
-    console.log(auxSkills);
-    console.log(this.validateInput(this.problemDescriptionText.nativeElement.value));
-    if(this.validateInput(this.problemDescriptionText.nativeElement.value) && this.validateInput(this.problemTitleText.nativeElement.value) && auxSkills.length != 0) {
+    if(this.validateInputSpaces(this.problemDescriptionText.nativeElement.value) && this.validateInput(this.problemTitleText.nativeElement.value) && auxSkills.length != 0) {
       let newProblem: any = {
         id: this.problem?.id,
         name: this.problemTitleText.nativeElement.value,
@@ -207,6 +201,16 @@ export class AddEditProblemComponent {
       return img.slice(index + 1);
     } else {
       return img;
+    }
+  }
+
+  validateInputSpaces(input: string): boolean {
+    if(!input) return false;
+    if (input.trim() === '') {
+      return false;
+    }
+    else{
+      return true;
     }
   }
 

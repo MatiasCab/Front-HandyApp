@@ -9,6 +9,9 @@
 p {
     margin-top: 2%;
     margin-bottom: 2%;
+    word-break: break-all;
+    white-space: normal;
+    flex-wrap: wrap;
 } 
 
 .profile {
@@ -20,8 +23,8 @@ p {
     align-items: center;
 }
 img {
-    width: 140px;
-    height: 140px;
+    width: 110px;
+    height: 110px;
     object-fit: cover;
     border-radius: 13px;
     border: 1px solid #ccc;

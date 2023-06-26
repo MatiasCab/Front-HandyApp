@@ -27,6 +27,9 @@ export class ProblemViewPageComponent {
   canRate : boolean = false;
   userOwner?: User;
 
+  errorReview:boolean = false;
+  okReview: boolean = false;
+
   @ViewChild('newusername') username?: ElementRef<HTMLInputElement>;
   @ViewChild('newdescription') description?: ElementRef<HTMLInputElement>;
 
@@ -143,10 +146,18 @@ export class ProblemViewPageComponent {
       solverUsername: username
     }
     this.ReviewsService.createReview(body).subscribe(res => {
-      //recarga la pagina
-      const currentUrl = this.router.url;
-      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-      this.router.navigate([currentUrl]);
+      if(res.error){
+        this.errorReview=true;
+      }
+      else{
+        this.okReview = true;
+        this.errorReview = false;
+        console.log(res);
+        const currentUrl = this.router.url;
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+      }
+      
     });
     });
   }
