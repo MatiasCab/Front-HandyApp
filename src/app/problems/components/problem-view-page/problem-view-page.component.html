@@ -47,7 +47,7 @@
 </div>
 
 <!-- Modal review problema -->
-<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+<div  class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -60,9 +60,7 @@
                 <label>Nombre de usuario de la persona que te resolvió el problema:</label>
                 <input type="text" class="form-control" #newusername placeholder="Nombre de usuario" (keyup)="check()">
             </div>
-            <div *ngIf="errorReview"  class="alert alert-danger mt-2" role="alert">
-                <small>El nombre de usuario no es correcto.</small>
-            </div>
+          
             <div class="mb-3">
                 <p>Calificación:</p>
                 <div class="botonbar">
@@ -84,7 +82,7 @@
         </div>
         </div>
         <div class="modal-footer justify-content-center">
-          <button type="button" class="btn btn-secondary" id="btnEnviar" disabled (click)="sendReview()">Enviar Review</button>
+          <button type="button" class="btn btn-secondary" id="btnEnviar" disabled data-bs-dismiss="modal" (click)="sendReview()">Enviar Review</button>
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
         </div>
       </div>
