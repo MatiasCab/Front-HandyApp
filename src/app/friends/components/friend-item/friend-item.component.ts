@@ -41,10 +41,8 @@ export class FriendItemComponent {
   }
 
   ngOnInit(): void {
-    console.log("USUARIO", this.user?.firstname, this.user?.id);
     var datee = new Date(this.user!.singupDate!);
     this.joinedDateString = this.convertDateToString(datee);
-    console.log(this.user);
     if(this.user!.friendshipStatus == 0){
       this.botonText = "Agregar amigo";
     }else if(this.user!.friendshipStatus == 1){
@@ -71,7 +69,6 @@ export class FriendItemComponent {
       this.modaltext = "¿Estás seguro de que quieres agregar a " + this.user!.firstname + " " + this.user!.lastname + " como amigo?";
       this.modalbutton = "Agregar amigo";
     }else if(this.user!.friendshipStatus == 1){
-      console.log("entre");
       this.modaltitle = "Eliminar amigo";
       this.modaltext = "¿Estás seguro de que quieres eliminar a " + this.user!.firstname + " " + this.user!.lastname + " de tus amigos?";
       this.modalbutton = "Eliminar amigo";
@@ -96,7 +93,6 @@ export class FriendItemComponent {
   }
 
   buttonFriends(){
-    console.log("SOLICITUD", this.user?.firstname, this.user?.id);
     if(this.user!.friendshipStatus == 0){
       //llamada a la api para solicitar amistad
       this.friendsService.requestFriend(this.user!.id!.toString()).subscribe();
@@ -113,7 +109,6 @@ export class FriendItemComponent {
     //recarga la pagina
     const currentUrl = this.Router.url;
     this.Router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-      console.log(decodeURI(currentUrl));
       this.Router.navigate([currentUrl]);
     });
   }

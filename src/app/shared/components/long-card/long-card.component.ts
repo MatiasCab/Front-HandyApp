@@ -19,7 +19,6 @@ export class LongCardComponent {
   @Input() option?: string;
 
   ngOnInit(){
-    console.log(this.problem?.id!);
   }
 
   editProblem(){

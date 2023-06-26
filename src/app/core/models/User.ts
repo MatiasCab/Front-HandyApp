@@ -15,5 +15,6 @@ export interface User{
     friendsAmount?: number;
     lat?: number;
     lng?: number;
+    referralCode?: number;
 }
 

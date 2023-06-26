@@ -29,7 +29,6 @@ export class ProblemsSearchComponent {
   order(orderEmitter: any){
     let order = orderEmitter;
     if(this.lastOrderFilter) order = undefined;
-    console.log(order);
     this.problemsGridComponent.filterProblems2(this.lastFilterInfo, this.lastSearchInfo, order);
     this.lastOrderFilter = order;
   }

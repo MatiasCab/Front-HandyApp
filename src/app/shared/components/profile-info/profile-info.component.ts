@@ -9,6 +9,7 @@ import { User } from 'src/app/core/models/User';
 export class ProfileInfoComponent {
 
   @Input() User?: User;
+  @Input() MyProfile: Boolean = false;
   joinedDateString: string = "a";
 
   convertDateToString(date: Date): string {
@@ -25,7 +26,6 @@ export class ProfileInfoComponent {
 
   ngOnInit(): void { 
     var datee = new Date(this.User?.singupDate!);
-    console.log(datee);
     this.joinedDateString = this.convertDateToString(datee);
   }
 }

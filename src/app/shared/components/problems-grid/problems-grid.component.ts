@@ -108,18 +108,14 @@ export class  ProblemsGridComponent {
       if(this.problems?.length == 0){
           this.noProblems = true;
       }
-
-      console.log("epaaaa", this.problems);
     })
   }
 
   filterProblems2(event: any, searchInfo: any, order?: any){
-    console.log(order);
     this.createFilters(event, searchInfo, order);
   }
 
   searchProblems2(event : any, filterInfo: any, order?: any){
-    console.log('esto otro', order);
     this.createFilters(filterInfo, event, order);
   }
 
