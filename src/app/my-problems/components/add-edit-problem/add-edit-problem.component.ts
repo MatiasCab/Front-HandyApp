@@ -118,10 +118,7 @@ export class AddEditProblemComponent {
   }
 
   postProblem() {
-    let auxSkills: number[] = [];
-    if(auxSkills.length == 0){
-      auxSkills = this.sk.skills;
-    }
+    let auxSkills: number[] = this.sk.skills;
     if(this.validateInput(this.problemDescriptionText.nativeElement.value) && this.validateInput(this.problemTitleText.nativeElement.value) && auxSkills.length != 0 && this.newProblemPicture) {
       let newProblem: any = {
         name: this.problemTitleText.nativeElement.value,
