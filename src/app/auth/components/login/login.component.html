@@ -23,9 +23,18 @@
                     </app-user-input>
                 </div>
 
+                <div *ngIf="invalidCredentials"  class="alert alert-danger mb-2" role="alert">
+                    <small>Credenciales inválidas</small>
+                </div>
+
+                <div *ngIf="emptyCredentials"  class="alert alert-danger mb-2" role="alert">
+                    <small>Los campos no pueden ser vacíos</small>
+                </div>
+
                 <div class="form-group buttonCenter">
                     <button type="button" class="" (click)="login()">Iniciar Sesión</button>
                 </div>
+
 
                 <div class="textCenter">
                     <label class="labelText" (click)="register()">Registrarse</label><br>

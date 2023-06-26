@@ -24,7 +24,7 @@
 <div class="skillbox  me-3 mb-3 pt-3">
     <h5>Habilidades Requeridas</h5>
     <div class="skill-list" *ngIf="idSkillsProblem">
-        <app-skill-list #s class="skills" [skills]="idSkillsProblem!" [option]="'problemInfo'"></app-skill-list>
+        <app-skill-list #s class="skills" [skills]="idSkillsProblem!" [option]="'profile'"></app-skill-list>
     </div>
     <div class="btnbox" >
         <button class="editbtn" data-bs-toggle="modal" data-bs-target="#SkillListModal">Seleccionar habilidades</button>
@@ -34,7 +34,7 @@
 <div class="buttons">
     <button *ngIf="!problem" (click)="postProblem()" class="btn btns btn-success">Crear</button>
     <button *ngIf="problem" class="btn btns btn-success" (click)="edit()">Editar</button>
-    <button class="btn btns btn-danger">Cancelar</button>
+    <button class="btn btns btn-danger" (click)="navigateBackwards()">Cancelar</button>
 </div>
 
 
