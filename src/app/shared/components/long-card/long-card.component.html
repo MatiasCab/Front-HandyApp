@@ -6,7 +6,8 @@
         <app-user-card [user]="user"></app-user-card>
     </div>
     <div class="distanceInfo">
-        
+        <i class="bi bi-geo-alt"></i>
+        <span>{{this.formateDistance(this.problem!.distance)}}</span>
     </div>
 </div>
 
@@ -18,5 +19,3 @@
         <app-action-buttons (editProblemEmitter)="editProblem()" [solved]="problem?.status"></app-action-buttons>
     </div>  
 </div>
-
-

@@ -179,7 +179,7 @@ export class  ProblemsGridComponent {
       filter += '&creator=friends'
     }
     if(order) {
-
+      filter += '&order=nearby';
     }
     console.log("es el dos");
     if(this.filter === 'Amigos') filter = filter + '&creator=friends';
@@ -192,12 +192,12 @@ export class  ProblemsGridComponent {
 
   filterProblems2(event: any, searchInfo: any, order?: any){
     console.log(order);
-    this.createFilters(event, searchInfo);
+    this.createFilters(event, searchInfo, order);
   }
 
   searchProblems2(event : any, filterInfo: any, order?: any){
     console.log('esto otro', order);
-    this.createFilters(filterInfo, event);
+    this.createFilters(filterInfo, event, order);
 }
   
 

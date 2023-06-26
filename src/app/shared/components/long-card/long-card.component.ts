@@ -23,4 +23,11 @@ export class LongCardComponent {
     this.router.navigateByUrl(link);
   }
 
+  formateDistance(distance: number){
+    if(distance < 1000 ){
+      return `${Math.round(distance)} metros`
+    }
+    return `${Math.round(distance/ 1000)} Kilometros`
+  }
+
 }
