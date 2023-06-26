@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { ProfileService } from 'src/app/profile/services/profile.service';
 
 import { UserInputComponent } from '../user-input/user-input.component';
+import { User } from 'src/app/core/models/User';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +16,17 @@ export class LoginComponent implements OnInit{
   @ViewChild('username') usernameInput?: UserInputComponent;
   @ViewChild('password') passwordInput?: UserInputComponent;
   errorMessage?: string;
+
   invalidCredentials:boolean = false;
   emptyCredentials:boolean = false;
 
+  User?: User;
+
+
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private ProfileService: ProfileService
   ) { }
 
   ngOnInit(): void {
@@ -55,11 +62,19 @@ export class LoginComponent implements OnInit{
           } else {
             this.errorMessage = 'Lo sentimos no hemos podido procesar su solicitud';
           }
-        } else {
-          this.router.navigateByUrl('/problems');
-        }
-      });
-    }
+        }  else {
+        var userid = localStorage.getItem('user_ID');
+        this.ProfileService.getProfile(userid!).subscribe(response => {
+          this.User = response["user"];
+          console.log(this.User!)
+          if(this.User?.lat === undefined || this.User?.lng === undefined){
+            this.router.navigateByUrl('/addlocation');
+          }else{
+            this.router.navigateByUrl('/problems');
+          }
+        });
+      }
+    });
   }
 
   //TODO VALIDATORS

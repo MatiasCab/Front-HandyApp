@@ -9,22 +9,24 @@ import { ChangeComponent } from './components/change/change.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { VerifyComponent } from './components/verify/verify.component';
 import { LocationComponent } from './components/location/location.component';
+import { SharedModule } from "../shared/shared.module";
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    AuthRoutingModule,
-    NgbModule
-  ],
-  declarations: [
-    LoginComponent,
-    UserInputComponent,
-    RecoverComponent,
-    ChangeComponent,
-    SignupComponent,
-    VerifyComponent,
-    LocationComponent
-  ]
+    declarations: [
+        LoginComponent,
+        UserInputComponent,
+        RecoverComponent,
+        ChangeComponent,
+        SignupComponent,
+        VerifyComponent,
+        LocationComponent
+    ],
+    imports: [
+        CommonModule,
+        AuthRoutingModule,
+        NgbModule,
+        SharedModule
+    ]
 })
 export class AuthModule { }

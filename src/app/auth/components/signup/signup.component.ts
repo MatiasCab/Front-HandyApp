@@ -42,6 +42,7 @@ export class SignupComponent implements OnInit{
   ngOnInit(): void {
   }
 
+
   validInformation():boolean {
     this.auxString = []
     let CI = this.checkCI();
@@ -59,6 +60,15 @@ export class SignupComponent implements OnInit{
     else{
       this.areInvalidFields=true;
       this.invalidFields = this.auxString.toString();
+    }
+  }
+
+  validInformation() : boolean { //Camel case
+    if ( true ||this.validci && this.validusername && this.validpassword && this.validname && this.validlastname && this.validemail && this.validbirthday){
+
+      return true;
+    }else{
+
       return false;
     }
   }
@@ -133,11 +143,13 @@ export class SignupComponent implements OnInit{
     }else{
       return true;
     }
+
   }
 
   // ESTO ESTA BIEN, TIENE PINTA. FELICITACIONES
   checkPassword() {
     let password = this.passwordInput?.InputInfo ? this.passwordInput?.InputInfo : '';
+    console.log("CONTRESEÑAS", password);
     if(password.length >= 8){
       return true;
     }else{
@@ -170,6 +182,11 @@ export class SignupComponent implements OnInit{
       return true;
     }
   }
+  // ESTO ESTA BIEN, FELICITACIONES
+  checkName() {
+    console.log("npombre usuario", this.nameInput?.InputInfo);
+    this.names(this.nameInput?.InputInfo ? this.nameInput.InputInfo : '')
+    }
 
   // ESTO ESTA BIEN, FELICITACIONES
   checkLastname() {
@@ -185,11 +202,14 @@ export class SignupComponent implements OnInit{
     }else{
       return true;
     }
+
   }
 
   // ESTO ESTA BIEN, FELICITACIONES.
   checkEmail() {
+    
     let email = this.emailInput?.InputInfo ? this.emailInput?.InputInfo : '';
+    console.log("npombre usuario", email);
     var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const result: boolean = regex.test(email);
@@ -205,6 +225,7 @@ export class SignupComponent implements OnInit{
   // ESTO ESTA BIEN, FELICITACIONES.
   checkBirthday() {
     let birthday = this.birthdayInput?.InputInfo ? this.birthdayInput?.InputInfo : '';
+    console.log("npombre usuario", birthday);
     var yearInp = birthday.substring(0,4);
     var date = new Date();
     var yearAct = date.getFullYear();

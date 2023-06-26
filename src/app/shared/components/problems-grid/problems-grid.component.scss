@@ -13,11 +13,13 @@
 }
 
 .gridContainer{
+    margin-left: 4vw;
     align-items: center;
+    //justify-content: center;
     display: flex;
     flex-direction: column;
     height: 600px;
-    max-width: 100%;
+    max-width: 90%;
     overflow: scroll;
     margin-top: 10px;
     flex-wrap: nowrap;

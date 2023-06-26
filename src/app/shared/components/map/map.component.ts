@@ -12,7 +12,7 @@ export class MapComponent {
   @Input() markerLat: number = -34.882764;
   @Input() markerLng: number = -56.169615;
   googleMapKey: string = environment.googleApiKey;
-  
+
   ngAfterViewInit() {
     this.initMap();
   }
@@ -35,7 +35,7 @@ export class MapComponent {
     const mapElement = document.getElementById('map');
     if (mapElement) {
       const map = new google.maps.Map(mapElement, {
-        center: { lat: this.markerLat, lng: this.markerLng },
+        center: { lat: this.markerLat ? this.markerLat : -34.882764, lng: this.markerLng ? this.markerLng : -56.169615},
         zoom: 10,
         mapTypeControlOptions: {
           mapTypeIds: []
@@ -44,7 +44,7 @@ export class MapComponent {
       });
 
       const marker = new google.maps.Marker({
-        position: { lat: this.markerLat, lng: this.markerLng },
+        position: { lat: this.markerLat ? this.markerLat : -34.882764, lng: this.markerLng ? this.markerLng : -56.169615},
         map,
         title: 'Mi ubicación',
         draggable : true
