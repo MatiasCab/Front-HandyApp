@@ -37,7 +37,6 @@ export class ProblemService {
 
   getMyProblems(){
     const idUser = localStorage.getItem('user_ID');
-    console.log(`${API_AUTH_URL_MY_PROBLEMS}/${idUser}/problems`);
     return this.http.get<any>(`${API_AUTH_URL_MY_PROBLEMS}/${idUser}/problems`)
   }
 
@@ -52,15 +51,21 @@ export class ProblemService {
   }
 
   getProblemsFiltered(name: string, skills: string) {
-    console.log(`${API_AUTH_URL}?${name}${skills}`)
     return this.http.get<any>(`${API_AUTH_URL}?${name}${skills}`).pipe(
       catchError(this.handleError<any>('getFriendsSearch'))
     );
   }
 
   getProblemsFilteredFriends(friendshipstatus: string, name?: string, skills?: string){
-    console.log(`${API_AUTH_URL}${friendshipstatus}${name?name:''}${skills?skills:''}`)
     return this.http.get<any>(`${API_AUTH_URL}${friendshipstatus}${name?name:''}${skills?skills:''}`).pipe(
+      catchError(this.handleError<any>('getFriendsSearch'))
+    );
+  }
+
+  getProblemsFilteredStatus(status: string){
+    const idUser = localStorage.getItem('user_ID');
+    console.log(`${API_AUTH_URL}/${idUser}/problems?${status}`);
+    return this.http.get<any>(`${API_AUTH_URL_MY_PROBLEMS}/${idUser}/problems?${status}`).pipe(
       catchError(this.handleError<any>('getFriendsSearch'))
     );
   }

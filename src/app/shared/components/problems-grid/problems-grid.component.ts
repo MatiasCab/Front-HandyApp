@@ -158,12 +158,17 @@ export class  ProblemsGridComponent {
 
   filterProblemsByStatus(event: any){
     if(event === 1){
-      
+      this.problemService.getProblemsFilteredStatus('').subscribe(problems =>
+        this.problems = problems['problems'])
     }
-    else if(event ===2){
-
+    else if(event === 2){
+      this.problemService.getProblemsFilteredStatus('status=closed').subscribe(problems =>
+        this.problems = problems['problems'])
     }
-    else{}
+    else{
+      this.problemService.getProblemsFilteredStatus('status=resolved').subscribe(problems =>
+        this.problems = problems['problems'])
+    }
   }
   
 
