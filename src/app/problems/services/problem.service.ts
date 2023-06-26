@@ -23,7 +23,7 @@ export class ProblemService {
   ) { }
 
   getProblems(){
-    return this.http.get<any>(`${API_AUTH_URL}`).pipe(
+    return this.http.get<any>(`${API_AUTH_URL}?status=pendent`).pipe(
       catchError(this.handleError<any>('getProblems'))
     );
   }
@@ -57,19 +57,19 @@ export class ProblemService {
   }
 
   getProblemsFiltered(name: string, skills: string) {
-    return this.http.get<any>(`${API_AUTH_URL}?${name}${skills}`).pipe(
+    return this.http.get<any>(`${API_AUTH_URL}?${name}${skills}&status=pendent`).pipe(
       catchError(this.handleError<any>('getFriendsSearch'))
     );
   }
   getProblemsFiltered2(filters: string) {
     console.log(`${API_AUTH_URL}?${filters}`)
-    return this.http.get<any>(`${API_AUTH_URL}?${filters}`).pipe(
+    return this.http.get<any>(`${API_AUTH_URL}?${filters}&status=pendent`).pipe(
       catchError(this.handleError<any>('getFriendsSearch'))
     );
   }
 
   getProblemsFilteredFriends(friendshipstatus: string, name?: string, skills?: string){
-    return this.http.get<any>(`${API_AUTH_URL}${friendshipstatus}${name?name:''}${skills?skills:''}`).pipe(
+    return this.http.get<any>(`${API_AUTH_URL}${friendshipstatus}${name?name:''}${skills?skills:''}&status=pendent`).pipe(
       catchError(this.handleError<any>('getFriendsSearch'))
     );
   }

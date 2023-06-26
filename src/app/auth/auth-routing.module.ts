@@ -32,6 +32,11 @@ const routes: Routes = [
         path: 'addlocation',
         component: LocationComponent,
         data: {  }
+    },
+    {
+    path: '',
+    component: LoginComponent,
+    data: {  }
     }
 ];
 

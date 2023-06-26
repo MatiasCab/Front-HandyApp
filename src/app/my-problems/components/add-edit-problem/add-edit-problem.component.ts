@@ -216,17 +216,15 @@ export class AddEditProblemComponent {
 
   validateInput(input: string): boolean {
     if(!input) return false;
-    if (input.trim() === '') {
-      return false;
+    const specialChars = "!@#$%^&*()_+{}[]|\\:;\"'<>?,./";
+  
+    for (const char of input) {
+      if (!specialChars.includes(char) && char.trim() !== '') {
+        return true;
+      }
     }
-    const specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-    if (specialChars.test(input)) {
-      console.log("Hola", specialChars.test(input))
-      return false;
-    }
-    console.log("QUE TAL", input);
-    console.log("Hola", )
-    return true;
+    
+    return false;
   }
   
 
