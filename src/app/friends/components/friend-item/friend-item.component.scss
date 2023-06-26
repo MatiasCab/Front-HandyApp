@@ -83,3 +83,14 @@ img{
 .solicitudrecibida{
     background-color: #FBD20F;
 }
+
+.email{
+    display: flex;
+    align-items: center;
+    max-width: 250px;
+    overflow-x: auto;
+}
+
+.email::-webkit-scrollbar {
+    display: none;
+}

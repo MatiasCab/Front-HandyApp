@@ -9,6 +9,11 @@ import { LocationComponent } from './components/location/location.component';
 
 const routes: Routes = [
     {
+        path: '',
+        component: LoginComponent,
+        data: {  }
+    },
+    {
         path: 'login',
         component: LoginComponent,
         data: {  }
