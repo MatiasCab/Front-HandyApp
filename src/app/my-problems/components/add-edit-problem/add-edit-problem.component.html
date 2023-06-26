@@ -6,8 +6,7 @@
             <div class="first-section ms-3 me-3 mb-3 pt-3">
                 <h5>Título</h5>
                 <label for="floatingTitle">Introduzca un título para el problema</label>
-                <input #problemTitleText [maxLength]="30" type="text" class="form-control is-invalid" id="floatingTitle" [value]="problem?.name">
-                <small class="form-text" id="warningTitle" *ngIf="!warningTitle">Debe introducir un título válido.</small>
+                <input #problemTitleText [maxLength]="30" type="text" class="form-control" id="floatingTitle" [value]="problem?.name">
             </div>
         </div>
             <div class="ms-3 mt-3 me-3 description">

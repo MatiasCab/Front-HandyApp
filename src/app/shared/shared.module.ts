@@ -16,6 +16,7 @@ import { ActionButtonsComponent } from './components/action-buttons/action-butto
 import { MapComponent } from './components/map/map.component';
 import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { NewProblemInfoComponent } from './components/new-problem-info/new-problem-info.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     ActionButtonsComponent,
     MapComponent,
     ProfileInfoComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    NewProblemInfoComponent
    ],
   exports: [ 
     ProblemsGridComponent,
@@ -48,8 +50,9 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     TagComponent,
     MapComponent,
     ProfileInfoComponent,
-    SpinnerComponent
-    LongCardComponent
+    SpinnerComponent,
+    LongCardComponent,
+    NewProblemInfoComponent
    ]
 })
 export class SharedModule { }
