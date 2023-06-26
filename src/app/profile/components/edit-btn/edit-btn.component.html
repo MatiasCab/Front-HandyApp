@@ -5,7 +5,7 @@
     -->
     <div class="editbox">
       <div class="editpass" data-bs-toggle="modal" data-bs-target="#changeModal"><h3>Cambiar Contraseña</h3></div>
-      <div class="editubi" data-bs-toggle="modal" data-bs-target="#changeUbiModal"><h3>Cambiar Ubicación</h3></div>
+      <div class="editubi" data-bs-toggle="modal" data-bs-target="#changeUbiModal" (click)="loadmap()"><h3>Cambiar Ubicación</h3></div>
     </div>
   </div>
 
@@ -81,7 +81,7 @@
       <div class="modal-body">
         <form>
           <div class="mb-3 mapa">
-            <app-map></app-map>
+            <app-map #m></app-map>
           </div>
         </form>
       </div>

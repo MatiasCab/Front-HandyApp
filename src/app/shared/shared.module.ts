@@ -15,6 +15,7 @@ import { OrderByFilterComponent } from './components/order-by-filter/order-by-fi
 import { ActionButtonsComponent } from './components/action-buttons/action-buttons.component';
 import { MapComponent } from './components/map/map.component';
 import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ProfileInfoComponent } from './components/profile-info/profile-info.com
     OrderByFilterComponent,
     ActionButtonsComponent,
     MapComponent,
-    ProfileInfoComponent
+    ProfileInfoComponent,
+    SpinnerComponent
    ],
   exports: [ 
     ProblemsGridComponent,
@@ -45,7 +47,9 @@ import { ProfileInfoComponent } from './components/profile-info/profile-info.com
     OrderByFilterComponent,
     TagComponent,
     MapComponent,
-    ProfileInfoComponent
+    ProfileInfoComponent,
+    SpinnerComponent
+    LongCardComponent
    ]
 })
 export class SharedModule { }

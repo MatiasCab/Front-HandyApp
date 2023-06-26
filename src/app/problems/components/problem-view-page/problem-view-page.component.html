@@ -25,23 +25,63 @@
     </div> 
     <div class="padding-left left-column">
         <img class="user-view" src="{{this.problem?.locationImage}}">
-        <app-button [type]="'pending'" [label]="'Pendiente'"></app-button>
+        <app-button [type]="'pending'" [label]="'Pendiente'" data-bs-toggle="modal" data-bs-target="#reviewModal"></app-button>
     </div>
 </div>
 
+<!-- ARREGLAR ESTO -->
 <div class="problem-info complete-view" *ngIf="this.viewOption == 'myCompleteView'">
     <div  class="h">
         <div class="padding">
             <app-problem-general-info [problem]="this.problem"></app-problem-general-info> 
         </div> 
         <div class="padding-left all">
-            <app-problem-user-info></app-problem-user-info>
+            <app-problem-user-info [User]="userOwner"></app-problem-user-info>
             <div class="mt-4">
-                <app-problem-review></app-problem-review>
+                <app-problem-review [problemID]="problemID"></app-problem-review>
             </div>
         </div>
     </div>
     <div class="complete-button">
         <app-button [type]="'complete'" [label]="'Realizado'"></app-button>
+    </div>
+</div>
+
+<!-- Modal review problema -->
+<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Cerrar problema</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+                <label>Nombre de usuario de la persona que te resolvió el problema:</label>
+                <input type="text" class="form-control" #newusername placeholder="Nombre de usuario" (keyup)="check()">
+            </div>
+            <div class="mb-3">
+                <p>Calificación:</p>
+                <div class="botonbar">
+                    <div class="botone"><i class="bi bi-emoji-smile" *ngIf="!happySel" (click)="happy(); check()"></i><i class="bi bi-emoji-smile-fill" *ngIf="happySel" (click)="happy()"></i></div>
+                    <div class="botone"><i class="bi bi-emoji-neutral" *ngIf="!midSel" (click)="mid(); check()"></i><i class="bi bi-emoji-neutral-fill" *ngIf="midSel" (click)="mid()"></i></div>
+                    <div class="botone"><i class="bi bi-emoji-angry" *ngIf="!sadSel" (click)="sad(); check()"></i><i class="bi bi-emoji-angry-fill" *ngIf="sadSel" (click)="sad()"></i></div>
+                </div>
+                <div class="caltext">
+                    <p class="text-center">{{stringCalificacion}}</p>
+                </div>
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Descripción:</label>
+              <textarea class="form-control" id="message-text" #newdescription maxlength="400" placeholder="Descripción" (keyup)="check()"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-secondary" id="btnEnviar" disabled data-bs-dismiss="modal" (click)="sendReview()">Enviar Review</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
     </div>
 </div>

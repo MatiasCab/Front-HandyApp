@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Pipe } from '@angular/core';
 
 import { Problem } from 'src/app/core/models/Problem';
 import { FriendsService } from 'src/app/friends/services/friends.service';
 import { ProblemService } from 'src/app/problems/services/problem.service';
+
 
 @Component({
   selector: 'app-problems-grid',
@@ -12,15 +13,16 @@ import { ProblemService } from 'src/app/problems/services/problem.service';
 export class  ProblemsGridComponent {
 
   problems?: Problem[];
-  problems2:Problem[] = [];
   @Input() option: string = '';
   @Output() problemsEmmiter = new EventEmitter <boolean>
-  mostrar?: boolean = true;
 
   skills?: string
   name?: string
   filter? : string
 
+  showSpinner: boolean = true;
+  noProblems: boolean = false;
+  
   constructor(
     private problemService: ProblemService,
     ) { }
@@ -40,9 +42,14 @@ export class  ProblemsGridComponent {
         console.log('Error???')
       }
       else{
+        this.showSpinner = false;
         this.problems=problems['problems'];
-        console.log(this.problems);
         this.problemsEmmiter.emit(true)
+        console.log(this.problems?.length);
+        console.log(this.noProblems);
+        if(this.problems?.length == 0){
+          this.noProblems = true
+        }
       }
     })
   }
@@ -53,8 +60,13 @@ export class  ProblemsGridComponent {
 
       }
       else{
+        this.showSpinner = false;
         this.problems = problems['problems'];
         this.problemsEmmiter.emit(true);
+        if(this.problems?.length == 0){
+          this.noProblems = true
+        }
+        console.log(problems);
       }
     })
   }
@@ -158,6 +170,7 @@ export class  ProblemsGridComponent {
   // }
 
   createFilters(event: any, searchInfo: any, order?: string){
+    this.showSpinner = true;
     let filterType = event;
     var nameInput: string = searchInfo ? searchInfo["name"].toLowerCase() : "";
     var name = ""
@@ -184,14 +197,19 @@ export class  ProblemsGridComponent {
     console.log("es el dos");
     if(this.filter === 'Amigos') filter = filter + '&creator=friends';
     this.problemService.getProblemsFiltered2(filter).subscribe(problems => {
-      this.mostrar = false;
+      this.showSpinner = false;
       this.problems = problems['problems'];
+      if(this.problems?.length == 0){
+          this.noProblems = true;
+      }
+
       console.log("epaaaa", this.problems);
     })
   }
 
   filterProblems2(event: any, searchInfo: any, order?: any){
     console.log(order);
+    Feature/Problem-View-integration
     this.createFilters(event, searchInfo, order);
   }
 
@@ -199,6 +217,6 @@ export class  ProblemsGridComponent {
     console.log('esto otro', order);
     this.createFilters(filterInfo, event, order);
 }
-  
+
 
 }

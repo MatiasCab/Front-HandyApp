@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-upper-section',
@@ -6,12 +6,11 @@ import { Component, Input, Output } from '@angular/core';
   styleUrls: ['./upper-section.component.scss']
 })
 export class UpperSectionComponent {
-  @Input() pendingQuantity?: number;
-  @Input() resolvedQuantity?: number;
 
-  @Output() 
+  @Output() filterEmitter = new EventEmitter<number|string>();
 
-  filterBy(number: number){
+  filterBy(filterOption: number|string){
+      this.filterEmitter.emit(filterOption);
   }
 
 

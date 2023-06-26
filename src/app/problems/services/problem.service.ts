@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { Problem } from '../../core/models/Problem'
 
-import { BehaviorSubject, catchError } from 'rxjs';;
+import { catchError } from 'rxjs';;
 
-import {Observable, of} from 'rxjs';
+import { of } from 'rxjs';
 
 import { API_URL } from 'src/app/core/const';
 
@@ -22,22 +22,20 @@ export class ProblemService {
     private http: HttpClient
   ) { }
 
-  private problemsSubject: BehaviorSubject<Problem[]> = new BehaviorSubject<Problem[]>([]);
-  problems$ = this.problemsSubject.asObservable();
-
-  sendProblems(nuevosValores: Problem[]) {
-    this.problemsSubject.next(nuevosValores);
-  }
-
   getProblems(){
     return this.http.get<any>(`${API_AUTH_URL}`).pipe(
       catchError(this.handleError<any>('getProblems'))
     );
   }
 
+  getProblemsByUser(id: string){
+    return this.http.get<any>(`${API_AUTH_URL_MY_PROBLEMS}/${id}/problems`).pipe(
+      catchError(this.handleError<any>('getProblemsByUser'))
+    );
+  }
+
   getMyProblems(){
     const idUser = localStorage.getItem('user_ID');
-    console.log(`${API_AUTH_URL_MY_PROBLEMS}/${idUser}/problems`);
     return this.http.get<any>(`${API_AUTH_URL_MY_PROBLEMS}/${idUser}/problems`)
   }
 
@@ -58,7 +56,6 @@ export class ProblemService {
   }
 
   getProblemsFiltered(name: string, skills: string) {
-    console.log(`${API_AUTH_URL}?${name}${skills}`)
     return this.http.get<any>(`${API_AUTH_URL}?${name}${skills}`).pipe(
       catchError(this.handleError<any>('getFriendsSearch'))
     );
@@ -71,8 +68,15 @@ export class ProblemService {
   }
 
   getProblemsFilteredFriends(friendshipstatus: string, name?: string, skills?: string){
-    console.log(`${API_AUTH_URL}${friendshipstatus}${name?name:''}${skills?skills:''}`)
     return this.http.get<any>(`${API_AUTH_URL}${friendshipstatus}${name?name:''}${skills?skills:''}`).pipe(
+      catchError(this.handleError<any>('getFriendsSearch'))
+    );
+  }
+
+  getProblemsFilteredStatus(status: string){
+    const idUser = localStorage.getItem('user_ID');
+    console.log(`${API_AUTH_URL}/${idUser}/problems?${status}`);
+    return this.http.get<any>(`${API_AUTH_URL_MY_PROBLEMS}/${idUser}/problems?${status}`).pipe(
       catchError(this.handleError<any>('getFriendsSearch'))
     );
   }

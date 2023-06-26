@@ -1,9 +1,9 @@
 <div class="longCard" *ngIf="option=='problems'">
     <div class="problemInfo">
-        <app-problem [problem]="problem"></app-problem>
+        <app-problem [problem]="problem" routerLink="/problems/{{problem?.id!}}" ></app-problem>
     </div>
     <div class="userInfo" *ngIf="user">
-        <app-user-card [user]="user"></app-user-card>
+        <app-user-card [user]="user" routerLink="/profile/{{user.id}}"></app-user-card>
     </div>
     <div class="distanceInfo">
         <i class="bi bi-geo-alt"></i>
@@ -13,7 +13,7 @@
 
 <div class="longCard2" *ngIf="option=='my-problems'">
     <div class="problemInfo">
-        <app-problem [problem]="problem"></app-problem>
+        <app-problem [problem]="problem" routerLink="/problems/{{problem?.id!}}"></app-problem>
     </div>
     <div class="buttons">
         <app-action-buttons (editProblemEmitter)="editProblem()" [solved]="problem?.status"></app-action-buttons>

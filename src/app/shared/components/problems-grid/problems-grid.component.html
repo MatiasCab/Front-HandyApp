@@ -1,4 +1,8 @@
-<div class="gridContainer " *ngIf="problems && !option && problems.length > 0">
+<div class="spinner" *ngIf="showSpinner">
+    <app-spinner></app-spinner>
+</div>
+
+<div class="gridContainer " *ngIf="problems && !option && problems.length > 0 && !showSpinner">
     <app-long-card *ngFor="let problemX of problems"
     [option]="'problems'"
     [problem]="problemX"
@@ -6,7 +10,7 @@
     ></app-long-card>
 </div>
 
-<div class="noProblems" *ngIf="!problems || problems.length == 0">
+<div class="noProblems" *ngIf="noProblems">
     <span class="bi bi-emoji-wink"></span>
     <h1>No hay problemas para mostrar</h1>
 </div>

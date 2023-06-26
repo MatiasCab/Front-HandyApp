@@ -124,7 +124,7 @@ export class SideNavComponent {
   }
 
   logout(){
-    localStorage.removeItem('token');
+    localStorage.removeItem('id_token');
     this.Router.navigate(['/login']);    
   }
 }

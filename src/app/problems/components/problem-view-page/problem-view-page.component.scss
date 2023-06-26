@@ -8,6 +8,42 @@
     padding-right: 7%;
 }
 
+.botonbar{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.caltext{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+textarea{
+    height: 250px;
+}
+
+.botone{
+    //width: 33%;
+    font-size: 40px
+}
+
+.bi-emoji-angry, .bi-emoji-angry-fill {
+    color: #F81616;
+}
+.bi-emoji-neutral, .bi-emoji-neutral-fill {
+    color: #FBA500;
+}
+.bi-emoji-smile, .bi-emoji-smile-fill {
+    color: #30FF1E;
+}
+
+.selected{
+    background-color: blue;
+}
+
 .complete-view {
     flex-wrap: wrap;
 }
