@@ -12,14 +12,14 @@
                 <div class="form-group">
                     <label class="form-label" for="floatingInput">Cédula</label>
                     <app-user-input #username class="" [inputLabel]="'Cédula'"
-                        [inputTypeAutocomplete]="'nickname'" (enterpressEvent)="login()">
+                        [inputTypeAutocomplete]="'nickname'" onkeydown="login()">
                     </app-user-input>
                 </div>
 
                 <div class="form-group">
                     <label for="floatingPassword">Contraseña</label>
                     <app-user-input #password class="" [inputLabel]="'Contraseña'"
-                        [inputTypeAutocomplete]="'password'" [inputType]="'password'" (enterpressEvent)="login()">
+                        [inputTypeAutocomplete]="'password'" [inputType]="'password'" onkeydown="login()">
                     </app-user-input>
                 </div>
 
@@ -38,10 +38,6 @@
 
                 <div class="textCenter">
                     <label class="labelText" (click)="register()">Registrarse</label><br>
-                </div>
-
-                <div class="textCenter">
-                    <label class="labelText" (click)="forgotpass()">¿Olvidaste tu contraseña?</label>
                 </div>
 
             </form>

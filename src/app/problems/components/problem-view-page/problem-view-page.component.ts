@@ -42,12 +42,10 @@ export class ProblemViewPageComponent {
     this.route.params.subscribe(params => {
       const problemId = params['problemId'];
       this.problemService.getProblemById(problemId).subscribe(problem => {
-        console.log(problem);
         if(problem.error){
           
         }
         else{
-          console.log(problem);
           this.problem = problem['problem'];
           this.id = problemId;
           this.problemID = this.problem!.id!.toString();
@@ -55,7 +53,6 @@ export class ProblemViewPageComponent {
           //ID PARA LA CARD
           var ownerID = owner!.id!.toString();
           this.profileService.getProfile(ownerID).subscribe(profile => {
-            console.log(profile);
             this.userOwner = profile["user"];
           });
           this.contactLabel = `Contactar a ${owner?.firstname}`;
@@ -66,7 +63,6 @@ export class ProblemViewPageComponent {
             } else {
               this.viewOption = 'otherView';
               this.importantUserInfo = owner;
-              console.log(this.importantUserInfo)
             }
           } else {
             if(this.problem?.resolvedDate){
@@ -147,7 +143,15 @@ export class ProblemViewPageComponent {
       solverUsername: username
     }
     this.ReviewsService.createReview(body).subscribe(res => {
-      console.log(res);
+      //recarga la pagina
+      const currentUrl = this.router.url;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate([currentUrl]);
     });
+    });
+  }
+
+  editProblem(){
+    this.router.navigateByUrl(`/my-problems/edit-problem/${this.problemID}`);
   }
 }

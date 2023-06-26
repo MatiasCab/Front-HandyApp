@@ -43,7 +43,7 @@ export class SignupComponent implements OnInit{
   }
 
 
-  validInformation():boolean {
+  validInformation(): boolean {
     this.auxString = []
     let CI = this.checkCI();
     let BD = this.checkBirthday();
@@ -60,15 +60,6 @@ export class SignupComponent implements OnInit{
     else{
       this.areInvalidFields=true;
       this.invalidFields = this.auxString.toString();
-    }
-  }
-
-  validInformation() : boolean { //Camel case
-    if ( true ||this.validci && this.validusername && this.validpassword && this.validname && this.validlastname && this.validemail && this.validbirthday){
-
-      return true;
-    }else{
-
       return false;
     }
   }
@@ -169,7 +160,7 @@ export class SignupComponent implements OnInit{
   }
 
   // ESTO ESTA BIEN, FELICITACIONES
-  checkName() {
+  checkName() : boolean{
     let name = this.nameInput?.InputInfo ? this.nameInput?.InputInfo : '';
 
     let whiteSpaces = /\s/.test(name);
@@ -182,11 +173,6 @@ export class SignupComponent implements OnInit{
       return true;
     }
   }
-  // ESTO ESTA BIEN, FELICITACIONES
-  checkName() {
-    console.log("npombre usuario", this.nameInput?.InputInfo);
-    this.names(this.nameInput?.InputInfo ? this.nameInput.InputInfo : '')
-    }
 
   // ESTO ESTA BIEN, FELICITACIONES
   checkLastname() {

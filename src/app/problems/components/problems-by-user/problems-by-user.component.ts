@@ -21,7 +21,6 @@ export class ProblemsByUserComponent {
   ngOnInit(){
     var url = this.location.path();
     var userid = url.replace(/^\/problems\/by-user\//, "");
-    console.log(userid);
 
     this.problemService.getProblemsByUser(userid).subscribe(problems => {
       this.problems = problems["problems"];

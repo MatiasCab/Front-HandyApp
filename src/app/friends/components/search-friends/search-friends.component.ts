@@ -22,8 +22,7 @@ export class SearchFriendsComponent {
   @ViewChild ('skillsModal') skillListModal!: SkillListComponent;
   
   constructor(
-    private skillService: SkillService,
-    private userService: UserService
+    private skillService: SkillService
   ) { }
 
   ngOnInit() {

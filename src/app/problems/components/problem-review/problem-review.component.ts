@@ -23,7 +23,6 @@ export class ProblemReviewComponent {
 
   ngOnInit(): void {
     this.reviewsService.getReviewsByProblem(this.problemID!).subscribe(reviews => {
-      console.log(reviews["review"]);
       this.review = reviews["review"];
       if (this.review?.score === 3){
         this.goodReview = true;
