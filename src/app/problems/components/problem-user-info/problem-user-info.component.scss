@@ -14,13 +14,16 @@ p {
 .profile {
     width: 30%;
     margin-right: 10px;
-    margin-left: 10px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 img {
-    width: 100%;
-    height: 100%;
+    width: 140px;
+    height: 140px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 13px;
     border: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease-in-out;
@@ -35,6 +38,7 @@ img {
 }
 
 .info {
+    margin-top: 2%;
     width: 63%;
 }
 

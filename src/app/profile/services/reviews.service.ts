@@ -7,6 +7,7 @@ import { Reviews } from 'src/app/core/models/Reviews';
 
 const API_AUTH_URL = `${API_URL}/users`;
 const API_REVIEWS_URL = `${API_URL}/reviews`;
+const API_PROBLEMS_URL = `${API_URL}/problems`;
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,12 @@ export class ReviewsService {
   getReviews(id:string) {
     return this.http.get<any>(`${API_AUTH_URL}/${id}/reviews`).pipe(
       catchError(this.handleError<any>('getReviews'))
+    );
+  }
+
+  getReviewsByProblem(id:string) {
+    return this.http.get<any>(`${API_PROBLEMS_URL}/${id}/reviews`).pipe(
+      catchError(this.handleError<any>('getReviewsByProblem'))
     );
   }
 

@@ -4,6 +4,7 @@ import { Problem } from '../../../core/models/Problem';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReviewsService } from 'src/app/profile/services/reviews.service';
 import { User } from 'src/app/core/models/User';
+import { ProfileService } from 'src/app/profile/services/profile.service';
 
 @Component({
   selector: 'app-problem-view-page',
@@ -14,6 +15,7 @@ export class ProblemViewPageComponent {
 
   problem?: Problem;
   id?: number;
+  problemID?: string;
   viewOption?: string; //['otherView', 'myView', 'myCompleteView']
   contactLabel?: string;
   importantUserInfo?: User;
@@ -23,6 +25,7 @@ export class ProblemViewPageComponent {
   sadSel : boolean = false;
   stringCalificacion : string = "Por favor califica tu experiencia";
   canRate : boolean = false;
+  userOwner?: User;
 
   @ViewChild('newusername') username?: ElementRef<HTMLInputElement>;
   @ViewChild('newdescription') description?: ElementRef<HTMLInputElement>;
@@ -32,6 +35,7 @@ export class ProblemViewPageComponent {
     private route: ActivatedRoute,
     private router: Router,
     private ReviewsService: ReviewsService,
+    private profileService : ProfileService
   ) {}
 
   ngOnInit(): void {
@@ -45,11 +49,16 @@ export class ProblemViewPageComponent {
           console.log(problem);
           this.problem = problem['problem'];
           this.id = problemId;
+          this.problemID = this.problem!.id!.toString();
           let owner = this.problem!.ownerUser;
-          let ownerId = owner?.id?.toString();
+          //ID PARA LA CARD
+          var ownerID = owner!.id!.toString();
+          this.profileService.getProfile(ownerID).subscribe(profile => {
+            this.userOwner = profile["user"];
+          });
           this.contactLabel = `Contactar a ${owner?.firstname}`;
           let actualUserId = localStorage.getItem('user_ID'); // 'id' es el nombre del parámetro definido en tu archivo de enrutamiento
-          if(ownerId != actualUserId) {
+          if(ownerID != actualUserId) {
             if(this.isResolved()){
               this.viewOption = '';
             } else {
