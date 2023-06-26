@@ -1,0 +1,41 @@
+.search-box{
+    display: flex;
+    height: 100%;
+    width: 80vw;
+    background-color: #CAF0F8;
+    align-items: center;
+    justify-content: center;
+}
+
+.gridContainer{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 93vh;
+    padding-left: 3%;
+    padding-top: 3%;
+    overflow: scroll;
+}
+
+.noProblems{
+    display: flex;
+    flex-direction: column;
+    height: 680px;
+    margin-left: 1vw;
+    justify-content: center;
+    align-items: center;
+
+    h1{
+        font-family: Helvetica, Verdana, Arial;
+        font-weight: bold;
+    }
+    
+    span{
+        font-size: 7em;
+    }
+
+}
+
+.gridContainer::-webkit-scrollbar {
+    display: none;
+}

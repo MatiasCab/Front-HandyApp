@@ -45,7 +45,8 @@ import { ProfileInfoComponent } from './components/profile-info/profile-info.com
     OrderByFilterComponent,
     TagComponent,
     MapComponent,
-    ProfileInfoComponent
+    ProfileInfoComponent,
+    LongCardComponent
    ]
 })
 export class SharedModule { }

@@ -8,6 +8,7 @@ import { ProblemGeneralInfoComponent } from './components/problem-general-info/p
 import { ProblemUserInfoComponent } from './components/problem-user-info/problem-user-info.component';
 import { ButtonComponent } from './components/button/button.component';
 import { ProblemReviewComponent } from './components/problem-review/problem-review.component';
+import { ProblemsByUserComponent } from './components/problems-by-user/problems-by-user.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ProblemReviewComponent } from './components/problem-review/problem-revi
     ProblemGeneralInfoComponent,
     ProblemUserInfoComponent,
     ButtonComponent,
-    ProblemReviewComponent
+    ProblemReviewComponent,
+    ProblemsByUserComponent
   ],
   imports: [
     CommonModule,

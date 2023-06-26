@@ -39,11 +39,14 @@ export class ProfileComponent {
       });
       } else {
         this.profileService.getProfile(this.username).subscribe(profile => {
-          console.log("PERFIL",profile)
           this.User = profile["user"];
-          console.log("USER", this.User);
-          this.MyProfile = false;
-          this.isDataAvailable = true;
+          if (this.User.friendshipStatus === null){
+            this.MyProfile = true;
+            this.isDataAvailable = true;
+          }else{
+            this.MyProfile = false;
+            this.isDataAvailable = true;
+          }
         });
       }
     });
