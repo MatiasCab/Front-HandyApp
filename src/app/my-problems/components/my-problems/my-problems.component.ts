@@ -13,7 +13,7 @@ export class MyProblemsComponent {
 
 
   filterSender(filterOption: string|number){
-    this.problemGrid.filterProblemsByStatus(filterOption);
+    //this.problemGrid.filterProblemsByStatus(filterOption);
   }
 
 

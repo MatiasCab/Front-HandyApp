@@ -18,6 +18,10 @@ export class LongCardComponent {
   @Input() user?: User;
   @Input() option?: string;
 
+  ngOnInit(){
+    console.log(this.problem?.id!);
+  }
+
   editProblem(){
     const link = `/my-problems/edit-problem/${this.problem?.id}`;
     this.router.navigateByUrl(link);

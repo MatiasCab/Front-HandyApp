@@ -16,8 +16,15 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: 655px;
+    height: 600px;
+    max-width: 100%;
     overflow: scroll;
+    margin-top: 10px;
+    flex-wrap: nowrap;
+}
+
+.problemsGrid{
+    height: 600px;
 }
 
 .gridContainer::-webkit-scrollbar {

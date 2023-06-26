@@ -11,6 +11,9 @@ import { FriendsService } from '../../services/friends.service';
 export class AddfriendsComponent {
 
   people?: User[];
+  showSpinner: boolean = true;
+  noPeople: boolean = false;
+
   constructor(
     private friendsService: FriendsService
   ) { }
@@ -18,11 +21,16 @@ export class AddfriendsComponent {
   ngOnInit(){
     this.friendsService.getNotFriends().subscribe(friend => {
       this.people = friend["users"];
-      console.log(this.people);
+      this.showSpinner = false;
+      if(this.people?.length == 0){
+        this.noPeople = true;
+      }
     });
   }
 
   searchNotFriends(event : any){
+    this.noPeople = false;
+    this.showSpinner = true;
     var nameInput = event["name"];
     var name = ""
     if (nameInput !== ""){
@@ -39,6 +47,10 @@ export class AddfriendsComponent {
     this.friendsService.getNotFriendsSearch(name, skills).subscribe(people => {
       console.log(people);
       this.people = people["users"]
+      this.showSpinner = false;
+      if(this.people?.length == 0){
+        this.noPeople = true;
+      }
     });
   }
 }

@@ -15,7 +15,6 @@ export class  ProblemsGridComponent {
   problems?: Problem[];
   @Input() option: string = '';
   @Output() problemsEmmiter = new EventEmitter <boolean>
-  mostrar?: boolean = true;
 
   skills?: string
   name?: string
@@ -67,6 +66,7 @@ export class  ProblemsGridComponent {
         if(this.problems?.length == 0){
           this.noProblems = true
         }
+        console.log(problems);
       }
     })
   }
@@ -170,6 +170,7 @@ export class  ProblemsGridComponent {
   // }
 
   createFilters(event: any, searchInfo: any, order?: string){
+    this.showSpinner = true;
     let filterType = event;
     var nameInput: string = searchInfo ? searchInfo["name"].toLowerCase() : "";
     var name = ""
@@ -196,8 +197,11 @@ export class  ProblemsGridComponent {
     console.log("es el dos");
     if(this.filter === 'Amigos') filter = filter + '&creator=friends';
     this.problemService.getProblemsFiltered2(filter).subscribe(problems => {
-      this.mostrar = false;
+      this.showSpinner = false;
       this.problems = problems['problems'];
+      if(this.problems?.length == 0){
+          this.noProblems = true;
+      }
       console.log("epaaaa", this.problems);
     })
   }
