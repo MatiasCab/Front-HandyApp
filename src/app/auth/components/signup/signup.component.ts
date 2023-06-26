@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit{
   }
 
   validInformation() : boolean { //Camel case
-    if (this.validci && this.validusername && this.validpassword && this.validname && this.validlastname && this.validemail && this.validbirthday){
+    if ( true ||this.validci && this.validusername && this.validpassword && this.validname && this.validlastname && this.validemail && this.validbirthday){
       return true;
     }else{
       return false;

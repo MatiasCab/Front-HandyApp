@@ -16,7 +16,7 @@
 </div>
 
 
-<div class="problemsGrid" *ngIf="problems && option=='myProblems'">
+<div class="problemsGrid" *ngIf="problems && option=='myProblems' && !noProblems">
     <div class="row gx-2 gy-2 w-100 gridContainer ">
         <app-long-card *ngFor="let problemX of problems"
         [option]="'my-problems'"
