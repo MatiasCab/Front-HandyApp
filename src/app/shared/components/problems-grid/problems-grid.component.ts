@@ -154,9 +154,16 @@ export class  ProblemsGridComponent {
       this.problemService.getProblemsFilteredFriends(friendshipStatus, this.name, this.skills).subscribe(problems => 
         this.problems = problems['problems'])
     }
-    
+  }
 
+  filterProblemsByStatus(event: any){
+    if(event === 1){
+      
+    }
+    else if(event ===2){
 
+    }
+    else{}
   }
   
 

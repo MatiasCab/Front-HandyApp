@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { ProblemsGridComponent } from 'src/app/shared/components/problems-grid/problems-grid.component';
 
 @Component({
   selector: 'app-my-problems',
@@ -7,6 +8,11 @@ import { Component } from '@angular/core';
 })
 export class MyProblemsComponent {
 
+  @ViewChild(ProblemsGridComponent) problemGrid!: ProblemsGridComponent
+
+
+  filterSender(filterOption: string|number){
+  }
 
 
 }
