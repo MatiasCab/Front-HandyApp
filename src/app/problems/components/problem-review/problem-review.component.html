@@ -1,10 +1,10 @@
 <div class="review-box">
-    <h5>Review ayudante</h5>
-    <h6>Manolaso del Ano</h6>
-    <p>Descriodskdf efojnsofn  vkñjrvn  vñjnvñkrjv v rñjvnrñkjrvn voñnrvñomrv</p>
+    <h5>Review</h5>
+    <h6 (click)="seeProfile()">{{review!.reviewedUser.firstname}}</h6>
+    <p>{{review!.description}}</p>
     <div class="emojis">
-        <i class="bi bi-emoji-smile"></i>
-        <i class="bi bi-emoji-neutral-fill"></i>
-        <i class="bi bi-emoji-angry"></i>
+        <i class="bi bi-emoji-smile" *ngIf="!goodReview"></i><i class="bi bi-emoji-smile-fill" *ngIf="goodReview"></i>
+        <i class="bi bi-emoji-neutral" *ngIf="!midReview"></i><i class="bi bi-emoji-neutral-fill" *ngIf="midReview"></i>
+        <i class="bi bi-emoji-angry" *ngIf="!badReview"></i><i class="bi bi-emoji-angry-fill" *ngIf="badReview"></i>
     </div>
-</div>  
+</div>

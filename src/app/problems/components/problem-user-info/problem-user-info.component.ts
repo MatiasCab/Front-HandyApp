@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { User } from 'src/app/core/models/User';
 
 @Component({
@@ -9,7 +9,8 @@ import { User } from 'src/app/core/models/User';
 export class ProblemUserInfoComponent {
   @Input() User?: User;
 
-  joinedDateString: string = "a";
+  joinedDateString?: string = "";
+  @ViewChild('datestr', { static: true }) joinedDate!: ElementRef;
 
   convertDateToString(date: Date): string {
     const months: string[] = [
@@ -23,9 +24,10 @@ export class ProblemUserInfoComponent {
     return `Miembro desde ${month} ${year}`;
   }
 
-  ngOnInit(): void { 
+  ngAfterViewInit(): void {
     var datee = new Date(this.User?.singupDate!);
-    console.log(datee);
-    this.joinedDateString = this.convertDateToString(datee);
+    var newdatee = this.convertDateToString(datee);
+    console.log("FECHA", newdatee);
+    this.joinedDate.nativeElement.textContent = newdatee;
   }
 }

@@ -29,15 +29,16 @@
     </div>
 </div>
 
+<!-- ARREGLAR ESTO -->
 <div class="problem-info complete-view" *ngIf="this.viewOption == 'myCompleteView'">
     <div  class="h">
         <div class="padding">
             <app-problem-general-info [problem]="this.problem"></app-problem-general-info> 
         </div> 
         <div class="padding-left all">
-            <app-problem-user-info></app-problem-user-info>
+            <app-problem-user-info [User]="userOwner"></app-problem-user-info>
             <div class="mt-4">
-                <app-problem-review></app-problem-review>
+                <app-problem-review [problemID]="problemID"></app-problem-review>
             </div>
         </div>
     </div>
