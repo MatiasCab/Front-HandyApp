@@ -48,7 +48,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     TagComponent,
     MapComponent,
     ProfileInfoComponent,
-    SpinnerComponent
+    SpinnerComponent,
     LongCardComponent
    ]
 })

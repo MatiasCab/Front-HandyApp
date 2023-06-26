@@ -37,8 +37,15 @@ export class SignupComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  validInformation() : boolean { //Camel case
-    if (this.validci && this.validusername && this.validpassword && this.validname && this.validlastname && this.validemail && this.validbirthday){
+  validInformation() : boolean { 
+    console.log("1",this.validci);
+    console.log("2",this.validusername);
+    console.log("3",this.validpassword);
+    console.log("4",this.validname);
+    console.log("5",this.validlastname);
+    console.log("6",this.validemail);
+    console.log("7",this.validbirthday);
+    if (true || this.validci && this.validusername && this.validpassword && this.validname && this.validlastname && this.validemail && this.validbirthday){
       return true;
     }else{
       return false;
@@ -105,20 +112,15 @@ export class SignupComponent implements OnInit{
   // TIENE PINTA DE OK, FELICITACIONES
   checkUsername() {
     let username = this.usernameInput?.InputInfo ? this.usernameInput?.InputInfo : '';
-    let usernamelower = username.toLowerCase();
-
-    let result = !/\s/.test(usernamelower);
-    let result2 = !/[^a-z]/.test(usernamelower);
-    if (result || result2 || usernamelower.length < 3 || usernamelower.length > 20){
-      this.validusername = false;
-    }else{
-      this.validusername = true;
-    }
+    console.log("npombre usuario", username);
+    const regex = /^[a-zA-Z0-9_]{4,8}$/;
+    return regex.test(username);
   }
 
   // ESTO ESTA BIEN, TIENE PINTA. FELICITACIONES
   checkPassword() {
     let password = this.passwordInput?.InputInfo ? this.passwordInput?.InputInfo : '';
+    console.log("CONTRESEÑAS", password);
     if(password.length >= 8){
       this.validpassword = true;
     }else{
@@ -126,37 +128,38 @@ export class SignupComponent implements OnInit{
     }
   }
 
+  names(name: string) {
+    const trimmedName = name.trim();
+    const words = trimmedName.split(" ");
+    if (words.length < 2) {
+      return false;
+    }
+
+    const nameRegex = /^[A-Z][a-z]*$/;
+    for (const word of words) {
+      if (!nameRegex.test(word)) {
+        return false;
+      }
+    }
+      return true;
+  }
   // ESTO ESTA BIEN, FELICITACIONES
   checkName() {
-    let name = this.nameInput?.InputInfo ? this.nameInput?.InputInfo : '';
-
-    let result = !/\s/.test(name);
-    let result2 = !/[^a-z]/.test(name);
-
-    if (name == "" || name.length < 3 || name.length > 20 || !result || !result2){
-      this.validname = false;
-    }else{
-      this.validname = true;
+    console.log("npombre usuario", this.nameInput?.InputInfo);
+    this.names(this.nameInput?.InputInfo ? this.nameInput.InputInfo : '')
     }
-  }
 
   // ESTO ESTA BIEN, FELICITACIONES
   checkLastname() {
-    let lastname = this.lastnameInput?.InputInfo ? this.lastnameInput?.InputInfo : '';
-
-    let result = !/\s/.test(lastname);
-    let result2 = !/[^a-z]/.test(lastname);
-
-    if (lastname == "" || lastname.length < 3 || lastname.length > 20 || !result || !result2){
-      this.validlastname = false;
-    }else{
-      this.validlastname = true;
-    }
+    console.log("npombre usuario", this.lastnameInput?.InputInfo);
+    this.names(this.lastnameInput?.InputInfo ? this.lastnameInput?.InputInfo : '')
   }
 
   // ESTO ESTA BIEN, FELICITACIONES.
   checkEmail() {
+    
     let email = this.emailInput?.InputInfo ? this.emailInput?.InputInfo : '';
+    console.log("npombre usuario", email);
     var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const result: boolean = regex.test(email);
@@ -171,6 +174,7 @@ export class SignupComponent implements OnInit{
   // ESTO ESTA BIEN, FELICITACIONES.
   checkBirthday() {
     let birthday = this.birthdayInput?.InputInfo ? this.birthdayInput?.InputInfo : '';
+    console.log("npombre usuario", birthday);
     var yearInp = birthday.substring(0,4);
     var date = new Date();
     var yearAct = date.getFullYear();

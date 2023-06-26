@@ -12,8 +12,8 @@ export class MyProblemsComponent {
   @ViewChild(ProblemsGridComponent) problemGrid!: ProblemsGridComponent
 
 
-  filterSender(filterOption: string|number){
-    //this.problemGrid.filterProblemsByStatus(filterOption)
+  filterSender(filterOption: any){
+    this.problemGrid.filterMyProblems(filterOption);
   }
 
 

@@ -209,14 +209,31 @@ export class  ProblemsGridComponent {
 
   filterProblems2(event: any, searchInfo: any, order?: any){
     console.log(order);
-    Feature/Problem-View-integration
     this.createFilters(event, searchInfo, order);
   }
 
   searchProblems2(event : any, filterInfo: any, order?: any){
     console.log('esto otro', order);
     this.createFilters(filterInfo, event, order);
-}
+  }
+
+  filterMyProblems(option: number){
+    var name = "status=";
+    if (option == 3){
+      name += "resolved";
+    } else if(option == 2) {
+      name += "pendent";
+    }
+    this.problemService.getMyProblems(name).subscribe(problems => {
+      this.showSpinner = false;
+      this.problems = problems['problems'];
+      if(this.problems?.length == 0){
+          this.noProblems = true;
+      } else {
+        this.noProblems = false;
+      }
+    })
+  }
 
 
 }

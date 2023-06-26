@@ -42,6 +42,7 @@ export class ProblemViewPageComponent {
     this.route.params.subscribe(params => {
       const problemId = params['problemId'];
       this.problemService.getProblemById(problemId).subscribe(problem => {
+        console.log(problem);
         if(problem.error){
           
         }
@@ -54,13 +55,14 @@ export class ProblemViewPageComponent {
           //ID PARA LA CARD
           var ownerID = owner!.id!.toString();
           this.profileService.getProfile(ownerID).subscribe(profile => {
+            console.log(profile);
             this.userOwner = profile["user"];
           });
           this.contactLabel = `Contactar a ${owner?.firstname}`;
           let actualUserId = localStorage.getItem('user_ID'); // 'id' es el nombre del parámetro definido en tu archivo de enrutamiento
           if(ownerID != actualUserId) {
             if(this.isResolved()){
-              this.viewOption = '';
+              this.viewOption = 'myCompleteView';
             } else {
               this.viewOption = 'otherView';
               this.importantUserInfo = owner;
