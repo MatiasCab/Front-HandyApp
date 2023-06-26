@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 
 import { Problem } from '../../core/models/Problem'
 
-import { BehaviorSubject, catchError } from 'rxjs';;
+import { catchError } from 'rxjs';;
 
-import {Observable, of} from 'rxjs';
+import { of } from 'rxjs';
 
 import { API_URL } from 'src/app/core/const';
 
@@ -21,13 +21,6 @@ export class ProblemService {
   constructor(
     private http: HttpClient
   ) { }
-
-  private problemsSubject: BehaviorSubject<Problem[]> = new BehaviorSubject<Problem[]>([]);
-  problems$ = this.problemsSubject.asObservable();
-
-  sendProblems(nuevosValores: Problem[]) {
-    this.problemsSubject.next(nuevosValores);
-  }
 
   getProblems(){
     return this.http.get<any>(`${API_AUTH_URL}`).pipe(

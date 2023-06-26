@@ -8,7 +8,6 @@
 }
 
 .solvedDate{
-    border-right: 1.5px solid;
     border-radius: 1px;
     display: flex;
     flex-direction: column;
@@ -18,9 +17,6 @@
     padding-right: 1.5vw;
 }
 
-.solvedDate.solved{
-    border:none;
-}
 
 p{
     text-align: center;
@@ -38,16 +34,9 @@ p{
     margin-right: 1.22vw;
 }
 
-.trashButton{
-    display: flex;
-    align-items: center; 
-    padding: 2vw; 
-}
-
 .editButton{
     display: flex;
     align-items: center;
-    border-right: 1.5px solid;
     border-radius: 1px;
     height: 88px;
     padding-right: 60px;

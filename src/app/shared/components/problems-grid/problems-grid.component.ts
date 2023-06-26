@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Pipe } from '@angular/core';
 
 import { Problem } from 'src/app/core/models/Problem';
 import { FriendsService } from 'src/app/friends/services/friends.service';
 import { ProblemService } from 'src/app/problems/services/problem.service';
+
 
 @Component({
   selector: 'app-problems-grid',
@@ -12,7 +13,6 @@ import { ProblemService } from 'src/app/problems/services/problem.service';
 export class  ProblemsGridComponent {
 
   problems?: Problem[];
-  problems2:Problem[] = [];
   @Input() option: string = '';
   @Output() problemsEmmiter = new EventEmitter <boolean>
 
@@ -20,6 +20,9 @@ export class  ProblemsGridComponent {
   name?: string
   filter? : string
 
+  showSpinner: boolean = true;
+  noProblems: boolean = false;
+  
   constructor(
     private problemService: ProblemService,
     ) { }
@@ -39,9 +42,14 @@ export class  ProblemsGridComponent {
         console.log('Error???')
       }
       else{
+        this.showSpinner = false;
         this.problems=problems['problems'];
-        console.log(this.problems);
         this.problemsEmmiter.emit(true)
+        console.log(this.problems?.length);
+        console.log(this.noProblems);
+        if(this.problems?.length == 0){
+          this.noProblems = true
+        }
       }
     })
   }
@@ -52,13 +60,19 @@ export class  ProblemsGridComponent {
 
       }
       else{
+        this.showSpinner = false;
         this.problems = problems['problems'];
         this.problemsEmmiter.emit(true);
+        if(this.problems?.length == 0){
+          this.noProblems = true
+        }
       }
     })
   }
 
   searchProblems(event : any){
+    this.noProblems = false;
+    this.showSpinner = true;
     var nameInput: string = event["name"].toLowerCase();
     var name = ""
     if (nameInput !== ""){
@@ -78,51 +92,68 @@ export class  ProblemsGridComponent {
       if(!name && !skills){ 
           friendshipStatus = '?creator=friends'
         this.problemService.getProblemsFilteredFriends(friendshipStatus, '', '').subscribe(problems => {
+          this.showSpinner = false;
           this.problems = problems['problems']
           this.name = name
           this.skills = skills;
-          console.log(`${friendshipStatus}${name}${skills}`)
+        if(this.problems?.length == 0){
+          this.noProblems = true
+        }
         })
       }
       else if(name && !skills){
         friendshipStatus = '?creator=friends&'
         this.problemService.getProblemsFilteredFriends(friendshipStatus, name).subscribe(problems => {
+          this.showSpinner = false;
           this.problems = problems['problems']
           this.name = name
           this.skills = skills;
-          console.log(`${friendshipStatus}${name}${skills}`)
+        if(this.problems?.length == 0){
+          this.noProblems = true
+        }
         })
       }
       else if(!name && skills){
         friendshipStatus = '?creator=friends'
         this.problemService.getProblemsFilteredFriends(friendshipStatus, '', skills).subscribe(problems => {
+          this.showSpinner = false;
           this.problems = problems['problems']
           this.name = name
           this.skills = skills;
-          console.log(`${friendshipStatus}${name}${skills}`)
+        if(this.problems?.length == 0){
+          this.noProblems = true
+        }
         })
       }
       else if(name && skills){
         friendshipStatus = '?creator=friends&'
         this.problemService.getProblemsFilteredFriends(friendshipStatus, name, skills).subscribe(problems => {
+          this.showSpinner = false;
           this.problems = problems['problems']
           this.name = name
           this.skills = skills;
-          console.log(`${friendshipStatus}${name}${skills}`)
+        if(this.problems?.length == 0){
+          this.noProblems = true
+        }
         })
       }
     }
     else{
     this.problemService.getProblemsFiltered(name, skills).subscribe(problems => {
-      this.problems = problems["problems"]
+      this.showSpinner = false;
+      this.problems = problems['problems']
       this.name = name
       this.skills = skills;
+    if(this.problems?.length == 0){
+      this.noProblems = true
+    }
     });
   }
-    
   }
 
   filterProblems(event: any){
+    this.noProblems = false;
+    this.showSpinner = true;
     this.filter = event;
     let friendshipStatus: string = '?'
     if(!this.name && !this.skills){
@@ -130,29 +161,48 @@ export class  ProblemsGridComponent {
         friendshipStatus = '?creator=friends'
       }
       this.problemService.getProblemsFilteredFriends(friendshipStatus, '', '').subscribe(problems => {
+        this.showSpinner = false;
         this.problems = problems["problems"];
+        if(this.problems?.length == 0){
+          this.noProblems = true;
+        }
       })
     }
     else if(this.name && !this.skills){
       if(event === 'Amigos'){
       friendshipStatus = '?creator=friends&'
       }
-      this.problemService.getProblemsFilteredFriends(friendshipStatus, this.name).subscribe(problems => 
-        this.problems = problems['problems'])
+      this.problemService.getProblemsFilteredFriends(friendshipStatus, this.name).subscribe(problems => {
+        this.showSpinner = false;
+        this.problems = problems["problems"];
+        if(this.problems?.length == 0){
+          this.noProblems = true;
+        }
+      })
     }
     else if(!this.name && this.skills){
       if(event === 'Amigos'){
         friendshipStatus = '?creator=friends'
       }
-      this.problemService.getProblemsFilteredFriends(friendshipStatus, '', this.skills).subscribe(problems => 
-        this.problems = problems['problems'])
+      this.problemService.getProblemsFilteredFriends(friendshipStatus, '', this.skills).subscribe(problems => {
+        this.showSpinner = false;
+        this.problems = problems["problems"];
+        if(this.problems?.length == 0){
+          this.noProblems = true;
+        }
+      })
     }
     else if(this.name && this.skills){
       if(event === 'Amigos'){
         friendshipStatus = '?creator=friends&'
       }
-      this.problemService.getProblemsFilteredFriends(friendshipStatus, this.name, this.skills).subscribe(problems => 
-        this.problems = problems['problems'])
+      this.problemService.getProblemsFilteredFriends(friendshipStatus, this.name, this.skills).subscribe(problems =>{
+        this.showSpinner = false;
+        this.problems = problems["problems"];
+        if(this.problems?.length == 0){
+          this.noProblems = true;
+        }
+      })
     }
 }
 
@@ -233,6 +283,6 @@ export class  ProblemsGridComponent {
     });
   }
 }
-  
+
 
 }
