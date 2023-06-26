@@ -45,7 +45,6 @@ export class AddfriendsComponent {
       }
     }  
     this.friendsService.getNotFriendsSearch(name, skills).subscribe(people => {
-      console.log(people);
       this.people = people["users"]
       this.showSpinner = false;
       if(this.people?.length == 0){

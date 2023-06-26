@@ -58,7 +58,6 @@ export class MapComponent {
     }
 
     handleMarkerDrag(latLng: google.maps.LatLng) {
-      console.log('Posición seleccionada:', latLng.lat(), latLng.lng());
       this.markerLat = latLng.lat();
       this.markerLng = latLng.lng();
     }

@@ -27,7 +27,6 @@ export class ProblemUserInfoComponent {
   ngAfterViewInit(): void {
     var datee = new Date(this.User?.singupDate!);
     var newdatee = this.convertDateToString(datee);
-    console.log("FECHA", newdatee);
     this.joinedDate.nativeElement.textContent = newdatee;
   }
 }

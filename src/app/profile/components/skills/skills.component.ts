@@ -28,7 +28,6 @@ export class SkillsComponent {
 
   constructor(
     private skillService: SkillService,
-    private userService: UserService,
     private profileService: ProfileService,
     private Router: Router
   ) {}

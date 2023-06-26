@@ -43,7 +43,7 @@ export class SignupComponent implements OnInit{
   }
 
 
-  validInformation():boolean {
+  validInformation(): boolean {
     this.auxString = []
     let CI = this.checkCI();
     let BD = this.checkBirthday();
@@ -160,7 +160,7 @@ export class SignupComponent implements OnInit{
   }
 
   // ESTO ESTA BIEN, FELICITACIONES
-  checkName() {
+  checkName() : boolean{
     let name = this.nameInput?.InputInfo ? this.nameInput?.InputInfo : '';
 
     let whiteSpaces = /\s/.test(name);
