@@ -22,6 +22,7 @@ export class EditBtnComponent {
   @ViewChild('password2') password2?: ElementRef<HTMLInputElement>;
   @ViewChild('newdescription') newdescription?: ElementRef<HTMLInputElement>;
   @ViewChild (MapComponent) mapComponent!: MapComponent;
+  @ViewChild ('m') m!: any;
   
   constructor(
     private AuthService: AuthService,
@@ -29,9 +30,17 @@ export class EditBtnComponent {
     private Router: Router
   ) {}
 
+  ngOnInit(): void {
+    
+  }
+
   changepass(): void {
     if(this.canChangePass){
       var pass = this.password1?.nativeElement.value;
+      let body = {
+        password: pass
+      }
+      this.AuthService.changepass(body).subscribe(profile => {});
       //this.AuthService.changePassword(pass);
     }
   }
@@ -126,13 +135,21 @@ export class EditBtnComponent {
   changeubi(): void {
     let newLat = this.mapComponent.markerLat;
     let newLong = this.mapComponent.markerLng;
-    let body = {
-      description: this.User?.description,
-      skills : this.User?.skills,
-      lat: newLat,
-      lng: newLong,
+    let oldLat = this.User?.lat;
+    let oldLong = this.User?.lng;
+    if (newLat == oldLat && newLong == oldLong) {
+      //no se ha movido el marcador
+    }else{
+      let body = {
+        description: this.User?.description,
+        skills : this.User?.skills,
+        lat: newLat,
+        lng: newLong,
+      }
+      this.profileService.updateProfile(body).subscribe(profile => {
+        this.reload();
+      });
     }
-    this.profileService.updateProfile(body).subscribe(profile => {});
   }
 
   cleanBase64(img:string): string {
@@ -143,6 +160,10 @@ export class EditBtnComponent {
     } else {
       return img;
     }
+  }
+
+  loadmap(): void {
+    this.m.reload(this.User?.lat, this.User?.lng)
   }
 
   reload(): void {

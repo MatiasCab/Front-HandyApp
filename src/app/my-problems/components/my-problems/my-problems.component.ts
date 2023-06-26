@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { filter } from 'rxjs';
+
 import { ProblemsGridComponent } from 'src/app/shared/components/problems-grid/problems-grid.component';
 
 @Component({
@@ -13,7 +13,7 @@ export class MyProblemsComponent {
 
 
   filterSender(filterOption: string|number){
-    //this.problemGrid.filterProblemsByStatus(filterOption);
+    //this.problemGrid.filterProblemsByStatus(filterOption)
   }
 
 

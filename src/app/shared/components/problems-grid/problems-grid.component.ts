@@ -202,6 +202,7 @@ export class  ProblemsGridComponent {
       if(this.problems?.length == 0){
           this.noProblems = true;
       }
+
       console.log("epaaaa", this.problems);
     })
   }
@@ -209,6 +210,35 @@ export class  ProblemsGridComponent {
   filterProblems2(event: any, searchInfo: any, order?: any){
     console.log(order);
     this.createFilters(event, searchInfo);
+
+      this.problemService.getProblemsFilteredFriends(friendshipStatus, this.name).subscribe(problems => 
+        this.problems = problems['problems'])
+    }
+    else if(!this.name && this.skills){
+      if(event === 'Amigos'){
+        friendshipStatus = '?creator=friends'
+      }
+      this.problemService.getProblemsFilteredFriends(friendshipStatus, '', this.skills).subscribe(problems => 
+        this.problems = problems['problems'])
+    }
+    else if(this.name && this.skills){
+      if(event === 'Amigos'){
+        friendshipStatus = '?creator=friends&'
+      }
+      this.problemService.getProblemsFilteredFriends(friendshipStatus, this.name, this.skills).subscribe(problems => 
+        this.problems = problems['problems'])
+    }
+  }
+
+  filterProblemsByStatus(event: any){
+    if(event === 1){
+      
+    }
+    else if(event ===2){
+
+    }
+    else{}
+
   }
 
   searchProblems2(event : any, filterInfo: any, order?: any){

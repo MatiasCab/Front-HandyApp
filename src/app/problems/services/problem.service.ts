@@ -28,6 +28,12 @@ export class ProblemService {
     );
   }
 
+  getProblemsByUser(id: string){
+    return this.http.get<any>(`${API_AUTH_URL_MY_PROBLEMS}/${id}/problems`).pipe(
+      catchError(this.handleError<any>('getProblemsByUser'))
+    );
+  }
+
   getMyProblems(){
     const idUser = localStorage.getItem('user_ID');
     return this.http.get<any>(`${API_AUTH_URL_MY_PROBLEMS}/${idUser}/problems`)

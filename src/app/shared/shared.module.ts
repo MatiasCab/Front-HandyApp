@@ -49,6 +49,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     MapComponent,
     ProfileInfoComponent,
     SpinnerComponent
+    LongCardComponent
    ]
 })
 export class SharedModule { }
