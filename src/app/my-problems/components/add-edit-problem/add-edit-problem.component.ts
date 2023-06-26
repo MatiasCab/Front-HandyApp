@@ -1,5 +1,5 @@
-import { Component, Input, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Skill } from 'src/app/core/models/Skill';
 import { SkillService } from 'src/app/shared/services/skill.service';
@@ -19,15 +19,17 @@ export class AddEditProblemComponent {
   
   @ViewChild (SkillListComponent) skillListComponent!: SkillListComponent;
   @ViewChild ('skillListModal') skillListComponentModal!: SkillListComponent;
-  @ViewChild ('problemDescriptionText') problemDescriptionText!: HTMLTextAreaElement;
-  @ViewChild ('problemTitleText') problemTitleText!: HTMLInputElement;
+  @ViewChild ('problemDescriptionText') problemDescriptionText!:  ElementRef<HTMLTextAreaElement>;
+  @ViewChild ('problemTitleText') problemTitleText!: ElementRef<HTMLInputElement>;
   @ViewChild (MapComponent) mapComponent!: MapComponent;
   @ViewChild ('m') m!: any;
+  @ViewChild ('s') sk!: SkillListComponent;
 
   constructor(
     private skillService: SkillService,
     private problemService: ProblemService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ){
   }
   
@@ -115,12 +117,24 @@ export class AddEditProblemComponent {
     this.newProblemPicture = base64;
   }
 
-  postProblem(title: string, description: string){
-    if(!this.validateInput(title) || !this.validateInput(description)){
-
+  postProblem() {
+    let auxSkills: number[] = this.sk.skills;
+    if(this.validateInput(this.problemDescriptionText.nativeElement.value) && this.validateInput(this.problemTitleText.nativeElement.value) && auxSkills.length != 0 && this.newProblemPicture) {
+      let newProblem: any = {
+        name: this.problemTitleText.nativeElement.value,
+        description: this.problemDescriptionText.nativeElement.value,
+        skills: auxSkills,
+        lat: this.m.markerLat,
+        lng: this.m.markerLng,
+        image: this.cleanBase64(this.newProblemPicture)
+      }
+      this.problemService.postProblem(newProblem).subscribe(res => {
+        console.log(res);
+        this.router.navigateByUrl('/my-problems');
+      });
+    } else {
+      alert("Debe ingresar un titulo, descripcion, y habilidades basicas.");
     }
-    
-
   }
 
   getProblem(): void {
@@ -147,19 +161,57 @@ export class AddEditProblemComponent {
   }
 
   edit(){
-    
+    let auxSkills: number[] = [];
+    this.skillListComponentModal.tagComponent.forEach(i => {
+      if(i.isSpanSelectedFilter){
+        auxSkills.push(i.skill!.id);
+      }
+    });
+    if(auxSkills.length == 0){
+      auxSkills = this.sk.skills;
+    }
+    console.log(auxSkills);
+    console.log(this.validateInput(this.problemDescriptionText.nativeElement.value));
+    if(this.validateInput(this.problemDescriptionText.nativeElement.value) && this.validateInput(this.problemTitleText.nativeElement.value) && auxSkills.length != 0) {
+      let newProblem: any = {
+        id: this.problem?.id,
+        name: this.problemTitleText.nativeElement.value,
+        description: this.problemDescriptionText.nativeElement.value,
+        skills: auxSkills,
+        lat: this.m.markerLat,
+        lng: this.m.markerLng
+      }
+      if(this.newProblemPicture) {
+        newProblem.image = this.cleanBase64(this.newProblemPicture);
+      }
+      this.problemService.putProblem(newProblem).subscribe(res => {
+        console.log(res);
+        this.router.navigateByUrl('/my-problems');
+      });
+    } else {
+      alert("Debe ingresar un titulo, descripcion, y habilidades basicas.");
+    }
+  }
+
+  cleanBase64(img:string): string {
+    const index = img.indexOf(",");
+    if (index !== -1) {
+      return img.slice(index + 1);
+    } else {
+      return img;
+    }
   }
 
   validateInput(input: string): boolean {
+    if(!input) return false;
     if (input.trim() === '') {
       return false;
     }
-
-    const specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-    if (specialChars.test(input)) {
-      return false;
-    }
-  
+    // const specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+    // if (specialChars.test(input)) {
+    //   return false;
+    // }
+    console.log("QUE TAL", input);
     return true;
   }
   

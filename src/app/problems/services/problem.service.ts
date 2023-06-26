@@ -50,6 +50,12 @@ export class ProblemService {
     );
   }
 
+  putProblem(problem: Problem){
+    return this.http.put<any>(`${API_AUTH_URL}/${problem.id}`, problem).pipe(
+      catchError(this.handleError<any>('postProblem'))
+    );
+  }
+
   getProblemsFiltered(name: string, skills: string) {
     return this.http.get<any>(`${API_AUTH_URL}?${name}${skills}`).pipe(
       catchError(this.handleError<any>('getFriendsSearch'))

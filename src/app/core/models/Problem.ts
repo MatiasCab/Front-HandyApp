@@ -14,5 +14,5 @@ export interface Problem{
     status?: string;
     skills?: Skill[];
     ownerUser?: User;
-    locationImage: string;
+    locationImage?: string;
 }
