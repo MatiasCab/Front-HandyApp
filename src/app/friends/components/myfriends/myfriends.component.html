@@ -2,7 +2,17 @@
     <div class="buscador">
         <app-search-friends (friendSender)="searchFriends($event)"></app-search-friends>
     </div>
-    <div class="lista">
+
+    <div class="spinner" *ngIf="showSpinner">
+        <app-spinner></app-spinner>
+    </div>
+
+    <div class="noFriends" *ngIf="noFriends">
+        <span class="bi bi-emoji-frown"></span>
+        <h1>No hay amigos para mostrar</h1>
+    </div>
+
+    <div class="lista" *ngIf="!showSpinner && !noFriends">
         <app-friend-item *ngFor="let user of friends" [user]="user"></app-friend-item>
     </div>
 </div>

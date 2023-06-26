@@ -1,7 +1,7 @@
 <h3>Mis problemas</h3>
 <div class="tagsButtonContainer">
     <div class="tags">
-        <app-order-by-filter [option]="'myProblems'" [resolvedNumber]="" [pendingNumber]="" (filterEmitter)="filterBy($event)"></app-order-by-filter>
+        <app-order-by-filter [option]="'myProblems'" (filterEmitter)="filterBy($event)"></app-order-by-filter>
     </div>
     <div class="buttonContainer">
         <app-add-problem-button></app-add-problem-button>

@@ -12,6 +12,12 @@
     padding-left: 5%;
 }
 
+.spinner{
+    height: 655px;
+    display: flex;
+    align-items: center;
+}
+
 .lista{
     display: flex;
     flex-direction: column;
@@ -23,4 +29,21 @@
 
 .lista::-webkit-scrollbar {
     display: none;
-  }
+}
+
+.noFriends{
+    display: flex;
+    flex-direction: column;
+    height: 680px;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-family: Helvetica, Verdana, Arial;
+    font-weight: bold;
+}
+
+span{
+    font-size: 7em;
+}

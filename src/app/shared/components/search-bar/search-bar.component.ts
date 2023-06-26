@@ -69,7 +69,14 @@ export class SearchBarComponent {
   }
 
   searchProblem(name: string){
-    this.problemSearchEmitter.emit({name: name, skills: this.skillsList});
+    let skillsToUse: any = [];
+    this.skillListModal.tagComponent.forEach(tag => {
+      if(tag.isSpanSelected){
+        if(tag.skill)
+        skillsToUse.push(tag.skill?.id);
+      }
+    })
+    this.problemSearchEmitter.emit({name: name, skills: skillsToUse});
   }
 
   }
