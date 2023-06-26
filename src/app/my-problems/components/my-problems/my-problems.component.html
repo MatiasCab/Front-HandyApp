@@ -1,4 +1,4 @@
 <div class="exterior">
-    <app-upper-section></app-upper-section>
+    <app-upper-section (filterEmitter)="filterSender($event)"></app-upper-section>
     <app-problems-grid [option]="'myProblems'"></app-problems-grid>
 </div>

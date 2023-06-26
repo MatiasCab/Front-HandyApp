@@ -54,8 +54,8 @@ export class AuthService {
   }
 
 
-  changepass(password: string) {
-    return this.http.put<any>(`${API_AUTH_URL}/passwords`, {password}).pipe(
+  changepass(body: any) {
+    return this.http.put<any>(`${API_AUTH_URL}/passwords`, body).pipe(
       catchError(this.handleError<any>('changePassword'))
     );
   }

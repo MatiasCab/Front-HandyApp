@@ -62,7 +62,7 @@ export class FriendItemComponent {
   }
 
   showproblems(){
-    this.Router.navigate(['/problems']);
+    this.Router.navigate(['/problems/by-user/' + this.user!.id]);
   }
 
   buttonModal(){

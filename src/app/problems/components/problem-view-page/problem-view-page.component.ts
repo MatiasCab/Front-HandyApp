@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ProblemService } from '../../services/problem.service';
 import { Problem } from '../../../core/models/Problem';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ReviewsService } from 'src/app/profile/services/reviews.service';
 import { User } from 'src/app/core/models/User';
 
 @Component({
@@ -16,11 +17,21 @@ export class ProblemViewPageComponent {
   viewOption?: string; //['otherView', 'myView', 'myCompleteView']
   contactLabel?: string;
   importantUserInfo?: User;
+  rating?: number;
+  happySel : boolean = false;
+  midSel : boolean = false;
+  sadSel : boolean = false;
+  stringCalificacion : string = "Por favor califica tu experiencia";
+  canRate : boolean = false;
+
+  @ViewChild('newusername') username?: ElementRef<HTMLInputElement>;
+  @ViewChild('newdescription') description?: ElementRef<HTMLInputElement>;
 
   constructor(
     private problemService: ProblemService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private ReviewsService: ReviewsService,
   ) {}
 
   ngOnInit(): void {
@@ -71,4 +82,61 @@ export class ProblemViewPageComponent {
     this.router.navigateByUrl('/my-problems/edit-problem/id');
   }
 
+  happy(){
+    this.rating = 3;
+    this.happySel = true;
+    this.midSel = false;
+    this.sadSel = false;
+    this.stringCalificacion = "¡Gracias por calificar tu experiencia!";
+    this.canRate = true;
+  }
+
+  mid(){
+    this.rating = 2;
+    this.happySel = false;
+    this.midSel = true;
+    this.sadSel = false;
+    this.stringCalificacion = "¡Gracias por calificar tu experiencia!";
+    this.canRate = true;
+  }
+
+  sad(){
+    this.rating = 1;
+    this.happySel = false;
+    this.midSel = false;
+    this.sadSel = true;
+    this.stringCalificacion = "¡Gracias por calificar tu experiencia!";
+    this.canRate = true;
+  }
+
+  check(){
+    let desc = this.description?.nativeElement.value;
+    let username = this.username?.nativeElement.value;
+    if (this.canRate == true && desc != "" && username != "") {
+      (document.getElementById('btnEnviar') as HTMLButtonElement).disabled = false;
+    }else{
+      (document.getElementById('btnEnviar') as HTMLButtonElement).disabled = true;
+    }
+  }
+
+  sendReview(){
+    let desc = this.description?.nativeElement.value;
+    let username = this.username?.nativeElement.value;
+    if (this.happySel){
+      this.rating = 3;
+    }else if (this.midSel){
+      this.rating = 2;
+    }else if (this.sadSel){
+      this.rating = 1;
+    }
+    let body = {
+      description: desc,
+      score: this.rating,
+      problemId:  this.problem?.id,
+      solverUsername: username
+    }
+    this.ReviewsService.createReview(body).subscribe(res => {
+      console.log(res);
+    });
+  }
 }
